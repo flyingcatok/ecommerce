@@ -5,9 +5,9 @@
 $create_item_table = "
 CREATE TABLE Item 
 (IId			INT					NOT NULL,
- IName			VARCHAR(100)		NOT NULL,
- Category		VARCHAR(100)		NOT NULL,
- Description	VARCHAR(10000),		
+ IName			TEXT				NOT NULL,
+ Category		TEXT				NOT NULL,
+ Description	TEXT,		
  Quantity		INT					NOT NULL,
  IPrice			FLOAT				NOT NULL,
  PRIMARY KEY (IId) )";
