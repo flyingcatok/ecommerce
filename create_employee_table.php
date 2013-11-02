@@ -5,8 +5,8 @@
 $create_employee_table = "
 CREATE TABLE Employee 
 (EId			INT				NOT NULL,
- LastName		VARCHAR(20)		NOT NULL,
- FirstName		VARCHAR(20)		NOT NULL,
+ LastName		TEXT			NOT NULL,
+ FirstName		TEXT			NOT NULL,
  IsManager		BIT				NOT NULL,
  PRIMARY KEY (EId) )";
  
