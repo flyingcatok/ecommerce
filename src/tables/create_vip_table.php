@@ -1,10 +1,12 @@
+
+<?php
 //Author: Libby Ferland
 //Date: 11/2/2013
 
-<?php
-
-$createString = "CREATE TABLE Ministore(StoreID INT NOT NULL, 
-    StoreName TEXT NOT NULL, PRIMARY KEY (StoreID))";
+$createString = "CREATE TABLE Ministore(
+	StoreID 	INT 	NOT NULL, 
+    StoreName 	TEXT 	NOT NULL, 
+    PRIMARY KEY (StoreID))";
 
 if (mysqli_query($con, $createString))
 {

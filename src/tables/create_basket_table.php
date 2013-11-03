@@ -1,14 +1,16 @@
+<?php
 //Author: Feiyu Shi
 //Date: 11/2/2013
-<?php
+
 // create basket table
 $create_basket_table = "
 CREATE TABLE Basket 
-(CEmail			TEXT				NOT NULL,
+(CEmail			VARCHAR(50)				NOT NULL,
 BasketId		INT					NOT NULL,
 
- PRIMARY KEY (CEmail,BasketId)
- FOREIGN KEY (CEmail) REFERENCES Customer(Email) )";
+ PRIMARY KEY (CEmail, BasketId),
+ FOREIGN KEY (CEmail) REFERENCES Customer(Email)
+  )";
  
    if (mysqli_query($con,$create_basket_table))
   {

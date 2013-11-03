@@ -1,6 +1,8 @@
+
+<?php
 //Author: Feiyu Shi
 //Date: 11/2/2013
-<?php
+
 // create employee table
 $create_employee_table = "
 CREATE TABLE Employee 

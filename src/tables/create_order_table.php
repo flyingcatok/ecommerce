@@ -1,16 +1,18 @@
+
+<?php
 //Author: Libby Ferland
 //Date 11/2/2013
 
-<?php
-
 //create order table
 
-$createString = "CREATE TABLE Order(InvoiceNo INT NOT NULL,
-    Status TEXT NOT NULL,
-    OrderDate DATE NOT NULL,
-    ShipDate DATE,
-    ShipMethod TEXT NOT NULL,
-    ShipRate FLOAT NOT NULL,
+$createString = "
+	CREATE TABLE Order(
+	InvoiceNo 	INT 	NOT NULL,
+    Status 		TEXT 	NOT NULL,
+    OrderDate 	DATE 	NOT NULL,
+    ShipDate 	DATE,
+    ShipMethod 	TEXT 	NOT NULL,
+    ShipRate 	FLOAT 	NOT NULL,
     PRIMARY KEY(InvoiceNo) )";
 
 if (mysqli_query($con, $createString))

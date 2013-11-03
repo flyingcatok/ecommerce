@@ -1,7 +1,7 @@
-//Author: Libby Ferland
-//Date: 11/2/2013
 
 <?php
+//Author: Libby Ferland
+//Date: 11/2/2013
 
 //create table - but what about the final price value (composite?)
 $createString = "CREATE TABLE Auction(AuctionID INT NOT NULL,
