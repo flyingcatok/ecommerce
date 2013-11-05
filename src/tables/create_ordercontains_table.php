@@ -9,6 +9,7 @@ $create_ordercontains_table = "
 CREATE TABLE OrderContains(
 InvoiceNo 		INT 	NOT NULL,
 IId				INT		NOT NULL,
+OQuantity                INT NOT NULL,
  PRIMARY KEY (InvoiceNo, IId),
  FOREIGN KEY (InvoiceNo) REFERENCES Order(InvoiceNo),
  FOREIGN KEY (IId) REFERENCES Item(IId) )";

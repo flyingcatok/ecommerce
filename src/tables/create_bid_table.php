@@ -1,15 +1,17 @@
-//Author: Libby Ferland
-//Date: 11/5/2013
 
 <?php
 
-$createString = "CREATE TABLE Bid(Email TEXT NOT NULL, 
+//Author: Libby Ferland
+//Date: 11/5/2013
+
+
+$createBidString = "CREATE TABLE Bid(Email TEXT NOT NULL, 
     AuctionID INT NOT NULL,
     CurrentPrice FLOAT NOT NULL,
     FOREIGN KEY Email REFERENCES Customer(Email),
     FOREIGN KEY AuctionID REFERENCES Auction(AuctionID) ) ";
 
- if (mysqli_query($con, $createString))
+ if (mysqli_query($con, $createBidString))
 {
     echo "Table Bid created successfully";
 }

@@ -9,6 +9,7 @@ $create_basketcontains_table = "
 CREATE TABLE BasketContains(
 BasketId		INT					NOT NULL,
 IId				INT					NOT NULL,
+BQuantity                INT                 NOT NULL,
  PRIMARY KEY (BasketId, IId),
  FOREIGN KEY (BasketId) REFERENCES Basket(BasketId),
  FOREIGN KEY (IId) REFERENCES Item(IId) )";

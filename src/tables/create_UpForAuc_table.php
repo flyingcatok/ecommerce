@@ -1,14 +1,15 @@
-//Author: Libby Ferland
-//Date: 11/5/2013
 
 <?php
 
-$createString = "CREATE TABLE UpForAuc(AuctionID INT NOT NULL,
+//Author: Libby Ferland
+//Date: 11/5/2013
+
+$create_upforauc_table_String = "CREATE TABLE UpForAuc(AuctionID INT NOT NULL,
     IId INT NOT NULL,
     StartTime DATE NOT NULL,
     EndTime DATE NOT NULL)";
 
- if (mysqli_query($con, $createString))
+ if (mysqli_query($con, $create_upforauc_table_String))
 {
     echo "Table UpForAuc created successfully";
 }
