@@ -4,11 +4,12 @@
 <?php
 
 $createString = "CREATE TABLE Purchase(
-	Email 			VARCHAR(50) 	NOT NULL,
-    InvoiceNo INT NOT NULL,
+	CEmail 		VARCHAR(50) 	NOT NULL,
+    InvoiceNo 	INT 			NOT NULL,
     PurchaseRating INT,
     REVIEW TEXT,
-    FOREIGN KEY (Email) REFERENCES Customer(Email),
+    PRIMARY KEY(CEmail,InvoiceNo),
+    FOREIGN KEY (CEmail) REFERENCES Customer(Email),
     FOREIGN KEY (InvoiceNo) REFERENCES Order(InvoiceNo) ) ";
 
  if (mysqli_query($con, $createString))

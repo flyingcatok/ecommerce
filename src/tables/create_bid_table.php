@@ -10,8 +10,8 @@ $createBidString = "CREATE TABLE Bid(
     AuctionID INT NOT NULL,
     CurrentPrice FLOAT NOT NULL,
     PRIMARY KEY(AuctionID,CEmail),
-    FOREIGN KEY CEmail REFERENCES Customer(Email),
-    FOREIGN KEY AuctionID REFERENCES Auction(AuctionID) ) ";
+    FOREIGN KEY (CEmail) REFERENCES Customer(Email),
+    FOREIGN KEY (AuctionID) REFERENCES Auction(AuctionID) ) ";
 
  if (mysqli_query($con, $createBidString))
 {

@@ -1,15 +1,15 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/4/2013
-//Last Edited:
-//Date:
+//Last Edited: Libby Ferland	
+//Date: 11/5/2013
 
 // create ordercontains table
 $create_ordercontains_table = "
 CREATE TABLE OrderContains(
 InvoiceNo 		INT 	NOT NULL,
 IId				INT		NOT NULL,
-OQuantity                INT NOT NULL,
+OQuantity       INT 	NOT NULL,
  PRIMARY KEY (InvoiceNo, IId),
  FOREIGN KEY (InvoiceNo) REFERENCES Order(InvoiceNo),
  FOREIGN KEY (IId) REFERENCES Item(IId) )";

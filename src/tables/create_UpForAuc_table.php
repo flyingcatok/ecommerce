@@ -8,7 +8,7 @@ $create_upforauc_table_String = "CREATE TABLE UpForAuc(
 	AucID INT NOT NULL,
     IId INT NOT NULL,
     StartTime DATE NOT NULL,
-    EndTime DATE NOT NULL
+    EndTime DATE NOT NULL,
     PRIMARY KEY(AucID,IId),
     FOREIGN KEY (AucID) REFERENCES Auction(AuctionID),
     FOREIGN KEY (IId) REFERENCES Item(IId))";
