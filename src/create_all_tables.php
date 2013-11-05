@@ -18,9 +18,9 @@ include 'tables/create_ship_table.php';
 include 'tables/create_promote_table.php';
 include 'tables/create_basketcontains_table.php';
 include 'tables/create_ordercontains_table.php';
-include 'create_bid_table.php';
-include 'create_purchase_table.php';
-include 'create_vipowns_table.php';
-include 'create_UpForAuc_table.php';
+include 'tables/create_bid_table.php';
+include 'tables/create_purchase_table.php';
+include 'tables/create_vipowns_table.php';
+include 'tables/create_UpForAuc_table.php';
 
 ?>

@@ -3,7 +3,8 @@
 
 <?php
 
-$createString = "CREATE TABLE Purchase(Email TEXT NOT NULL,
+$createString = "CREATE TABLE Purchase(
+	Email 			VARCHAR(50) 	NOT NULL,
     InvoiceNo INT NOT NULL,
     PurchaseRating INT,
     REVIEW TEXT,

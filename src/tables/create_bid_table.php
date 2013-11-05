@@ -5,10 +5,12 @@
 //Date: 11/5/2013
 
 
-$createBidString = "CREATE TABLE Bid(Email TEXT NOT NULL, 
+$createBidString = "CREATE TABLE Bid(
+	CEmail 			VARCHAR(50) 	NOT NULL, 
     AuctionID INT NOT NULL,
     CurrentPrice FLOAT NOT NULL,
-    FOREIGN KEY Email REFERENCES Customer(Email),
+    PRIMARY KEY(AuctionID,CEmail),
+    FOREIGN KEY CEmail REFERENCES Customer(Email),
     FOREIGN KEY AuctionID REFERENCES Auction(AuctionID) ) ";
 
  if (mysqli_query($con, $createBidString))
