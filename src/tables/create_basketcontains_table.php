@@ -7,11 +7,13 @@
 // create basketcontains table
 $create_basketcontains_table = "
 CREATE TABLE BasketContains(
-BasketId		INT					NOT NULL,
-IId				INT					NOT NULL,
-BQuantity                INT                 NOT NULL,
- PRIMARY KEY (BasketId, IId),
- FOREIGN KEY (BasketId) REFERENCES Basket(BasketId),
+CEmail		VARCHAR(50)			NOT NULL,
+BaskId		INT					NOT NULL,
+IId			INT					NOT NULL,
+BQuantity   INT                 NOT NULL,
+ PRIMARY KEY (CEmail, BaskId, IId),
+ FOREIGN KEY (CEmail) REFERENCES Customer(Email),
+ FOREIGN KEY (BaskId) REFERENCES Basket(BasketId),
  FOREIGN KEY (IId) REFERENCES Item(IId) )";
  
 if (mysqli_query($con,$create_basketcontains_table))
