@@ -6,21 +6,21 @@
 
 // create ordercontains table
 $create_ordercontains_table = "
-CREATE TABLE OrderContains(
-InvoiceNo 		INT 	NOT NULL,
+CREATE TABLE PurchaseOrderContains(
+ContainsOrderID 		INT 	NOT NULL,
 IId				INT		NOT NULL,
 OQuantity       INT 	NOT NULL,
- PRIMARY KEY (InvoiceNo, IId),
- FOREIGN KEY (InvoiceNo) REFERENCES Order(InvoiceNo),
+ PRIMARY KEY (ContainsOrderID, IId),
+ FOREIGN KEY (ContainsOrderID) REFERENCES PurchaseOrder(POrderID),
  FOREIGN KEY (IId) REFERENCES Item(IId) )";
  
 if (mysqli_query($con,$create_ordercontains_table))
 {
-	echo "Table OrderContains created successfully<br>";
+	echo "Table PurchaseOrderContains created successfully<br>";
 }
 else
 {
-	echo "Error creating table OrderContains: " . mysqli_error($con)."<br>";
+	echo "Error creating table PurchaseOrderContains: " . mysqli_error($con)."<br>";
 } 
  
 ?>

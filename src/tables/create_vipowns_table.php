@@ -6,8 +6,8 @@
 
 //create table
 $create_vipowns_table_string = "CREATE TABLE VipOwns(StoreID INT NOT NULL, 
-    Email TEXT NOT NULL, 
-    StoreName TEXT NOT NULL, 
+    Email VARCHAR(100) NOT NULL, 
+    StoreName VARCHAR(250) NOT NULL, 
     StoreRating FLOAT,
     FOREIGN KEY (StoreID) REFERENCES Ministore(StoreID),
     FOREIGN KEY (Email) REFERENCES Customer(Email) )";
