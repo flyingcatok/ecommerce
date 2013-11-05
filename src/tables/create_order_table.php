@@ -1,19 +1,23 @@
-//Author: Libby Ferland
-//Date 11/2/2013
 
 <?php
+//Author: Libby Ferland
+//Date: 11/2/2013
+//Last Edited: Feiyu Shi
+//Date: 11/4/2013
 
 //create order table
 
-$createString = "CREATE TABLE Order(InvoiceNo INT NOT NULL,
-    Status TEXT NOT NULL,
-    OrderDate DATE NOT NULL,
-    ShipDate DATE,
-    ShipMethod TEXT NOT NULL,
-    ShipRate FLOAT NOT NULL,
+$create_order_table = "
+	CREATE TABLE Order(
+	InvoiceNo 	INT 	NOT NULL,
+    Status 		TEXT 	NOT NULL,
+    OrderDate 	DATE 	NOT NULL,
+    ShipDate 	DATE,
+    ShipMethod 	TEXT 	NOT NULL,
+    ShipRate 	FLOAT 	NOT NULL,
     PRIMARY KEY(InvoiceNo) )";
 
-if (mysqli_query($con, $createString))
+if (mysqli_query($con, $create_order_table))
 {
     echo "Table Order created successfully";
 }

@@ -1,6 +1,8 @@
+
+<?php
 //Author: Feiyu Shi
 //Date: 11/2/2013
-<?php
+
 // create item table
 $create_item_table = "
 CREATE TABLE Item 
@@ -31,8 +33,7 @@ CREATE TABLE Item
  'Includes Olivia mini-doll figure and features the tree house pet cat Maxie, 
  4 ladybirds, a bird Goldie with birdhouse, 4 butterflies, hidden compartment and folding ladders.',
  '10',
- '17.59'
- )"); // LEGO example
+ '17.59')"); // LEGO example
  
  mysqli_query($con,
  "INSERT INTO Item

@@ -1,7 +1,9 @@
 <?php
-$username = "cs405";
-$password = "cs405";
-$con = mysqli_connect('localhost:8889', $username, $password, 'cs405');
+
+$usr = "cs405";
+$pin = "cs405";
+// global $con;
+$con = mysqli_connect('localhost:8889', $usr, $pin, 'cs405');
 // Check connection
 if (mysqli_connect_errno($con))
   {
@@ -11,4 +13,5 @@ if (mysqli_connect_errno($con))
   {
   echo "Connection Established!";
   }
+
 ?>
