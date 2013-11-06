@@ -12,7 +12,7 @@ $create_purchase_table = "CREATE TABLE Purchase(
     REVIEW 		TEXT,
     PRIMARY KEY(CEmail,InvoiceNo),
     FOREIGN KEY (CEmail) REFERENCES Customer(Email),
-    FOREIGN KEY (InvoiceNo) REFERENCES PurchaseOrder(POrderID) ) ";
+    FOREIGN KEY (InvoiceNo) REFERENCES Orders(POrderID) ) ";
 
  if (mysqli_query($con, $create_purchase_table))
 {

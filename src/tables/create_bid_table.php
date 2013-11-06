@@ -16,7 +16,7 @@ $create_bid_table = "CREATE TABLE Bid(
     FOREIGN KEY (CEmail) REFERENCES Customer(Email),
     FOREIGN KEY (AuctionID) REFERENCES Auction(AuctionID) ) ";
 
- if (mysqli_query($con, $create_bid_table )
+ if (mysqli_query($con, $create_bid_table ))
 {
     echo "Table Bid created successfully";
 }

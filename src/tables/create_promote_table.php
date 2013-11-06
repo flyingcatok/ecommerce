@@ -16,7 +16,7 @@ CREATE TABLE Promote
  FOREIGN KEY (EId) REFERENCES Employee(EId),
  FOREIGN KEY (IId) REFERENCES Item(IId))";
  
-  if (mysqli_query($con,$create_employee_table))
+  if (mysqli_query($con,$create_promote_table))
   {
   echo "Table Promote created successfully<br>";
   }

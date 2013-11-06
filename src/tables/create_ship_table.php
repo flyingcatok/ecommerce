@@ -14,8 +14,8 @@ CREATE TABLE Ship
  ShipDate 		TIMESTAMP	NOT NULL,
  PRIMARY KEY (EId,OrderID),
  FOREIGN KEY (EId) REFERENCES Employee(EId),
- FOREIGN KEY (OrderID) REFERENCES PurchaseOrder(POrderID),
- FOREIGN KEY (ShipMethod) REFERENCES Shipment(ShipMethod) )";
+ FOREIGN KEY (OrderID) REFERENCES Orders(POrderID),
+ FOREIGN KEY (ShipMethod) REFERENCES ShipPrice(ShipMethod) )";
  
   if (mysqli_query($con,$create_ship_table))
   {

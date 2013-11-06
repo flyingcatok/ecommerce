@@ -9,7 +9,7 @@ include 'tables/create_item_table.php';
 include 'tables/create_order_table.php';
 include 'tables/create_ministore_table.php';
 include 'tables/create_auction_table.php';
-include 'tables/create_shipment_table.php';
+include 'tables/create_shipprice_table.php';
 
 include 'tables/create_basket_table.php';// need to stay after customer tables is created.
 

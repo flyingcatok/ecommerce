@@ -12,7 +12,7 @@ $create_vipowns_table = "CREATE TABLE VipOwns(
     FOREIGN KEY (StoreID) REFERENCES Ministore(StoreID),
     FOREIGN KEY (Email) REFERENCES Customer(Email) )";
 
- if (mysqli_query($con, $create_vipowns_table )
+ if (mysqli_query($con, $create_vipowns_table ))
 {
     echo "Table VipOwns created successfully";
 }

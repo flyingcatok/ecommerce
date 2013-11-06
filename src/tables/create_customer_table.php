@@ -15,7 +15,7 @@ $create_customer_table = "CREATE TABLE Customer
      AddLine2 		TEXT,
      City 		TEXT 			NOT NULL,
      State 		CHAR(2) 		NOT NULL,
-     Zip 		INT 			sNOT NULL,
+     Zip 		INT 			NOT NULL,
      CardNo 		BIGINT 			NOT NULL,
      CExpirDate 	TEXT 			NOT NULL,
      CHolderName 	TEXT 			NOT NULL,
@@ -24,7 +24,7 @@ $create_customer_table = "CREATE TABLE Customer
      BillingCity 	TEXT 			NOT NULL,
      BillingState 	CHAR(2) 		NOT NULL,
      BillingZip 	INT 			NOT NULL,
-     IsVIP 		BIT 			NOT NULL)
+     IsVIP 		BOOLEAN 			NOT NULL)
      ENGINE = INNODB";
 
 //check to make sure table is there
