@@ -9,13 +9,15 @@
 $create_upforauc_table_String = "CREATE TABLE UpForAuc(
     AucID 	INT 		NOT NULL,
     IId 	INT 		NOT NULL,
+    StoreID 	INT 	NOT NULL,
     StartTime 	TIMESTAMP	NOT NULL,
     EndTime 	TIMESTAMP	NOT NULL,
     AucRating	INT,
     AucReview	TEXT,
-    PRIMARY KEY(AucID,IId),
+    PRIMARY KEY(AucID,IId,StoreID),
     FOREIGN KEY (AucID) REFERENCES Auction(AuctionID),
-    FOREIGN KEY (IId) REFERENCES Item(IId))";
+    FOREIGN KEY (IId) REFERENCES Item(IId),
+    FOREIGN KEY (StoreID) REFERENCES Ministore(StoreID))";
 
  if (mysqli_query($con, $create_upforauc_table_String))
 {

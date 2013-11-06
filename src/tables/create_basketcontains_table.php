@@ -2,7 +2,7 @@
 //Author: Feiyu Shi
 //Date: 11/4/2013
 //Last Edited: Feiyu Shi
-//Date: 11/5/2013
+//Date: 11/6/2013
 
 // create basketcontains table
 $create_basketcontains_table = "

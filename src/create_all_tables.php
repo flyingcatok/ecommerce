@@ -11,7 +11,11 @@ include 'tables/create_ministore_table.php';
 include 'tables/create_auction_table.php';
 include 'tables/create_shipprice_table.php';
 
+// Weak Entities
+
 include 'tables/create_basket_table.php';// need to stay after customer tables is created.
+include 'tables/create_addressbook_table.php';
+include 'tables/create_paymentmethods_table.php';
 
 // Realationships
 
@@ -23,5 +27,6 @@ include 'tables/create_bid_table.php';
 include 'tables/create_purchase_table.php';
 include 'tables/create_vipowns_table.php';
 include 'tables/create_upforauc_table.php';
-
+include 'tables/create_shippedto_table.php';
+include 'tables/create_billingaddress_table.php';
 ?>

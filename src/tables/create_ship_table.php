@@ -2,8 +2,8 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/4/2013
-//Last Edited: Libby Ferland
-//Last Edit Date: 11/5/13
+//Last Edited: Feiyu Shi
+//Last Edit Date: 11/6/13
 
 // create ship table
 $create_ship_table = "
@@ -12,7 +12,7 @@ CREATE TABLE Ship
  OrderID 		INT 		NOT NULL,
  ShipMethod 		VARCHAR(20) 	NOT NULL,
  ShipDate 		TIMESTAMP	NOT NULL,
- PRIMARY KEY (EId,OrderID),
+ PRIMARY KEY (EId,OrderID,ShipMethod),
  FOREIGN KEY (EId) REFERENCES Employee(EId),
  FOREIGN KEY (OrderID) REFERENCES Orders(POrderID),
  FOREIGN KEY (ShipMethod) REFERENCES ShipPrice(ShipMethod) )";

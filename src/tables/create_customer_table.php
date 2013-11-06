@@ -3,7 +3,7 @@
 //Author: Libby Ferland
 //Date: 11/2/2013
 //Last Edited: Feiyu Shi
-//Date: 11/5/2013
+//Date: 11/6/2013
 
 //create table
 $create_customer_table = "CREATE TABLE Customer
@@ -11,19 +11,6 @@ $create_customer_table = "CREATE TABLE Customer
      Password 		TEXT 			NOT NULL,
      Fname 		TEXT 			NOT NULL,
      Lname 		TEXT 			NOT NULL,
-     AddLine1 		TEXT 			NOT NULL,
-     AddLine2 		TEXT,
-     City 		TEXT 			NOT NULL,
-     State 		CHAR(2) 		NOT NULL,
-     Zip 		INT 			NOT NULL,
-     CardNo 		BIGINT 			NOT NULL,
-     CExpirDate 	TEXT 			NOT NULL,
-     CHolderName 	TEXT 			NOT NULL,
-     BillingAddr1 	TEXT 			NOT NULL,
-     BillingAddr2 	TEXT,
-     BillingCity 	TEXT 			NOT NULL,
-     BillingState 	CHAR(2) 		NOT NULL,
-     BillingZip 	INT 			NOT NULL,
      IsVIP 		BOOLEAN 			NOT NULL)
      ENGINE = INNODB";
 
