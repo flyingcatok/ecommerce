@@ -1,17 +1,17 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/4/2013
-//Last Edited: Libby Ferland	
+//Last Edited: Feiyu Shi	
 //Date: 11/5/2013
 
 // create ordercontains table
 $create_ordercontains_table = "
 CREATE TABLE PurchaseOrderContains(
-ContainsOrderID 		INT 	NOT NULL,
-IId				INT		NOT NULL,
-OQuantity       INT 	NOT NULL,
- PRIMARY KEY (ContainsOrderID, IId),
- FOREIGN KEY (ContainsOrderID) REFERENCES PurchaseOrder(POrderID),
+COrderID 		INT 	NOT NULL,
+IId			INT	NOT NULL,
+OQuantity       	INT 	NOT NULL,
+ PRIMARY KEY (COrderID,IId),
+ FOREIGN KEY (COrderID) REFERENCES PurchaseOrder(POrderID),
  FOREIGN KEY (IId) REFERENCES Item(IId) )";
  
 if (mysqli_query($con,$create_ordercontains_table))

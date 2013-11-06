@@ -7,7 +7,7 @@
 
 //create table - but what about the final price value (composite?)
 $create_auction_table = "CREATE TABLE Auction(
-	AuctionID 	INT 	NOT NULL,
+    AuctionID 	INT 	NOT NULL,
     StartPrice 	FLOAT 	NOT NULL,
     BidInterval FLOAT 	NOT NULL, 
     PRIMARY KEY(AuctionID))";

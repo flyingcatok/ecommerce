@@ -6,10 +6,10 @@
 // create employee table
 $create_employee_table = "
 CREATE TABLE Employee 
-(EId			INT				NOT NULL,
+(EId			INT			NOT NULL,
  LastName		TEXT			NOT NULL,
  FirstName		TEXT			NOT NULL,
- IsManager		BIT				NOT NULL,
+ IsManager		BIT			NOT NULL,
  PRIMARY KEY (EId) )";
  
   if (mysqli_query($con,$create_employee_table))

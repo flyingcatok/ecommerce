@@ -3,12 +3,16 @@
 
 //Author: Libby Ferland
 //Date: 11/5/2013
+//Lasted Edited: Feiyu Shi
+//Date: 11/5/2013
 
 $create_upforauc_table_String = "CREATE TABLE UpForAuc(
-	AucID INT NOT NULL,
-    IId INT NOT NULL,
-    StartTime DATE NOT NULL,
-    EndTime DATE NOT NULL,
+    AucID 	INT 		NOT NULL,
+    IId 	INT 		NOT NULL,
+    StartTime 	TIMESTAMP	NOT NULL,
+    EndTime 	TIMESTAMP	NOT NULL,
+    AucRating	INT,
+    AucReview	TEXT,
     PRIMARY KEY(AucID,IId),
     FOREIGN KEY (AucID) REFERENCES Auction(AuctionID),
     FOREIGN KEY (IId) REFERENCES Item(IId))";

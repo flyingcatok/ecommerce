@@ -1,16 +1,16 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/4/2013
-//Last Edited:
-//Date:
+//Last Edited: Feiyu Shi
+//Date: 11/5/2013
 
 // create basketcontains table
 $create_basketcontains_table = "
 CREATE TABLE BasketContains(
-CEmail		VARCHAR(50)			NOT NULL,
-BaskId		INT					NOT NULL,
-IId			INT					NOT NULL,
-BQuantity   INT                 NOT NULL,
+ CEmail		VARCHAR(30)		NOT NULL,
+ BaskId		INT			NOT NULL,
+ IId		INT			NOT NULL,
+ BQuantity   	INT                 	NOT NULL,
  PRIMARY KEY (CEmail, BaskId, IId),
  FOREIGN KEY (CEmail) REFERENCES Customer(Email),
  FOREIGN KEY (BaskId) REFERENCES Basket(BasketId),

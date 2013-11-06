@@ -9,11 +9,13 @@
 $create_ship_table = "
 CREATE TABLE Ship
 (EId			INT		NOT NULL,
- OrderID 		INT 	NOT NULL,
- ShipDate 		DATE	NOT NULL,
+ OrderID 		INT 		NOT NULL,
+ ShipMethod 		VARCHAR(20) 	NOT NULL,
+ ShipDate 		TIMESTAMP	NOT NULL,
  PRIMARY KEY (EId,OrderID),
  FOREIGN KEY (EId) REFERENCES Employee(EId),
- FOREIGN KEY (OrderID) REFERENCES PurchaseOrder(POrderID) )";
+ FOREIGN KEY (OrderID) REFERENCES PurchaseOrder(POrderID),
+ FOREIGN KEY (ShipMethod) REFERENCES Shipment(ShipMethod) )";
  
   if (mysqli_query($con,$create_ship_table))
   {

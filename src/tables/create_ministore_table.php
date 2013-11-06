@@ -6,7 +6,7 @@
 //Date: 11/4/2013
 
 $create_ministore_table = "CREATE TABLE Ministore(
-	StoreID 	INT 	NOT NULL, 
+    StoreID 	INT 	NOT NULL, 
     StoreName 	TEXT 	NOT NULL, 
     PRIMARY KEY (StoreID))";
 

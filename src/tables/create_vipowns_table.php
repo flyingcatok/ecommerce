@@ -5,14 +5,14 @@
 //Date: 11/5/2013
 
 //create table
-$create_vipowns_table_string = "CREATE TABLE VipOwns(StoreID INT NOT NULL, 
-    Email VARCHAR(100) NOT NULL, 
-    StoreName VARCHAR(250) NOT NULL, 
-    StoreRating FLOAT,
+$create_vipowns_table = "CREATE TABLE VipOwns(
+    StoreID 	INT 		NOT NULL, 
+    Email 	VARCHAR(30) 	NOT NULL, 
+    StoreName  	VARCHAR(250) 	NOT NULL, 
     FOREIGN KEY (StoreID) REFERENCES Ministore(StoreID),
     FOREIGN KEY (Email) REFERENCES Customer(Email) )";
 
- if (mysqli_query($con, $create_vipowns_table_string))
+ if (mysqli_query($con, $create_vipowns_table )
 {
     echo "Table VipOwns created successfully";
 }
