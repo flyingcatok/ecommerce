@@ -9,7 +9,7 @@ $create_basket_table = "
 CREATE TABLE Basket 
 (CEmail			VARCHAR(30)			NOT NULL,
  BasketId		INT				NOT NULL,
- ShopDate		TIMESTAMP			NOT NULL,
+ ShopDate		TIMESTAMP,
  PRIMARY KEY (CEmail, BasketId),
  FOREIGN KEY (CEmail) REFERENCES Customer(Email) )";
  

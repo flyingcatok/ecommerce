@@ -21,10 +21,5 @@ else
     echo "Error creating table Auction: " . mysqli_error($con);
 }
 
-//insert dummy value
-
-$addAuction = "INSERT INTO Auction(AuctionID, StartPrice, BidInterval) VALUES (0001, 1.00, 0.50)";
-
-mysqli_query($con, $addAuction);
 
 ?>

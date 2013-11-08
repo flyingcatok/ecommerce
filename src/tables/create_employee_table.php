@@ -21,9 +21,5 @@ CREATE TABLE Employee
   echo "Error creating table Employee: " . mysqli_error($con)."<br>";
   } 
   
- // fill in employee table
- mysqli_query($con,"INSERT INTO Employee
- VALUES ('33','Ferland','Libby','0')"); // Libby as a staff
-  mysqli_query($con,"INSERT INTO Employee
- VALUES ('24','Shi','Feiyu','1')"); // Feiyu as a manager
+ 
  ?>

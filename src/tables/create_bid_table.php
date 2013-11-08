@@ -12,7 +12,7 @@ $create_bid_table = "CREATE TABLE Bid(
     AuctionID 		INT 		NOT NULL,
     CurrentPrice 	FLOAT 		NOT NULL,
     BidTime		TIMESTAMP	NOT NULL,
-    PRIMARY KEY(AuctionID,CEmail),
+    PRIMARY KEY(AuctionID,CEmail,BidTime),
     FOREIGN KEY (CEmail) REFERENCES Customer(Email),
     FOREIGN KEY (AuctionID) REFERENCES Auction(AuctionID) ) ";
 

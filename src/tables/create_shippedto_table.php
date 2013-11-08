@@ -26,9 +26,5 @@ else
     echo "Error creating table ShippedTo: " . mysqli_error($con);
 }
 
-//insert dummy value
-$addOrder = "INSERT INTO Orders (POrderID, Status) VALUES (0001, 'Shipped');";
-
-mysqli_query($con, $addOrder);
 
 ?>

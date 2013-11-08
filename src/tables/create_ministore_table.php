@@ -19,10 +19,5 @@ else
     echo "Error creating table Ministore: " . mysqli_error($con);
 }
 
-//insert dummy value
-
-$addStore = "INSERT INTO Ministore(StoreID, StoreName) VALUES (0001, 'Toyland')";
-
-mysqli_query($con, $addStore);
 
 ?>

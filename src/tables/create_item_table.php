@@ -24,25 +24,5 @@ CREATE TABLE Item
   echo "Error creating table Item: " . mysqli_error($con)."<br>";
   } 
  
- // fill in the item table
- mysqli_query($con,
- "INSERT INTO Item
- VALUES (
- '111',
- 'LEGO Friends Olivia's Tree House 3065',
- 'Toys',
- 'Includes Olivia mini-doll figure and features the tree house pet cat Maxie, 
- 4 ladybirds, a bird Goldie with birdhouse, 4 butterflies, hidden compartment and folding ladders.',
- '10',
- '17.59')"); // LEGO example
  
- mysqli_query($con,
- "INSERT INTO Item
- VALUES (
- '201',
- 'Call of Duty: Ghosts - Xbox 360',
- 'Games',
- 'The franchise that has defined a generation of gaming is set to raise the bar once again with the all-new Call of Duty: Ghosts.',
- '100',
- '59.96')"); // Call of duty example
  ?>

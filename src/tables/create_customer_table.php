@@ -9,8 +9,8 @@
 $create_customer_table = "CREATE TABLE Customer
     (Email 		VARCHAR(30) 		NOT NULL, PRIMARY KEY(Email),
      Password 		TEXT 			NOT NULL,
+     Lname  		TEXT 			NOT NULL,
      Fname 		TEXT 			NOT NULL,
-     Lname 		TEXT 			NOT NULL,
      IsVIP 		BOOLEAN 			NOT NULL)
      ENGINE = INNODB";
 

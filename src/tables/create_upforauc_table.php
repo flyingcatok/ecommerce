@@ -7,9 +7,9 @@
 //Date: 11/5/2013
 
 $create_upforauc_table_String = "CREATE TABLE UpForAuc(
+	StoreID 	INT 	NOT NULL,
     AucID 	INT 		NOT NULL,
     IId 	INT 		NOT NULL,
-    StoreID 	INT 	NOT NULL,
     StartTime 	TIMESTAMP	NOT NULL,
     EndTime 	TIMESTAMP	NOT NULL,
     AucRating	INT,
