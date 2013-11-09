@@ -4,6 +4,7 @@
 //Last Edited: 
 //Date:
 
+// display what's in the basket
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 $basket_output = "";
