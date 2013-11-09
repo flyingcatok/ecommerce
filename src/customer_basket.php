@@ -73,5 +73,6 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 //output results in text?>
 </div>
 
+need to add function of updating basket.
 </BODY>
 </HTML>
