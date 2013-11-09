@@ -1,4 +1,9 @@
 <?php
+//Author: Feiyu Shi
+//Date: 11/8/2013
+//Last Edited: 
+//Date:
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 $search_output = "";
@@ -49,7 +54,7 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 </form>
 </div>
 <div id="searchResult" style="background-color:#FFFFFF;clear:both;text-align:left;">
-<?php echo $search_output;?>
+<?php echo $search_output;?>//output results in text
 </div>
 </BODY>
 </HTML>
