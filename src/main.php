@@ -41,9 +41,10 @@ if($count > 1){
 <div id="login" style="background-color:#FFFFFF;clear:both;text-align:right;">  
 <a href="customer_login.php">Login</a>
 <a href="customer_registration.php">Register</a>
+<a href="customer_basket.php">Basket</a>
 </div>
 
-<div id="footer" style="background-color:#FFFFFF;clear:both;text-align:center;">
+<div id="header" style="background-color:#FFFFFF;clear:both;text-align:center;">
 <H1> F&L Gift Store </H1>
 </div>
 
@@ -54,7 +55,8 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 </form>
 </div>
 <div id="searchResult" style="background-color:#FFFFFF;clear:both;text-align:left;">
-<?php echo $search_output;?>//output results in text
+<?php echo $search_output;
+//output results in text?>
 </div>
 </BODY>
 </HTML>
