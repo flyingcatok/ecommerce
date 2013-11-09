@@ -14,11 +14,11 @@ $create_auction_table = "CREATE TABLE Auction(
 
     if (mysqli_query($con, $create_auction_table))
 {
-    echo "Table Auction created successfully";
+    echo "Table Auction created successfully<br>";
 }
 else 
 {
-    echo "Error creating table Auction: " . mysqli_error($con);
+    echo "Error creating table Auction: " . mysqli_error($con)."<br>";
 }
 
 

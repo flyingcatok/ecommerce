@@ -19,11 +19,11 @@ $create_shippedto_table = "CREATE TABLE ShippedTo
 
 if (mysqli_query($con, $create_shippedto_table))
 {
-    echo "Table ShippedTo created successfully";
+    echo "Table ShippedTo created successfully<br>";
 }
 else 
 {
-    echo "Error creating table ShippedTo: " . mysqli_error($con);
+    echo "Error creating table ShippedTo: " . mysqli_error($con)."<br>";
 }
 
 

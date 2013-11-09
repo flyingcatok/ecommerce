@@ -13,11 +13,11 @@ $create_order_table = "CREATE TABLE Orders
 
 if (mysqli_query($con, $create_order_table))
 {
-    echo "Table Orders created successfully";
+    echo "Table Orders created successfully<br>";
 }
 else 
 {
-    echo "Error creating table Orders: " . mysqli_error($con);
+    echo "Error creating table Orders: " . mysqli_error($con)."<br>";
 }
 
 

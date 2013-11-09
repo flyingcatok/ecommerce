@@ -18,11 +18,11 @@ $create_bid_table = "CREATE TABLE Bid(
 
  if (mysqli_query($con, $create_bid_table ))
 {
-    echo "Table Bid created successfully";
+    echo "Table Bid created successfully<br>";
 }
 else 
 {
-    echo "Error creating table Bid: " . mysqli_error($con);
+    echo "Error creating table Bid: " . mysqli_error($con)."<br>";
 }
 
 //dummy value? 

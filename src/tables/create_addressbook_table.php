@@ -19,11 +19,11 @@ $create_addressbook_table = "CREATE TABLE AddressBook
 
 if (mysqli_query($con, $create_addressbook_table))
 {
-    echo "Table AddressBook created successfully";
+    echo "Table AddressBook created successfully<br>";
 }
 else 
 {
-    echo "Error creating table AddressBook: " . mysqli_error($con);
+    echo "Error creating table AddressBook: " . mysqli_error($con)."<br>";
 }
 
 ?>

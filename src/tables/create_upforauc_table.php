@@ -21,11 +21,11 @@ $create_upforauc_table_String = "CREATE TABLE UpForAuc(
 
  if (mysqli_query($con, $create_upforauc_table_String))
 {
-    echo "Table UpForAuc created successfully";
+    echo "Table UpForAuc created successfully<br>";
 }
 else 
 {
-    echo "Error creating table UpForAuc: " . mysqli_error($con);
+    echo "Error creating table UpForAuc: " . mysqli_error($con)."<br>";
 }
 
 //will need dummy value

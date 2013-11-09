@@ -18,11 +18,11 @@ $create_paymentmethods_table = "CREATE TABLE PaymentMethods
 
 if (mysqli_query($con, $create_paymentmethods_table))
 {
-    echo "Table PaymentMethods created successfully";
+    echo "Table PaymentMethods created successfully<br>";
 }
 else 
 {
-    echo "Error creating table PaymentMethods: " . mysqli_error($con);
+    echo "Error creating table PaymentMethods: " . mysqli_error($con)."<br>";
 }
 
 ?>

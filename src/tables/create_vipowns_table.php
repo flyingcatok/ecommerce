@@ -15,11 +15,11 @@ $create_vipowns_table = "CREATE TABLE VipOwns(
 
  if (mysqli_query($con, $create_vipowns_table ))
 {
-    echo "Table VipOwns created successfully";
+    echo "Table VipOwns created successfully<br>";
 }
 else 
 {
-    echo "Error creating table VipOwns: " . mysqli_error($con);
+    echo "Error creating table VipOwns: " . mysqli_error($con)."<br>";
 }
 
 //insert dummy value?

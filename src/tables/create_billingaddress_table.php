@@ -19,11 +19,11 @@ $create_billingaddress_table = "CREATE TABLE BillingAddress
 
 if (mysqli_query($con, $create_billingaddress_table))
 {
-    echo "Table BillingAdress created successfully";
+    echo "Table BillingAdress created successfully<br>";
 }
 else 
 {
-    echo "Error creating table BillingAdress: " . mysqli_error($con);
+    echo "Error creating table BillingAdress: " . mysqli_error($con)."<br>";
 }
 
 ?>

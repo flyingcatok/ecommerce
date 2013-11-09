@@ -18,11 +18,11 @@ $create_customer_table = "CREATE TABLE Customer
 
 if (mysqli_query($con, $create_customer_table))
 {
-    echo "Table Customer created successfully";
+    echo "Table Customer created successfully<br>";
 }
 else 
 {
-    echo "Error creating table Customer: " . mysqli_error($con);
+    echo "Error creating table Customer: " . mysqli_error($con)."<br>";
 }
 
 ?>

@@ -12,11 +12,11 @@ $create_ministore_table = "CREATE TABLE Ministore(
 
 if (mysqli_query($con, $create_ministore_table))
 {
-    echo "Table Ministore created successfully";
+    echo "Table Ministore created successfully<br>";
 }
 else 
 {
-    echo "Error creating table Ministore: " . mysqli_error($con);
+    echo "Error creating table Ministore: " . mysqli_error($con)."<br>";
 }
 
 
