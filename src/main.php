@@ -26,7 +26,11 @@ if($count > 1){
 		    $descript = $row["Description"];
 		    $quantity = $row["Quantity"];
 		    $price = $row["IPrice"];
-		    $search_output .= "Item ID: $id - $name <br /> Description: $descript <br />Category: $category <br />Quantity: $quantity<br /> Price: $price <br /><br />";
+		    $search_output .= "Item ID: $id - $name <br /> 
+		    Description: $descript <br />
+		    Category: $category <br />
+		    Quantity: $quantity<br /> 
+		    Unit Price: $price <br /><br />";
                 } // close while
 	} else {
 		$search_output = "<hr />0 results for <strong>$searchquery</strong><hr />";		

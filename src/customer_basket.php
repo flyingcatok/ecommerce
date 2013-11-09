@@ -25,7 +25,10 @@ if($count >= 1){
 		    	$price = $row["IPrice"];
 		    	$quantity = $row["BQuantity"];
 		    	$shopdate = $row["ShopDate"];
-		    	$basket_output .= "Item ID: $id - $name <br /> Price: \$ $price <br />Quantity: $quantity <br />Shoping Date: $shopdate <br /><br />";
+		    	$basket_output .= "Item ID: $id - $name <br /> 
+		    	Unit Price: \$ $price <br />
+		    	Quantity: $quantity <br />
+		    	Shoping Date: $shopdate <br /><br />";
                 } // close while
 	} else {
 		$basket_output = "<hr />Your basket is empty.<hr />";		

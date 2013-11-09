@@ -9,7 +9,7 @@ $create_purchase_table = "CREATE TABLE Purchase(
     InvoiceNo 		INT 		NOT NULL,
     PurchaseDate	TIMESTAMP	NOT NULL,
     PurchaseRating 	INT, 
-    REVIEW 		TEXT,
+    Review 		TEXT,
     PRIMARY KEY(CEmail,InvoiceNo),
     FOREIGN KEY (CEmail) REFERENCES Customer(Email),
     FOREIGN KEY (InvoiceNo) REFERENCES Orders(POrderID) ) ";
