@@ -14,7 +14,7 @@
 </div>
 <div id="loginInfo" style="background-color:#FFFFFF;clear:both;text-align:center;">
 <form action="account_home.php" method= "POST">
-Email: <input type="text" name="Email"><br>
+Email: &nbsp;&nbsp; <input type="text" name="Email"><br>
 Password: <input type="password" name="Password"><br>
 <input type="submit" value="Login!" name="loginBtn">
 </form>

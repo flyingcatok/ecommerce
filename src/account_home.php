@@ -24,8 +24,6 @@
    // $pass = $_POST['Password'];
     //$login = $_GET['loginBtn'];
     
-    setcookie("username",$email, time()+1200);
-    
         //query string and database connection
         $findCustomer = "SELECT COUNT(*) FROM Customer WHERE Email='$email' AND Password='$pass'";
         

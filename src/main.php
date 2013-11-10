@@ -1,8 +1,8 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/8/2013
-//Last Edited: 
-//Date:
+//Last Edited: Libby Ferland
+//Date: 11/10/2013
 
 include "search.php";
 ?>
@@ -11,11 +11,26 @@ include "search.php";
 <TITLE> CS 405G Project </TITLE>
 </HEAD>
 <BODY>
-<div id="login" style="background-color:#FFFFFF;clear:both;text-align:right;">  
-<a href="customer_login.php">Login</a>
+    
+<!--div format testing-->
+<!--<div id="login" class="line" style="background-color:#FFFFFF;clear:both;text-align:right;">  
+<span class="right"><a href="customer_login.php">Login</a>
 <a href="customer_registration.php">Register</a>
-<a href="customer_basket.php">Basket</a>
+<a href="customer_basket.php">Basket</a></span>
+    <span class="left"><a href="employee_login.php">Employee Login</a></span>
+</div>-->
+
+<div id="login_wrapper">
+<div id="employee_login" style="float: left; background-color: #ffffff;">
+    <a href="employee_login.php">Employee Login</a>
 </div>
+<div id="customer_login" style="float: right; background-color: #ffffff;">
+    <a href="customer_login.php">Login</a>
+    <a href="customer_registration.php">Register</a>
+    <a href="customer_basket.php">Basket</a>
+</div>
+</div>
+
 
 <div id="header" style="background-color:#FFFFFF;clear:both;text-align:center;">
 <H1> F&L Gift Store </H1>
