@@ -1,4 +1,7 @@
-
+<!-- Created: Libby Ferland 
+Date: 11/9/2013
+Last Edit: Libby Ferland
+Edit Date: 11/12/2013 -->
 <HTML>
 <HEAD>
 <TITLE> Customer Login </TITLE>
