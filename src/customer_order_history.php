@@ -53,7 +53,7 @@ include "search.php";
 <BODY>
 
 <div id="logo" style="font-color:#FFF234;clear:both;text-align:left;">
-<H2> F&L Gift Store </H2>
+<H2> <a href="main.php" style="text-decoration: none">F&L Gift Store</a> </H2>
 </div>
 
 <div id="searchBox" style="background-color:#FFFFFF;clear:both;text-align:left;">
