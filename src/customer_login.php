@@ -1,7 +1,7 @@
 
 <HTML>
 <HEAD>
-<TITLE> Store Login </TITLE>
+<TITLE> Customer Login </TITLE>
 </HEAD>
 
 <BODY>
