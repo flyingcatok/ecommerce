@@ -44,6 +44,7 @@
         <a href ="#orders">My Orders</a><br>
         <a href ="#payment">My Payment Info</a><br>
         <a href ="#address">My Address</a><br>
+        <a href ="customer_order_history.php">My Basket</a><br>
     </div>
     <div id ="orders" class ="toggle" style="display:none">
         <?php include "customer_orders.php" ?>
