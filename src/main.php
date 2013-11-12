@@ -33,7 +33,7 @@ include "search.php";
 
 
 <div id="header" style="background-color:#FFFFFF;clear:both;text-align:center;">
-<H1> F&L Gift Store </H1>
+<H1> <a href="main.php" style="text-decoration: none">F&L Gift Store</a></H1>
 </div>
 
 <div id="searchBox" style="background-color:#FFFFFF;clear:both;text-align:center;">
