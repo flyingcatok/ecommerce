@@ -7,11 +7,16 @@
 // display what's in the basket
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+session_start();
+    if(isset($_SESSION['email'])) {
+        $basketEmail = $_SESSION['email'];
+        echo $basketEmail;
+    }
 $basket_output = "";
 // process the query
 	$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate
 					FROM Customer c, Basket b, BasketContains bc, Item i
-					WHERE c.Email = b.CEmail AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
+					WHERE b.CEmail = '$basketEmail' AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
 							AND bc.IId = i.IId;";
 // connect to server
 include "connect_local.php";

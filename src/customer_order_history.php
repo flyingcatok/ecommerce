@@ -7,11 +7,16 @@
 // display what's in the order table
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+session_start();
+    if(isset($_SESSION['email'])) {
+        $historicEmail = $_SESSION['email'];
+        echo $historicEmail;
+    }
 $order_output = "";
 // process the query
 	$sqlCommand = "SELECT p.InvoiceNo, o.Status, p.PurchaseDate, i.IId, i.IName, i.IPrice, oc. OQuantity 
 					FROM Customer c, Purchase p, Orders o, OrderContains oc, Item i
-					WHERE c.Email = p.CEmail AND p.InvoiceNo = o.POrderID AND o.POrderID = oc.COrderID
+					WHERE c.Email = '$historicEmail' AND c.Email = p.CEmail AND p.InvoiceNo = o.POrderID AND o.POrderID = oc.COrderID
 							AND oc.IId = i.IId;";
 // connect to server
 include_once "connect_local.php";
