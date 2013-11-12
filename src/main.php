@@ -27,7 +27,6 @@ include "search.php";
 <div id="customer_login" style="float: right; background-color: #ffffff;">
     <a href="customer_login.php">Login</a>
     <a href="customer_registration.php">Register</a>
-    <a href="customer_basket.php">Basket</a>
 </div>
 </div>
 

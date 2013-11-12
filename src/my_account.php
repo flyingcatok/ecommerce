@@ -55,6 +55,11 @@
     <div id ="address" class="toggle" style="display:none">
         <?php include "customer_address.php"?>
     </div>
+    
+    <div id="logoff" style="background-color:#FFFFFF; clear:both;text-align:left">
+        <a href ="customer_logout.php">Logout</a>
+    </div>
+    
 </HTML>
 
 
