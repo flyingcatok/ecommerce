@@ -2,12 +2,15 @@
 
 //Author: Libby Ferland
 //Date: 11/10/2013
-//Last Edit: 
-//Edit Date:
+//Last Edit: Libby Ferland  
+//Edit Date:11/13/2013
     
     include "connect_local.php";
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
+    session_start();
+    $_SESSION['empID'] = $_POST["empID"];
+    
     
         if(isset($_POST["empLogBtn"])) {
         if(isset($_POST["empID"])) {

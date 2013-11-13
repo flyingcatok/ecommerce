@@ -31,6 +31,7 @@
     
     $custLast = $accountResult[2];
     $custFirst = $accountResult[3];
+    $vipStatus = $accountResult[4];
     
     
  ?>
@@ -39,21 +40,18 @@
     <div id="account_header" style="background-color:#FFFFFF;clear:both;text-align:center;">
         <b style="font-size:50px">Welcome back, <?php echo $custFirst ?>! </b>    
     </div>
-    <div id ="navigation" style ="background-color: #FFFFFF; clear:both;height:200px;width:300px;float:left">
+    <div id ="navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
         <b>Manage My Account</b><br>
         <a href ="customer_order_history.php">My Orders</a><br>
         <a href ="#payment">My Payment Info</a><br>
         <a href ="#address">My Address</a><br>
         <a href ="customer_basket.php">My Basket</a><br>
-    </div>
-    <div id ="orders" class ="toggle" style="display:none">
-        <?php include "customer_orders.php" ?>
-    </div>
-    <div id ="payment" class ="toggle" style="display:none">
-        <?php include "customer_payement.php" ?>
-    </div>
-    <div id ="address" class="toggle" style="display:none">
-        <?php include "customer_address.php"?>
+    <?php
+        if ($vipStatus == 1) {
+    ?>
+        <a href="vip_home.php">My Store</a><br>
+    <?php       }
+        ?>
     </div>
     
     <div id="logoff" style="background-color:#FFFFFF; clear:both;text-align:left">
