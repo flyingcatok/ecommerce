@@ -1,13 +1,14 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/12/2013
-//Last Edited: 
-//Date:
+//Last Edited: Feiyu Shi
+//Date: 11/13/2013
 
 session_start();
     //find customer ID (email) from login info
     if(isset($_SESSION['email'])) {
         $Email201 = $_SESSION['email'];
+        echo "$Email201";
     }
     else {
         echo "too bad";
@@ -55,5 +56,10 @@ mysqli_query($con,$sqlupdate) or die(mysqli_error($con));
 }
 
 include "disconnect.php";
-Header('Location: customer_basket.php');//redirected to the basket page
+// Header('Location: customer_basket.php');//redirected to the basket page
 ?>
+<html>
+<head>
+<meta http-equiv="refresh" content="0;url=customer_basket.php"> 
+</head>
+</html>

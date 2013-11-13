@@ -1,10 +1,9 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/9/2013
-//Last Edited: 
-//Date:
+//Last Edited: Feiyu Shi
+//Date: 11/12/2013
 
-// display what's in the basket
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 session_start();
@@ -12,37 +11,7 @@ session_start();
         $basketEmail = $_SESSION['email'];
         echo $basketEmail;
     }
-$basket_output = "";
-// process the query
-	$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate
-					FROM Customer c, Basket b, BasketContains bc, Item i
-					WHERE b.CEmail = '$basketEmail' AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
-							AND bc.IId = i.IId;";
-// connect to server
-include "connect_local.php";
-$query = mysqli_query($con,$sqlCommand) or die(mysqli_error($con));
-include "disconnect.php";
-$count = mysqli_num_rows($query);
-if($count >= 1){
-		$basket_output .= "<hr />$count items in your basket.<hr />";
-		while($row = mysqli_fetch_array($query)){
-	            $id = $row["IId"];
-		    	$name = $row["IName"];
-		    	$price = $row["IPrice"];
-		    	$quantity = $row["BQuantity"];
-		    	$shopdate = $row["ShopDate"];
-		    	$basket_output .= "Item ID: $id - $name <br /> 
-		    	Unit Price: \$ $price <br />
-		    	Quantity: $quantity <br />
-		    	Shoping Date: $shopdate <br /><br />";
-                } // close while
-	} else {
-		$basket_output = "<hr />Your basket is empty.<hr />";		
-}
-
-?>
-
-<?php
+    
 // search function
 include "search.php";
 ?>
@@ -50,6 +19,7 @@ include "search.php";
 <HTML>
 <HEAD>
 <TITLE> CS 405G Project </TITLE>
+<!-- <META HTTP-EQUIV="refresh" CONTENT="15"> -->
 </HEAD>
 <BODY>
 
@@ -74,10 +44,54 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 </div>
 
 <div id="basket result" style="background-color:#FFFFFF;clear:both;text-align:left;">
-<?php echo $basket_output;
-//output results in text?>
+
+<table border="1">
+<?php
+// display what's in the basket
+
+// $basket_output = "";
+// process the query
+	$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate
+					FROM Customer c, Basket b, BasketContains bc, Item i
+					WHERE b.CEmail = '$basketEmail' AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
+							AND bc.IId = i.IId;";
+// connect to server
+include "connect_local.php";
+$query = mysqli_query($con,$sqlCommand) or die(mysqli_error($con));
+$count = mysqli_num_rows($query);
+include "disconnect.php";
+// echo "<hr />$count items in your basket.<hr />";
+
+if($count > 0){
+		echo ("<tr><td>Item</td>");
+		echo ("<td>Unit Price</td>");
+		echo ("<td>Quantity</td>");
+		echo ("<td> </td></tr>");
+		
+		while($row = mysqli_fetch_array($query)){
+		$itemName = $row["IName"];
+		$iid = $row["IId"];
+		echo ("<tr><td><a href=items/iid=$iid.php>$itemName</a></td>");
+		echo ("<td>\$ $row[IPrice]</td>");
+		echo ("<td>$row[BQuantity]</td>");
+		echo ("<td><a href=\"edit_basket.php?id=$row[BQuantity]\">Edit Quantity</a></td></tr>");
+// 	            $id = $row["IId"];
+// 		    	$name = $row["IName"];
+// 		    	$price = $row["IPrice"];
+// 		    	$quantity = $row["BQuantity"];
+// 		    	$shopdate = $row["ShopDate"];
+// 		    	$basket_output .= "Item ID: $id - $name <br /> 
+// 		    	Unit Price: \$ $price <br />
+// 		    	Quantity: $quantity <br />
+// 		    	Shoping Date: $shopdate <br /><br />";
+                } // close while
+	} else {
+		echo "<tr><td>Your basket is empty.</td></tr>";	
+}
+?>
+</table>
+
 </div>
 
-need to add function of updating basket.
 </BODY>
 </HTML>
