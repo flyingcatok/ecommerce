@@ -16,8 +16,9 @@
             <form action="create_cust_account.php" method="POST">
                 <font color="red">*</font>First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="firstName"><br>
                 <font color="red">*</font>Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="lastName"><br>
+                <font color="red">*</font>Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="newEmail"><br>
                 <font color="red">*</font>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="password" name="newPass"><br>
-                <font color="red">*</font>Confirm Password: <input type="text" name="passConf"><br>
+                <font color="red">*</font>Confirm Password: <input type="password" name="passConf"><br>
                 <input type="submit" value="Create!" name="createAccBtn">
             </form>
         </div>
