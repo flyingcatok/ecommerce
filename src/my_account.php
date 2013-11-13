@@ -46,6 +46,7 @@
         <a href ="#payment">My Payment Info</a><br>
         <a href ="#address">My Address</a><br>
         <a href ="customer_basket.php">My Basket</a><br>
+        <a href ="main.php">Go Shopping!</a><br><br>
     <?php
         if ($vipStatus == 1) {
     ?>
