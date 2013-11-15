@@ -1,6 +1,11 @@
 <html>
-<table border="1">
+
 <?php
+//Author: Feiyu Shi
+//Date: 11/8/2013
+//Last Edited: Feiyu Shi
+//Date: 11/15/2013
+
 // search function
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -21,6 +26,7 @@ $query = mysqli_query($con,$sqlCommand) or die(mysqli_error($con));
 include "disconnect.php";
 $count = mysqli_num_rows($query);
 if($count > 0){
+		echo "<table border=1>";
 		echo ("<tr><td>Item</td>");
 		echo ("<td>Category</td>");
 		echo ("<td>Price</td></tr>");
@@ -31,20 +37,17 @@ if($count > 0){
 // 		    $descript = $row["Description"];
 // 		    $quantity = $row["Quantity"];
 		    $price = $row["IPrice"];
-// 		    $search_output .= "Item ID: $id - $name <br /> 
-// 		    Description: $descript <br />
-// 		    Category: $category <br />
-// 		    Quantity: $quantity<br /> 
-// 		    Unit Price: $price <br /><br />";
 			echo ("<tr><td><a href=items/iid=$id.php>$name</a></td>");
 			echo ("<td>$category</td>");
 			echo ("<td>\$ $price</td></tr>");
-			
-                } // close while
-	} else {
-		echo "<tr><td>No item fits your search.</td></tr>";	
-}
+            } // close while
+        echo "</table>";
+		} else {
+			echo "<table>";
+			echo "<tr><td>No item fits your search.</td></tr>";	
+			echo "</table>";
+		}
 }
 ?>
-</table>
+
 </html>

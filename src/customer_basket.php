@@ -60,6 +60,7 @@ if($count > 0){
 		echo ("<tr><td>Item</td>");
 		echo ("<td>Unit Price</td>");
 		echo ("<td>Quantity</td>");
+		echo ("<td> </td>");
 		echo ("<td> </td></tr>");
 		$subtotal = 0;
 		while($row = mysqli_fetch_array($query)){
@@ -73,9 +74,10 @@ if($count > 0){
 		echo ("<tr><td><a href=items/iid=$iid.php>$itemName</a></td>");
 		echo ("<td>\$ $row[IPrice]</td>");
 		echo ("<td>$row[BQuantity]</td>");
-		echo ("<td><a href=\"edit_basket.php?id=$row[BQuantity]\">Edit Quantity</a></td></tr>");
+		echo ("<td><a href=\"edit_basket.php?id=$row[BQuantity]\">Edit</a></td>");
+		echo ("<td><a href=\"delete_item_from_basket.php?id=$row[IId]\">Delete</a></td></tr>");
         } // close while
-        echo "<tr><th colspan=4>Subtotal: \$ $subtotal</th></tr>";
+        echo "<tr><th colspan=5>Subtotal: \$ $subtotal</th></tr>";
 	} else {
 		echo "<tr><td>Your basket is empty.</td></tr>";	
 }

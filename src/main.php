@@ -77,9 +77,17 @@ else {
 <input name="searchquery" type="text" size = "60" maxlength = "80">
 <input name = "myBtn" type = "submit" value = "GO!">
 </form>
-<!-- <div id="search results" style="background-color:#FFFFFF;clear:both;float-align:center;"> -->
 <?php include "search.php";?>
-<!-- </div> -->
+</div>
+<br />
+<div id="view by category" style="background-color:#FFFFFF;clear:both;text-align:left;">
+<p>View items by category</p>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
+<input name="Games" type="checkbox" value="Games" checked>Games<br />
+<input name="Toys" type="checkbox" value="Toys">Toys
+<br><input type="submit" value="view">
+</form>
+<?php include "view_item_by_category.php";?>
 </div>
 
 </BODY>
