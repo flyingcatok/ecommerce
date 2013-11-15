@@ -60,7 +60,7 @@ include "../disconnect.php";
 <?php echo $item_output ?>
 </div>
 
-<div id="quantity dropdown" style="background-color:#FFFFFF;height:200px;width:500px;float:right;">
+<div id="quantity dropdown" style="background-color:#FFFFFF;height:20px;width:500px;float:right;">
 <form action="../add_item_to_basket.php" method = "post">
 <label for="iquantity">Quantity:</label>
 <select name="iquantity" id="iquantity">
@@ -73,6 +73,38 @@ include "../disconnect.php";
 <input type="hidden" name="IID" value="201">
 <input type="submit" value="Add to Basket">
 </form>
+</div>
+
+<div id="customer review" style="background-color:#FFFFFF;width:500px;float:right;">
+<h4>Customer Review:</h4>
+<?php
+// connect to server
+include "../connect_local.php";
+$sqlpurchase = "SELECT c.Fname, p.PurchaseRating, p.Review
+				FROM Customer c, Purchase p 
+				WHERE c.Email = p.CEmail;";
+$querypur = mysqli_query($con,$sqlpurchase) or die(mysqli_error($con));
+$count = mysqli_num_rows($querypur);
+$reviewresult = "<hr />";
+// $totalrating = 0;/
+if($count > 0){
+		$i = 0;
+		while($row = mysqli_fetch_array($querypur)){
+			$cusfname = $row["Fname"];
+	        $rating[$i] = $row["PurchaseRating"];
+	        $review = $row["Review"];
+	        $reviewresult .= "$cusfname says:<br /> $review <br />rating: $rating[$i]<br /><hr />";
+// 	        $totalrating = $totalrating + $rating[]
+	        $i++;
+            } // close while
+		} else {
+			echo "No one purchased this item.";	
+		}
+$averagerating = array_sum($rating) / count($rating);
+echo "Average Rating: ". $averagerating."<br />";
+echo $reviewresult;
+include "../disconnect.php";
+?>
 </div>
 
 </div>
