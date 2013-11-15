@@ -1,10 +1,10 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/8/2013
-//Last Edited: Libby Ferland
-//Date: 11/13/2013
+//Last Edited: Feiyu Shi
+//Date: 11/15/2013
 
-include "search.php";
+//include "search.php";
 session_start();
 if(isset($_SESSION['email'])) {
     $loggedin = true;
@@ -72,15 +72,15 @@ else {
 </div>
 
 <div id="searchBox" style="background-color:#FFFFFF;clear:both;text-align:center;">
+
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
 <input name="searchquery" type="text" size = "60" maxlength = "80">
 <input name = "myBtn" type = "submit" value = "GO!">
 </form>
+<!-- <div id="search results" style="background-color:#FFFFFF;clear:both;float-align:center;"> -->
+<?php include "search.php";?>
+<!-- </div> -->
 </div>
 
-<div id="searchResult" style="background-color:#FFFFFF;clear:both;text-align:left;">
-<?php echo $search_output;
-//output results in text?>
-</div>
 </BODY>
 </HTML>

@@ -2,7 +2,7 @@
 //Author: Feiyu Shi
 //Date: 11/9/2013
 //Last Edited: Feiyu Shi
-//Date: 11/12/2013
+//Date: 11/15/2013
 
 // display attributes of the item
 error_reporting(E_ALL);
@@ -37,11 +37,6 @@ while($row = mysqli_fetch_array($query)){
 include "../disconnect.php";
 ?>
 
-<?php
-//add search function
-include "../search.php";
-?>
-
 
 <HTML>
 <HEAD>
@@ -53,17 +48,6 @@ include "../search.php";
 <H2> <a href="../main.php" style="text-decoration: none">F&L Gift Store</a> </H2>
 </div>
 
-<div id="searchBox" style="background-color:#FFFFFF;clear:both;text-align:left;">
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
-Search <input name="searchquery" type="text" size = "60" maxlength = "80">
-<input name = "myBtn" type = "submit" value = "GO!">
-</form>
-</div>
-
-<div id="search result" style="background-color:#FFFFFF;clear:both;text-align:left;">
-<?php echo $search_output;
-//output results in text?>
-</div>
 <br /><br />
 
 <div id="container" style="width:1000px">

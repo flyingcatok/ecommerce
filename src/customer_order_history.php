@@ -1,8 +1,8 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/9/2013
-//Last Edited: 
-//Date:
+//Last Edited: Feiyu Shi
+//Date: 11/15/2013
 
 // display what's in the order table
 error_reporting(E_ALL);
@@ -46,11 +46,6 @@ if($count >= 1){
 
 ?>
 
-<?php
-// search function
-include "search.php";
-?>
-
 <HTML>
 <HEAD>
 <TITLE> CS 405G Project </TITLE>
@@ -66,11 +61,7 @@ include "search.php";
 Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 <input name = "myBtn" type = "submit" value = "GO!">
 </form>
-</div>
-
-<div id="search result" style="background-color:#FFFFFF;clear:both;text-align:left;">
-<?php echo $search_output;
-//output results in text?>
+<?php include "search.php";?>
 </div>
 
 <div id="order logo" style="background-color:#FFFFFF;clear:both;text-align:left;">

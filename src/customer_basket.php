@@ -12,8 +12,6 @@ session_start();
         echo $basketEmail;
     }
     
-// search function
-include "search.php";
 ?>
 
 <HTML>
@@ -32,11 +30,7 @@ include "search.php";
 Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 <input name = "myBtn" type = "submit" value = "GO!">
 </form>
-</div>
-
-<div id="search result" style="background-color:#FFFFFF;clear:both;text-align:left;">
-<?php echo $search_output;
-//output results in text?>
+<?php include "search.php"; ?>
 </div>
 
 <div id="basket logo" style="background-color:#FFFFFF;clear:both;text-align:left;">
