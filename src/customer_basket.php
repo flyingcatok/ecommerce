@@ -61,24 +61,21 @@ if($count > 0){
 		echo ("<td>Unit Price</td>");
 		echo ("<td>Quantity</td>");
 		echo ("<td> </td></tr>");
-		
+		$subtotal = 0;
 		while($row = mysqli_fetch_array($query)){
+// 	    $id = $row["IId"];
+// 		$shopdate = $row["ShopDate"];
 		$itemName = $row["IName"];
 		$iid = $row["IId"];
+		$price = $row["IPrice"];
+		$quantity = $row["BQuantity"];
+		$subtotal = $subtotal + $price * $quantity;
 		echo ("<tr><td><a href=items/iid=$iid.php>$itemName</a></td>");
 		echo ("<td>\$ $row[IPrice]</td>");
 		echo ("<td>$row[BQuantity]</td>");
 		echo ("<td><a href=\"edit_basket.php?id=$row[BQuantity]\">Edit Quantity</a></td></tr>");
-// 	            $id = $row["IId"];
-// 		    	$name = $row["IName"];
-// 		    	$price = $row["IPrice"];
-// 		    	$quantity = $row["BQuantity"];
-// 		    	$shopdate = $row["ShopDate"];
-// 		    	$basket_output .= "Item ID: $id - $name <br /> 
-// 		    	Unit Price: \$ $price <br />
-// 		    	Quantity: $quantity <br />
-// 		    	Shoping Date: $shopdate <br /><br />";
-                } // close while
+        } // close while
+        echo "<tr><th colspan=4>Subtotal: \$ $subtotal</th></tr>";
 	} else {
 		echo "<tr><td>Your basket is empty.</td></tr>";	
 }
