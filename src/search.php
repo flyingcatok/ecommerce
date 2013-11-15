@@ -1,12 +1,9 @@
 <html>
-<!-- <div> -->
-<!-- <div id="search results" style="background-color:#FFFFFF;clear:both;align:center;"> -->
 <table border="1">
 <?php
 // search function
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-// $search_output = "";
 
 // connect to server
 include "connect_local.php";
@@ -27,7 +24,6 @@ if($count > 0){
 		echo ("<tr><td>Item</td>");
 		echo ("<td>Category</td>");
 		echo ("<td>Price</td></tr>");
-// 		$search_output .= "<hr />$count results for <strong>$searchquery</strong><hr />";
 		while($row = mysqli_fetch_array($query)){
 	            $id = $row["IId"];
 		    $name = $row["IName"];
@@ -46,11 +42,9 @@ if($count > 0){
 			
                 } // close while
 	} else {
-// 		$search_output = "<hr />0 results for <strong>$searchquery</strong><hr />";	
 		echo "<tr><td>No item fits your search.</td></tr>";	
 }
 }
 ?>
 </table>
-<!-- </div> -->
 </html>

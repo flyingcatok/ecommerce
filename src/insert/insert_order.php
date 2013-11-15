@@ -6,9 +6,19 @@
 
 //insert dummy value
 $addOrder_1 = "INSERT INTO Orders (POrderID, Status) VALUES (12367753, 'Shipped');";
+$addOrder_2 = "INSERT INTO Orders (POrderID, Status) VALUES (12367755, 'Pending');";
 
 
 if (mysqli_query($con, $addOrder_1)) 
+ {
+  echo "Values of Orders inserted successfully<br>";
+  }
+else
+  {
+  echo "Error inserting values to Orders: " . mysqli_error($con)."<br>";
+  }
+  
+  if (mysqli_query($con, $addOrder_2)) 
  {
   echo "Values of Orders inserted successfully<br>";
   }
