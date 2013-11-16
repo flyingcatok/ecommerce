@@ -1,8 +1,8 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/15/2013
-//Last Edited: 
-//Date: 
+//Last Edited: Feiyu Shi
+//Date: 11/16/2013
 
 // search function
 error_reporting(E_ALL);

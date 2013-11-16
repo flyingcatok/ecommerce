@@ -1,8 +1,8 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/2/2013
-//Last Edited: 
-//Date:
+//Last Edited: Feiyu Shi
+//Date: 11/16/2013
 
 // fill in the item table
 $add_item_1 = "INSERT INTO Item (IId,IName,Category,Description,Quantity,IPrice,PromoPrice)
