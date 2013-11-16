@@ -22,7 +22,7 @@ else {
 ?>
 <HTML>
 <HEAD>
-<TITLE> CS 405G Project </TITLE>
+<TITLE> F&L Gift Store Home </TITLE>
 </HEAD>
 <BODY>
     
@@ -83,8 +83,9 @@ else {
 <div id="view by category" style="background-color:#FFFFFF;clear:both;text-align:left;">
 <p>View items by category</p>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
-<input name="Games" type="checkbox" value="Games" checked>Games<br />
-<input name="Toys" type="checkbox" value="Toys">Toys
+<input name="category" type="radio" value="all" checked>All<br />
+<input name="category" type="radio" value="Games">Games<br />
+<input name="category" type="radio" value="Toys">Toys
 <br><input type="submit" value="view">
 </form>
 <?php include "view_item_by_category.php";?>

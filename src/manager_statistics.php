@@ -17,7 +17,7 @@ $last30days = date("Y/m/d",mktime(0,0,0,date("m")-1,date("d"),date("Y")));
 $lastyear = date("Y/m/d",mktime(0,0,0,date("m"),date("d"),date("Y")-1));
 
 // process the search query
-if(isset($_POST['Today'])){
+if(isset($_POST['period'])&& $_POST['period'] == 'Today'){
 
 $sqltoday = "SELECT i.IId, i.IName, sales.total, (i.IPrice*sales.total) AS subtotal
 			FROM (SELECT oc.IId, sum(oc.OQuantity) AS total
@@ -56,7 +56,7 @@ if($count > 0){
 
 }
 
-elseif(isset($_POST['LastWeek'])){
+if(isset($_POST['period'])&& $_POST['period'] == 'LastWeek'){
 
 $sqlweek = "SELECT i.IId, i.IName, sales.total, (i.IPrice*sales.total) AS subtotal
 			FROM (SELECT oc.IId, sum(oc.OQuantity) AS total
@@ -95,7 +95,7 @@ if($count > 0){
 		
 }
 
-elseif(isset($_POST['LastMonth'])){
+if(isset($_POST['period'])&& $_POST['period'] == 'LastMonth'){
 
 $sqlmonth = "SELECT i.IId, i.IName, sales.total, (i.IPrice*sales.total) AS subtotal
 			FROM (SELECT oc.IId, sum(oc.OQuantity) AS total
@@ -133,7 +133,7 @@ if($count > 0){
 		}
 }
 
-elseif(isset($_POST['LastYear'])){
+if(isset($_POST['period'])&& $_POST['period'] == 'LastYear'){
 
 $sqlyear = "SELECT i.IId, i.IName, sales.total, (i.IPrice*sales.total) AS subtotal
 			FROM (SELECT oc.IId, sum(oc.OQuantity) AS total
