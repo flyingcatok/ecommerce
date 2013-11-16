@@ -1,8 +1,8 @@
 <?php
 //Author: Libby Ferland
 //Date: 11/13/2013
-//Last Edit:
-//Edit Date:
+//Last Edit: Feiyu Shi
+//Edit Date: 11/16/2013
 
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
@@ -36,7 +36,7 @@
     </div>
     <div id ="navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
         <b>Employee Functions</b><br>
-        <a href ="order_processing.php">Current Orders</a><br>
+        <a href ="employee_order_processing.php">Current Pending Orders</a><br>
         <a href ="manage_inventory.php">Manage Inventory</a><br>
         <a href="main.php">Go To Store Main</a><br><br>
     <?php
