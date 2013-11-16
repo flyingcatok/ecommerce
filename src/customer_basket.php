@@ -16,7 +16,7 @@ session_start();
 
 <HTML>
 <HEAD>
-<TITLE> CS 405G Project </TITLE>
+<TITLE> Customer Basket </TITLE>
 <!-- <META HTTP-EQUIV="refresh" CONTENT="15"> -->
 </HEAD>
 <BODY>
@@ -45,7 +45,7 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 
 // $basket_output = "";
 // process the query
-	$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate
+	$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate, i.PromoPrice
 					FROM Customer c, Basket b, BasketContains bc, Item i
 					WHERE b.CEmail = '$basketEmail' AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
 							AND bc.IId = i.IId;";
@@ -68,12 +68,17 @@ if($count > 0){
 // 		$shopdate = $row["ShopDate"];
 		$itemName = $row["IName"];
 		$iid = $row["IId"];
-		$price = $row["IPrice"];
+	// 	$price = $row["IPrice"];
+		if(is_null($row["PromoPrice"])){
+			$price = $row["IPrice"];}
+			else{
+			$price = $row["PromoPrice"];
+			}
 		$quantity = $row["BQuantity"];
 		$subtotal = $subtotal + $price * $quantity;
 		echo ("<tr><td><a href=items/iid=$iid.php>$itemName</a></td>");
-		echo ("<td>\$ $row[IPrice]</td>");
-		echo ("<td>$row[BQuantity]</td>");
+		echo ("<td>\$ $price</td>");
+		echo ("<td>$quantity</td>");
 		echo ("<td><a href=\"edit_basket.php?id=$row[BQuantity]\">Edit</a></td>");
 		echo ("<td><a href=\"delete_item_from_basket.php?id=$row[IId]\">Delete</a></td></tr>");
         } // close while

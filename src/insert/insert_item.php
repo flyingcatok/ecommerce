@@ -5,14 +5,15 @@
 //Date:
 
 // fill in the item table
-$add_item_1 = "INSERT INTO Item (IId,IName,Category,Description,Quantity,IPrice)
+$add_item_1 = "INSERT INTO Item (IId,IName,Category,Description,Quantity,IPrice,PromoPrice)
  VALUES (
  '111',
  'LEGO Minecraft (Original) 21102',
  'Toys',
  'Players can destroy various types of blocks in a three dimensional environment.',
  '10',
- '32.79');";
+ '32.79',
+ '29.51');";
  
  if (mysqli_query($con,$add_item_1)) // LEGO example
  {

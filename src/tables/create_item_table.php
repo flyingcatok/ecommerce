@@ -13,6 +13,7 @@ CREATE TABLE Item
  Description		TEXT,		
  Quantity		INT				NOT NULL,
  IPrice			FLOAT				NOT NULL,
+ PromoPrice		FLOAT,
  PRIMARY KEY (IId) )";
  
    if (mysqli_query($con,$create_item_table))

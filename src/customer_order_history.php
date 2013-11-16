@@ -16,7 +16,7 @@ session_start();
 
 <HTML>
 <HEAD>
-<TITLE> CS 405G Project </TITLE>
+<TITLE> Order History </TITLE>
 </HEAD>
 <BODY>
 
@@ -63,7 +63,7 @@ if($count > 0){
 				echo ("<td>$status</td>");
 				echo ("<td>$purchasedate</td></tr>");
 				// query items in this order
-				$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, oc. OQuantity 
+				$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, oc. OQuantity, i.PromoPrice 
 					FROM  OrderContains oc, Item i
 					WHERE oc.COrderID = $invoiceno AND oc.IId = i.IId;";
 
@@ -75,7 +75,11 @@ if($count > 0){
 				while($row = mysqli_fetch_array($query)){
 	            		$id = $row["IId"];
 		    			$name = $row["IName"];
-		    			$price = $row["IPrice"];
+		    			if(is_null($row["PromoPrice"])){
+							$price = $row["IPrice"];}
+						else{
+							$price = $row["PromoPrice"];
+						}
 		    			$quantity = $row["OQuantity"];
 						echo ("<tr><td><a href=items/iid=$id.php>$name</a></td>");
 						echo ("<td>\$ $price</td>");

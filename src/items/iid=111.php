@@ -11,7 +11,7 @@ ini_set('display_startup_errors','1');
 
 $item_output = "";
 // process the query
-	$sqlCommand = "SELECT i.IId, i.IName, i.Category, i.Description, i.Quantity, i.IPrice
+	$sqlCommand = "SELECT i.IId, i.IName, i.Category, i.Description, i.Quantity, i.IPrice, i.PromoPrice
 					FROM Item i
 					WHERE i.IId = 111
 					;";
@@ -26,7 +26,11 @@ while($row = mysqli_fetch_array($query)){
 		$category = $row["Category"];
 		$descript = $row["Description"];
 		$quantity = $row["Quantity"];
-		$price = $row["IPrice"];
+		if(is_null($row["PromoPrice"])){
+			$price = $row["IPrice"];}
+			else{
+			$price = $row["PromoPrice"];
+			}
 		$item_output .= "Item ID: $id - $name <br /> 
 		Category: $category <br />
 		Description: $descript <br />
