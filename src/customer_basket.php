@@ -78,11 +78,19 @@ if($count > 0){
 		echo ("<td><a href=\"delete_item_from_basket.php?id=$row[IId]\">Delete</a></td></tr>");
         } // close while
         echo "<tr><th colspan=5>Subtotal: \$ $subtotal</th></tr>";
+        ?>
+    </table>
+    <div id ="order_button" style ="background-color:#FFFFFF; clear:both; height:200px;width:450; text-align: right;">
+        <form action = "review_order.php" method ="POST">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+            <input type ="submit" value ="Place Order" name="basketOrderBtn" >
+        </form>
+    </div>
+    <?php
 	} else {
 		echo "<tr><td>Your basket is empty.</td></tr>";	
 }
 ?>
-</table>
 
 </div>
 
