@@ -31,8 +31,8 @@
     <HEADER>
     <TITLE> Employee Home </TITLE>
     </HEADER>
-    <div id="account_header" style="background-color:#FFFFFF;clear:both;text-align:center;">
-        <b style="font-size:50px">Welcome back, <?php echo $empFirst ?>! </b>    
+    <div id="account_header" style="background-color:#FFFFFF;clear:both;text-align:left;">
+        <h3>Welcome back, <?php echo $empFirst ?>! </h3>    
     </div>
     <div id ="navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
         <b>Employee Functions</b><br>
@@ -42,6 +42,7 @@
     <?php
         if ($empPrivileges == 1) {
     ?>
+    	<b>Manager Functions</b><br>
         <a href="manager_home.php">Manager Control Panel</a><br>
     <?php       }
         ?>
