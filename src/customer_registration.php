@@ -9,10 +9,10 @@
         </div>
         
         <div id ="registration_title" style ="background-color:#FFFFFF;clear:both;text-align:center;">
-            <b>Register New Account</b><br><br>
+            <h2>Register New Account</h2><br><br>
         </div>
         
-        <div id="customer_info" style="background-color:#FFFFFF;clear:both;text-align:left;">
+        <div id="customer_info" style="background-color:#FFFFFF;clear:both;text-align:center;">
             <form action="create_cust_account.php" method="POST">
                 <font color="red">*</font>First Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="firstName"><br>
                 <font color="red">*</font>Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="lastName"><br>
@@ -23,7 +23,7 @@
             </form>
         </div>
         
-        <div id="hint" style="background-color:#FFFFFF;clear:both;text-align:left;">
+        <div id="hint" style="background-color:#FFFFFF;clear:both;text-align:center;">
             (Red asterisk indicates required field!)
         </div>
     </BODY>

@@ -13,7 +13,7 @@ Edit Date: 11/12/2013 -->
 </div>
 
 <div id="login" style="background-color:#FFFFFF;clear:both;text-align:center;">
-<H1> Enter Login Information </H1>
+<H2> Enter Login Information </H2>
 </div>
 <div id="loginInfo" style="background-color:#FFFFFF;clear:both;text-align:center;">
 <form action="account_home.php" method= "POST">
@@ -23,8 +23,8 @@ Password: <input type="password" name="Password"><br>
 </form>
 </div>
 
-<div id="newuser" style="background-color:#FFFFFF;clear:both;text-align:left;">
-<a href="customer_registration.php">Create Account</a>
+<div id="newuser" style="background-color:#FFFFFF;clear:both;text-align:center;">
+Or <a href="customer_registration.php">Create Account</a>
 </div>
 
 </BODY>

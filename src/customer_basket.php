@@ -45,7 +45,7 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 
 <div id="basket result" style="background-color:#FFFFFF;clear:both;text-align:left;">
 
-<table border="1">
+<!-- <table border="1"> -->
 <?php
 // display what's in the basket
 
@@ -63,6 +63,7 @@ include "disconnect.php";
 // echo "<hr />$count items in your basket.<hr />";
 
 if($count > 0){
+		echo "<table border=1>";
 		echo ("<tr><td>Item</td>");
 		echo ("<td>Unit Price</td>");
 		echo ("<td>Quantity</td>");
@@ -89,8 +90,9 @@ if($count > 0){
 		echo ("<td><a href=\"delete_item_from_basket.php?id=$row[IId]\">Delete</a></td></tr>");
         } // close while
         echo "<tr><th colspan=5>Subtotal: \$ $subtotal</th></tr>";
+        echo "</table>";
         ?>
-    </table>
+<!--     </table> -->
     <div id ="order_button" style ="background-color:#FFFFFF; clear:both; height:200px;width:450; text-align: right;">
         <form action = "review_order.php" method ="POST">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
@@ -99,7 +101,9 @@ if($count > 0){
     </div>
     <?php
 	} else {
+		echo "<table>";
 		echo "<tr><td>Your basket is empty.</td></tr>";	
+		echo "</table>";
 }
 ?>
 

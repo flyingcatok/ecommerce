@@ -49,3 +49,8 @@
     
     include "disconnect.php";
 ?>
+<html>
+<head>
+<meta http-equiv="refresh" content="0;url=customer_login.php"> 
+</head>
+</html>
