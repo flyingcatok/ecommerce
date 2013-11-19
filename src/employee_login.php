@@ -1,6 +1,6 @@
 <HTML> 
     <HEAD>
-        <TITLE>Employee Login</TITLE>
+        <TITLE>F & L Gift Store Employee Login</TITLE>
     </HEAD>
     <BODY>
         <div id="goBack" style="background-color:#FFFFFF;clear:both;text-align:right;">
@@ -8,7 +8,7 @@
         </div>
         
         <div id="login" style="background-color:#FFFFFF;clear:both;text-align:center;">
-        <H1> Enter Login Information </H1>
+        <H2> Enter Login Information </H2>
         </div>
         
         <div id="emp_loginform" style="background-color:#FFFFFF; clear:both; text-align:center;">

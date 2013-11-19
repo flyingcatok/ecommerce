@@ -2,7 +2,7 @@
 //Author: Feiyu Shi
 //Date: 11/9/2013
 //Last Edited: Feiyu Shi
-//Date: 11/16/2013
+//Date: 11/19/2013
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -51,7 +51,7 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 
 // $basket_output = "";
 // process the query
-	$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate, i.PromoPrice
+	$sqlCommand = "SELECT DISTINCT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate, i.PromoPrice
 					FROM Customer c, Basket b, BasketContains bc, Item i
 					WHERE b.CEmail = '$basketEmail' AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
 							AND bc.IId = i.IId;";
@@ -59,6 +59,7 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 include "connect_local.php";
 $query = mysqli_query($con,$sqlCommand) or die(mysqli_error($con));
 $count = mysqli_num_rows($query);
+echo $count;
 include "disconnect.php";
 // echo "<hr />$count items in your basket.<hr />";
 
