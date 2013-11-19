@@ -25,8 +25,9 @@ session_start();
         $getOPay = mysqli_query($con, $findOPay);
         
         include "disconnect.php";
-  
+        
     }
+
     
     ?>
 
@@ -61,11 +62,52 @@ session_start();
             <br><br><br>
         </div>
         
+        <form action ="place_order.php" method="POST">
         <div id ="shippingaddr" style ="background-color:#FFFFFF; clear:both; text-align:left">
             <H3> Select Shipping Address </H3>
             <?php
-            $addrIndex = 1;
-            while($arow = mysqli_fetch_array($getOAddress)) {
+            $addresses = array();
+            $i = 0;
+            while( $arow = mysqli_fetch_array($getOAddress)) {
+                $addresses[$i] = $arow;
+                $i++;
+            }
+            $addrin = 1;
+            $buttonin = 0;
+            for ($j = 0; $j < ($i + 1); $j++) {
+                if (isset($addresses[$j])) {
+                ?>
+            
+                <input type = "hidden" name = "<?php $addrin ?>" value = "<?php $addresses[$j]?>" >
+                Address <?php $addrin ?> <br>
+                <?php
+                echo ("<table border = \"0\">");
+                $lineOne = $addresses[$j]["AddrLine1"];
+                $lineTwo = $addresses[$j]["AddrLine2"];
+                $aCity = $addresses[$j]["City"];
+                $aState = $addresses[$j]["State"];
+                $aZip = $addresses[$j]["Zip"];
+                echo ("Street Address: $lineOne<br>");
+                echo ("Apartment/Suite Number: $lineTwo<br>");
+                echo ("City: $aCity<br>");
+                echo ("State: $aState<br>");
+                echo ("Zip: $aZip<br>");
+                echo ("</table>");
+                echo("<br>");
+                $addrin++;
+                ?>
+                <input type="radio" name = "address_choice" value = "<?php $addresses[$buttonin]?>">Select this address<br> <br>
+                <?php
+                $buttonin++;
+                }
+            }
+            
+            /*$addrIndex = 1;
+            $buttonIndex = 1;
+            while($arow = mysqli_fetch_array($getOAddress)) { 
+                ?>
+                <input type="hidden" name="<?php $addrIndex ?>" value ="
+<?php
                 echo("Address $addrIndex");
                 echo "<table border = \"0\">";
                 $lineOne = $arow["AddrLine1"];
@@ -73,45 +115,71 @@ session_start();
                 $aCity = $arow["City"];
                 $aState = $arow["State"];
                 $aZip = $arow["Zip"];
-                echo ("<tr><td>$lineOne</td>/<tr>");
-                echo ("<tr><td>$lineTwo</td></tr>");
-                echo ("<tr><td>$aCity</tr></td>");
-                echo ("<tr><td>$aState</tr></td>");
-                echo ("<tr><td>$aZip</tr></td>");
+                echo ("$lineOne<br>");
+                echo ("$lineTwo<br>");
+                echo ("$aCity<br>");
+                echo ("$aState<br>");
+                echo ("$aZip<br>");
                 echo("</table>");
-                echo("<br><br>");
+                echo("<br>");
                 $addrIndex++;
-            }
-           ?>
+                ?> 
+                "/>
+                <input type ="radio" name =">Select<br>
+                
+                <?php $buttonIndex++;
+               }
+           ?> */
+            ?>
+                
         </div>
         <div id ="cards" style ="background-color:#FFFFFF; clear:both; text-align:left">
             <H3>Select Payment Method</H3>
             <?php
-            while($crow = mysqli_fetch_array($getOPay)) {
-                echo "<table border = \"0\">";
-                $cardNo = $crow["CardNo"];
-                $cardLName = $crow["CHolderLastName"];
-                $cardFName = $crow["CHolderFirstName"];
-                $expDate = $crow["CExpirDate"];
-                $addOne = $crow["Baddr1"];
-                $bCity = $crow["BCity"];
-                $bState = $crow["BState"];
-                echo ("<tr><td>$cardNo</td>/<tr>");
-                echo ("<tr><td>$cardFName . $cardLName </td>/<tr>");
-                echo ("<tr><td>$expDate</td>/<tr>");
-                echo ("<tr><td>$addOne</td>/<tr>");
-                echo ("<tr><td>$bCity</td>/<tr>");
-                echo ("<tr><td>$bState</td>/<tr>");
-                echo("</table>");
-                echo("<br><br>");
+            $bills = array();
+            $k = 0;
+            while($brow = mysqli_fetch_array($getOPay)) {
+                $bills[$k] = $brow;
+                $k++;
             }
+            
+            $billerin = 1;
+            $billbuttin = 0;
+            for ($m = 0; $m < ($k + 1); $m++) {
+                if (isset($bills[$m])) {
+                    ?>
+            <input type ="hidden" name ="<?php $billerin ?>" value="<?php $bills[$m] ?>" >
+            Payment method <?php $billerin ?><br>
+            <?php 
+            echo ("<table border = \"0\">");
+            $cardn = $bills[$m]["CardNo"];
+            $cardLast = $bills[$m]["CHolderLastName"];
+            $cardFirst = $bills[$m]["CHolderFirstName"];
+            $expydate = $bills[$m]["CExpirDate"];
+            $billLineOne = $bills[$m]["Baddr1"];
+            $bCity = $bills[$m]["BCity"];
+            $bState = $bills[$m]["BState"];
+            echo("Card Number: $cardn<br>");
+            echo("Expiration date: $expydate<br>");
+            echo("Card Holder: $cardFirst ");
+            echo("$cardLast<br>");
+            echo("Billing Address: $billLineOne<br>");
+            echo("Billing City:$bCity<br>");
+            echo("Billing State: $bState<br>");
+            echo("</table>");
+            echo("<br>");
+            $billerin++;
             ?>
-        </div>
-        
-        <div id ="place-order" style ="background-color:#FFFFFF;clear:both;text-align:left">
-            <form action ="place_order.php" method ="POST">
+            <input type="radio" name="bill_choice" value ="<?php $bills[$billbuttin]?>" > Select this method <br>
+          
+           <?php 
+           $billbuttin++;   }
+            }
+            
+            
+           ?>
+            <br> <br><br>
                 <input type ="submit" value ="Order Now" name="orderReviewedBtn">
-            </form>
         </div>
             
             
