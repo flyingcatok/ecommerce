@@ -1,5 +1,8 @@
 <?php
 //Author: Feiyu Shi
+//Date: 11/3/2013
+//Last Edited: Feiyu Shi
+//Date: 11/19/2013
 
 /* list all tables here */
 
@@ -30,4 +33,5 @@ include 'tables/create_vipowns_table.php';
 include 'tables/create_upforauc_table.php';
 include 'tables/create_shippedto_table.php';
 include 'tables/create_billingaddress_table.php';
+include 'tables/create_paidwith_table.php';
 ?>
