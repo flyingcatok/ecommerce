@@ -47,7 +47,7 @@
     
     <div>
     <h2>Sales Promotion</h2>
-    <p>Log in everyday to make sure update the price for promoted items</p>
+    <p>Log in everyday to update the prices for promoted items</p>
     <p>as of<?php  $today = date_create("",timezone_open("America/New_York")); echo " ".date_format($today,"Y-m-d H:i:s");?> </p>
     <hr />
     <h4>Current Promotions:</h4>
