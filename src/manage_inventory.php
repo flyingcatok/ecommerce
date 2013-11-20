@@ -27,7 +27,7 @@ if(isset($_SESSION['empID'])) {
     <?php
     // connect to server
 	include "connect_local.php";
-	if(isset($_POST['quantity'])&& $_POST['quantity']!=""){
+	if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>=0){
 	$updatedquan = mysqli_real_escape_string($con,$_POST['quantity']);
 	$selectedid = mysqli_real_escape_string($con,$_POST['IID']);
 	$sqlupdate = "UPDATE Item
@@ -73,17 +73,16 @@ if(isset($_SESSION['empID'])) {
 		echo "<td></td>";
 		echo "<td></td>";
 		}
-		echo "<td>$quantity</td>";
+// 		echo "<td>$quantity</td>";
 		?>
 		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
-		<td><input type="text" name=quantity size = "5">
+		<?php echo "<td><input type='text' name=quantity value = $quantity size = '5'> </td>" ?>
 		<?php echo "<input type ='hidden' name=IID value = $iid>";?>
-		<input type="submit" value="update">
+		<td><input type="submit" value="update">
 		</td></tr>
 		</form>
 		
 		<?php
-// 		echo "<td><a href=\"employee_update_inventory.php?id=$iid\">Update</a></td></tr>";
         } // close while
         echo "</table>";
 	} else {
