@@ -35,7 +35,7 @@ if(isset($_SESSION['empID'])) {
 					WHERE IId = $selectedid";
 	$updatequery = mysqli_query($con,$sqlupdate) or die(mysqli_error($con));	
 	}
-	
+	// display all items
 	$sqlquery = "SELECT * FROM Item ORDER BY IId;";
 	$query = mysqli_query($con,$sqlquery) or die(mysqli_error($con));
 	$count = mysqli_num_rows($query);
@@ -85,11 +85,15 @@ if(isset($_SESSION['empID'])) {
 		<?php
         } // close while
         echo "</table>";
+        if ($quantity == 0){
+			echo "WARNING: Please Stock Item ID = $iid";
+		}
 	} else {
 		echo "<table>";
 		echo "<tr><td>Your inventory is empty.</td></tr>";	
 		echo "</table>";
 }
+	include "disconnect.php";
     ?>
 	</div>
 </HTML>
