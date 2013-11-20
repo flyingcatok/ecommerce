@@ -36,7 +36,7 @@ if(isset($_SESSION['empID'])) {
 					ORDER BY p.PurchaseDate;";
 	$query = mysqli_query($con,$sqlpending) or die(mysqli_error($con));
 	$count = mysqli_num_rows($query);
-
+	echo $count;
 if($count > 0){
 
 	while($row = mysqli_fetch_array($query)){
