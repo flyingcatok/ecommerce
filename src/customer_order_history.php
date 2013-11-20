@@ -85,6 +85,7 @@ if($count > 0){
 						else{
 							$price = $row["PromoPrice"];
 						}
+						$price = number_format($price, 2, '.', ',');
 		    			$quantity = $row["OQuantity"];
 						echo ("<tr><td><a href=items/iid=$id.php>$name</a></td>");
 						echo ("<td>\$ $price</td>");

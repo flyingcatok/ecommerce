@@ -26,15 +26,17 @@ while($row = mysqli_fetch_array($query)){
 		$category = $row["Category"];
 		$descript = $row["Description"];
 		$quantity = $row["Quantity"];
-		if(is_null($row["PromoPrice"])){
-			$price = $row["IPrice"];}
-			else{
-			$price = $row["PromoPrice"];
-			}
+		$oprice = $row["IPrice"];
+		$promoprice = $row["PromoPrice"];
+		$promoprice = number_format($promoprice, 2, '.', ',');
 		$item_output .= "Item ID: $id - $name <br /> 
 		Category: $category <br />
 		Description: $descript <br />
-		Unit Price: \$ $price <br />
+		Original Price: \$ $oprice <br />";
+		if(!is_null($promoprice)){
+			$item_output.= "Sales Price: \$ $promoprice <br />";
+			}
+		$item_output .= "	
 		Quantity: $quantity<br /><br />";
         } // close while
 ?>

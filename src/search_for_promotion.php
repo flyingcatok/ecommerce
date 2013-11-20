@@ -2,9 +2,9 @@
 
 <?php
 //Author: Feiyu Shi
-//Date: 11/8/2013
-//Last Edited: Feiyu Shi
-//Date: 11/15/2013
+//Date: 11/19/2013
+//Last Edited: 
+//Date:
 
 // search function
 error_reporting(E_ALL);
@@ -25,27 +25,27 @@ if(isset($_POST['searchquery']) && $_POST['searchquery'] != ""){
 $query = mysqli_query($con,$sqlCommand) or die(mysqli_error($con));
 include "disconnect.php";
 $count = mysqli_num_rows($query);
-if($count > 0){
+if($count > 0){?>
+		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
+		<?php
 		echo "<table border=1>";
-		echo ("<tr><td>Item</td>");
-		echo ("<td>Category</td>");
-		echo ("<td>Price</td></tr>");
+		echo "<tr><td>Select</td>";
+		echo "<td>IId</td>";
+		echo "<td>Item</td>";
+		echo "<td>Category</td>";
+		echo "<td>Price</td></tr>";
 		while($row = mysqli_fetch_array($query)){
 	            $id = $row["IId"];
 		    $name = $row["IName"];
 		    $category = $row["Category"];
 // 		    $descript = $row["Description"];
 // 		    $quantity = $row["Quantity"];
-// 		    $price = $row["IPrice"];
-			if(is_null($row["PromoPrice"])){
-				$price = $row["IPrice"];}
-			else{
-				$price = $row["PromoPrice"];
-			}
-			$price = number_format($price, 2, '.', ',');	
-			echo ("<tr><td><a href=items/iid=$id.php>$name</a></td>");
-			echo ("<td>$category</td>");
-			echo ("<td>\$ $price</td></tr>");
+		    $price = $row["IPrice"];
+		    echo "<tr><td><input name='IId' type='radio' value='$id'></td>";
+		    echo "<td>$id</td>";
+			echo "<td><a href=items/iid=$id.php>$name</a></td>";
+			echo "<td>$category</td>";
+			echo "<td>\$ $price</td></tr>";
             } // close while
         echo "</table>";
 		} else {
@@ -53,7 +53,15 @@ if($count > 0){
 			echo "<tr><td>No item fits your search.</td></tr>";	
 			echo "</table>";
 		}
+		?>
+		<br />Promotion Rate: <input name="promotionrate" type="text" size = "5" maxlength = "10"> % off.
+		<br />Promo Start Date: <input type="datetime" name="promostart">
+		<br />Promo End Date: <input type="datetime" name="promoend">
+		<?php
+		echo "<br><input type='submit' value='promote'>";
+		echo "</form>";	
 }
-?>
 
+?>
+ 	<?php include "manager_promotion.php"; ?>
 </html>

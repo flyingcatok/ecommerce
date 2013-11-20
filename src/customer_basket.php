@@ -59,7 +59,6 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 include "connect_local.php";
 $query = mysqli_query($con,$sqlCommand) or die(mysqli_error($con));
 $count = mysqli_num_rows($query);
-echo $count;
 include "disconnect.php";
 // echo "<hr />$count items in your basket.<hr />";
 
@@ -82,6 +81,7 @@ if($count > 0){
 			else{
 			$price = $row["PromoPrice"];
 			}
+		$price = number_format($price, 2, '.', ',');	
 		$quantity = $row["BQuantity"];
 		$subtotal = $subtotal + $price * $quantity;
 		echo ("<tr><td><a href=items/iid=$iid.php>$itemName</a></td>");
