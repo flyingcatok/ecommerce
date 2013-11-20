@@ -34,4 +34,5 @@ include 'tables/create_upforauc_table.php';
 include 'tables/create_shippedto_table.php';
 include 'tables/create_billingaddress_table.php';
 include 'tables/create_paidwith_table.php';
+include 'tables/create_shippedby_table.php';
 ?>

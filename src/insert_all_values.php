@@ -28,8 +28,10 @@ include 'insert/insert_ship.php';
 include 'insert/insert_shippedto.php';
 include 'insert/insert_promote.php';
 include 'insert/insert_paidwith.php';
+include 'insert/insert_shippedby.php';
 
 include 'insert/insert_vipowns.php';
 include 'insert/insert_upforauc.php';
 include 'insert/insert_bid.php';
+
 ?>
