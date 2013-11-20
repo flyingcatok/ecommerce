@@ -1,8 +1,8 @@
 <?php
 //Author: Libby Ferland
 //Date: 11/16/2013
-//Last Edit:
-//Edit Date:
+//Last Edit: Libby Ferland
+//Edit Date:11/20/2013
 
 
 error_reporting(E_ALL);
@@ -10,7 +10,6 @@ ini_set('display_errors', '1');
 session_start();
     if(isset($_SESSION['email'])) {
         $placerEmail = $_SESSION['email'];
-        echo $placerEmail;
     }
     else {
         echo "There are bigger problems <br>";
@@ -68,7 +67,7 @@ session_start();
     }
     $newID = $lastID + 1;
     $create_new_order = "INSERT INTO Orders(POrderID, Status) VALUES ('$newID', 'Pending');";
-    $create_new_purchase = "INSERT INTO Purchase(CEmail, InvoiceNo, PurchaseDate, PurchaseRating, Review) VALUES ('$placerEmail', '$newID', '2013-11-19 13:36:24', '4', 'It was OK');";
+    $create_new_purchase = "INSERT INTO Purchase(CEmail, InvoiceNo, PurchaseDate, PurchaseRating, Review) VALUES ('$placerEmail', '$newID', NOW(), '4', 'It was OK');";
     $create_new_shipped_to = "INSERT INTO ShippedTo(OrderID, CEmail, SAddr1, City, State) VALUES('$newID', '$placerEmail', '$shipAddrOne', '$shipAddrCity', '$shipAddrState');";
     $create_new_paid_with = "INSERT INTO PaidWith(OrderID, CEmail, CardNo) VALUES('$newID', '$placerEmail', '$payNum');";
     
@@ -95,8 +94,8 @@ session_start();
     }
     
     include "disconnect.php";
-    
-    echo "<br>Order placed!<br>";
+    $goHere = "order_confirmation.php?myONum=$newID";
+    Header('Location:' .$goHere);
    }
    else {
        echo "Error processing order.  Please review your information and try again. <br>";
