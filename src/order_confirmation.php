@@ -35,7 +35,7 @@ $myName = mysqli_query($con, $findMyName);
 $newContents = mysqli_query($con, $findNewContents);
 $whereSent = mysqli_query($con, $findWhereSent);
 $howPaid = mysqli_query($con, $findHowPaid);
-$emptyBasket = mysqli_query($con, $returnBasket);
+$emptyBasket = mysqli_query($con, $returnBasket); //This truncate command empties the basket after the order is confirmed as processed
 
 include "disconnect.php";
 
@@ -73,7 +73,8 @@ include "disconnect.php";
         $pCard = $prow["CardNo"];
         $pExp = $prow["CExpirDate"];
     }
-    echo("Card number $pCard <br>");
+    $pCard2 = "...-**" . substr($pCard, -4, 4);
+    echo("Card number $pCard2 <br>");
     echo("Expiration date $pExp <br>");
     
     echo("<br><br>");
