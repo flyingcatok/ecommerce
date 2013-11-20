@@ -10,7 +10,6 @@ ini_set('display_errors', '1');
 session_start();
     if(isset($_SESSION['email'])) {
         $placerEmail = $_SESSION['email'];
-        echo ("I found it <br>");
         echo $placerEmail;
     }
     else {
@@ -38,7 +37,7 @@ session_start();
     }
     
     //break up arrays - display information to customer after table insertion successful
-   
+   if (isset($myAdd) && isset($myPay)) {
     $shipAddrOne = $myAdd[1];
     $shipAddrTwo = $myAdd[2];
     $shipAddrCity = $myAdd[3];
@@ -54,21 +53,31 @@ session_start();
     $payCity = $myPay[6];
     $payState = $myPay[7];
   
+    
     //queries
+    include "connect_local.php";
     $orderConts = "SELECT DISTINCT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate
 					FROM Customer c, Basket b, BasketContains bc, Item i
 					WHERE b.CEmail = '$placerEmail' AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
 							AND bc.IId = i.IId;";
-    //create order first
-    $create_new_order = "INSERT INTO Orders(POrderID, Status) VALUES ('314159', 'Pending');";
-    $create_new_purchase = "INSERT INTO Purchase(CEmail, InvoiceNo, PurchaseDate, PurchaseRating, Review) VALUES ('$placerEmail', '314159', '2013-11-19 13:36:24', '4' 'It was OK');";
-    $create_new_shipped_to = "INSERT INTO ShippedTo(OrderID, CEmail, SAddr1, City, State) VALUES('314159', '$placerEmail', '$shipAddrOne', '$shipAddrCity', '$shipAddrState');";
+    //create order first - need to find last order id so the ids remain unique
+    $find_last_id = "SELECT MAX(POrderID) AS LastOrder FROM Orders;";
+    $lastOrder = mysqli_query($con,$find_last_id);
+    while ($row = $lastOrder->fetch_row()) {
+        $lastID = $row[0];
+    }
+    $newID = $lastID + 1;
+    $create_new_order = "INSERT INTO Orders(POrderID, Status) VALUES ('$newID', 'Pending');";
+    $create_new_purchase = "INSERT INTO Purchase(CEmail, InvoiceNo, PurchaseDate, PurchaseRating, Review) VALUES ('$placerEmail', '$newID', '2013-11-19 13:36:24', '4', 'It was OK');";
+    $create_new_shipped_to = "INSERT INTO ShippedTo(OrderID, CEmail, SAddr1, City, State) VALUES('$newID', '$placerEmail', '$shipAddrOne', '$shipAddrCity', '$shipAddrState');";
+    $create_new_paid_with = "INSERT INTO PaidWith(OrderID, CEmail, CardNo) VALUES('$newID', '$placerEmail', '$payNum');";
     
-    include "connect_local.php";
+    
     
     mysqli_query($con, $create_new_order);
     mysqli_query($con, $create_new_purchase);
     mysqli_query($con, $create_new_shipped_to);
+    mysqli_query($con, $create_new_paid_with);
     $orderContents = mysqli_query($con, $orderConts);
     
     $itemids = array();
@@ -81,13 +90,17 @@ session_start();
     }
     
     for($j = 0; $j < ($idin); $j++) {
-        $create_new_order_contains = "INSERT INTO OrderContains(COrderID, IId, OQuantity) VALUES ('314159', '$itemids[$j]', '$itemqs[$j]');";
+        $create_new_order_contains = "INSERT INTO OrderContains(COrderID, IId, OQuantity) VALUES ('$newID', '$itemids[$j]', '$itemqs[$j]');";
         mysqli_query($con, $create_new_order_contains);
     }
     
     include "disconnect.php";
     
-    echo "Order placed!";
+    echo "<br>Order placed!<br>";
+   }
+   else {
+       echo "Error processing order.  Please review your information and try again. <br>";
+   }
     //make orderID autoincrementing
     
     ?>
