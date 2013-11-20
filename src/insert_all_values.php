@@ -1,8 +1,8 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/7/2013
-//Last Edited: 
-//Last Edit Date: 
+//Last Edited: Feiyu Shi
+//Last Edit Date: 11/19/2013
 
 //Entities
 include 'insert/insert_customer.php';
@@ -27,8 +27,11 @@ include 'insert/insert_ordercontains.php';
 include 'insert/insert_ship.php';
 include 'insert/insert_shippedto.php';
 include 'insert/insert_promote.php';
+include 'insert/insert_paidwith.php';
+include 'insert/insert_shippedby.php';
 
 include 'insert/insert_vipowns.php';
 include 'insert/insert_upforauc.php';
 include 'insert/insert_bid.php';
+
 ?>

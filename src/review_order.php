@@ -33,6 +33,14 @@ session_start();
 
 <HTML>
     <HEAD> <TITLE> Review Your Order Information </TITLE></HEAD>
+    <div id="log_control" style="float:right; background-color: #FFFFFF">
+        <a href="my_account.php">My Account</a>
+        <a href="customer_basket.php">My Shopping Basket</a>
+        <a href="customer_logout.php">Logout</a>
+    </div>
+    <div id="header" style="background-color:#FFFFFF;clear:both;text-align:left;">
+	<H2> <a href="main.php" style="text-decoration: none">F&L Gift Store</a></H2>
+	</div>
     <BODY>
         <H1>Review Your Order Information</H1>
         <div id ="contents" style ="background-color:#FFFFFF; clear:both; text-align:left">
