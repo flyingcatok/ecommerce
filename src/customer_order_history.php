@@ -53,8 +53,9 @@ $sqlCommand0 = "SELECT p.InvoiceNo, o.Status, p.PurchaseDate
 $query0 = mysqli_query($con,$sqlCommand0) or die(mysqli_error($con));
 
 $count = mysqli_num_rows($query0);
+
 if($count > 0){
-		
+
 		while($row = mysqli_fetch_array($query0)){
 				echo "<table border=1>";
 				echo ("<tr><td>Invoice No</td>");
@@ -68,7 +69,7 @@ if($count > 0){
 				echo ("<td>$status</td>");
 				echo ("<td>$purchasedate</td></tr>");
 				// query items in this order
-				$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, oc. OQuantity, i.PromoPrice 
+				$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, oc.OQuantity, i.PromoPrice 
 					FROM  OrderContains oc, Item i
 					WHERE oc.COrderID = $invoiceno AND oc.IId = i.IId;";
 

@@ -50,8 +50,24 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 
 // connect to server
 include "connect_local.php";
-// check if the quantity is updated
+//check inventory,print out of stock info
 if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>0){
+	$updatedquan = mysqli_real_escape_string($con,$_POST['quantity']);
+	$selectedid = mysqli_real_escape_string($con,$_POST['IID']);
+	$sqlinvent = "SELECT Quantity
+					FROM Item
+					WHERE IId = $selectedid";
+	$queryinvent = mysqli_query($con,$sqlinvent) or die(mysqli_error($con));
+	while($row = mysqli_fetch_array($queryinvent)){
+		$invent = $row['Quantity'];
+	}
+	if ($updatedquan>$invent)
+	{
+		echo "<hr/>"."Out of Stock."."<hr/>";
+	}
+}
+// check if the quantity is updated
+if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>0&&$_POST['quantity']<=$invent){
 	$updatedquan = mysqli_real_escape_string($con,$_POST['quantity']);
 	$selectedid = mysqli_real_escape_string($con,$_POST['IID']);
 	$sqlupdate = "UPDATE BasketContains
