@@ -34,7 +34,7 @@
     <hr />
     <p>View by date:</p>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
-	<input name="period" type="radio" value="Today" checked>Today's sales history<br />
+	<input name="period" type="radio" value="Today">Today's sales history<br />
 	<input name="period" type="radio" value="LastWeek">Last 7 days' sales history<br />
 	<input name="period" type="radio" value="LastMonth">Last 30 days' sales history<br />
 	<input name="period" type="radio" value="LastYear">Last 365 days' sales history<br />

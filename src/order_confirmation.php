@@ -42,7 +42,17 @@ include "disconnect.php";
 ?>
 
 <HTML>
+	<div id="log_control" style="float:right; background-color: #FFFFFF">
+        <a href="my_account.php">My Account</a>
+        <a href="customer_basket.php">My Shopping Basket</a>
+        <a href="customer_logout.php">Logout</a>
+    </div>
+    <div id="logo" style="background-color:#FFFFFF;clear:both;text-align:left;">
+	<H2> <a href="main.php" style="text-decoration: none">F&L Gift Store</a> </H2>
+	</div>
     <HEAD><TITLE>Thank you for your order!</TITLE></HEAD>
+    
+    
     <H3>Your order number is <?php echo $confONum ?>.  Please retain this number for your records.</H3>
     <br><br>
     <div id="order-info" style ="background-color:#FFFFFF; clear:both; text-align:left " >
