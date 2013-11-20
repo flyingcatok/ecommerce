@@ -11,7 +11,7 @@ session_start();
         $reviewerEmail = $_SESSION['email'];
         echo $reviewerEmail;
         
-        $findContents = "SELECT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate
+        $findContents = "SELECT DISTINCT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate
 					FROM Customer c, Basket b, BasketContains bc, Item i
 					WHERE b.CEmail = '$reviewerEmail' AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
 							AND bc.IId = i.IId;";
@@ -78,7 +78,7 @@ session_start();
                 if (isset($addresses[$j])) {
                 ?>
             
-                <input type = "hidden" name = "<?php $addrin ?>" value = "<?php $addresses[$j]?>" >
+               <!-- <input type = "hidden" name = "<?php $addrin ?>" value = "<?php $addresses[$j]?>" > -->
                 Address <?php $addrin ?> <br>
                 <?php
                 echo ("<table border = \"0\">");
@@ -95,8 +95,10 @@ session_start();
                 echo ("</table>");
                 echo("<br>");
                 $addrin++;
+                $thisAdd = array("a",$lineOne, $lineTwo, $aCity, $aState, $aZip);
+                $addSelect = implode(',', $thisAdd);
                 ?>
-                <input type="radio" name = "address_choice" value = "<?php $addresses[$buttonin]?>">Select this address<br> <br>
+                <input type="radio" name = "address_choice" value = "<?php echo $addSelect; ?>">Select this address<br> <br>
                 <?php
                 $buttonin++;
                 }
@@ -148,7 +150,7 @@ session_start();
             for ($m = 0; $m < ($k + 1); $m++) {
                 if (isset($bills[$m])) {
                     ?>
-            <input type ="hidden" name ="<?php $billerin ?>" value="<?php $bills[$m] ?>" >
+           <!-- <input type ="hidden" name ="<?php $billerin ?>" value="<?php $bills[$m] ?>" >  -->
             Payment method <?php $billerin ?><br>
             <?php 
             echo ("<table border = \"0\">");
@@ -169,8 +171,10 @@ session_start();
             echo("</table>");
             echo("<br>");
             $billerin++;
+            $thisCard = array("b", $cardn, $expydate, $cardFirst, $cardLast, $billLineOne, $bCity, $bState);
+            $cardSelect = implode(',', $thisCard);
             ?>
-            <input type="radio" name="bill_choice" value ="<?php $bills[$billbuttin]?>" > Select this method <br>
+            <input type="radio" name="bill_choice" value ="<?php echo $cardSelect ?>" > Select this method <br>
           
            <?php 
            $billbuttin++;   }
