@@ -1,8 +1,8 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/16/2013
-//Last Edited: 
-//Date:
+//Last Edited: Feiyu Shi
+//Date: 11/20/2013
 
 error_reporting(E_ALL);
     ini_set('display_errors', '1');
@@ -10,11 +10,6 @@ error_reporting(E_ALL);
 
     // connect to server
 include "connect_local.php";
-$today = date('Y-m-d');
-
-$last7days = date("Y-m-d", mktime(0,0,0,date("m"),date("d")-7,date("Y")));
-$last30days = date("Y-m-d",mktime(0,0,0,date("m")-1,date("d"),date("Y")));
-$lastyear = date("Y-m-d",mktime(0,0,0,date("m"),date("d"),date("Y")-1));
 
 // process the search query
 if(isset($_POST['period'])&& $_POST['period'] == 'Today'){
@@ -22,7 +17,7 @@ if(isset($_POST['period'])&& $_POST['period'] == 'Today'){
 $sqltoday = "SELECT i.IId, i.IName, sales.total, (IFNULL(i.PromoPrice,i.IPrice)*sales.total) AS subtotal
 			FROM (SELECT oc.IId, sum(oc.OQuantity) AS total
 					FROM Purchase p, Orders o, OrderContains oc
-					WHERE PurchaseDate = $today AND p.InvoiceNo = o.POrderID AND o.POrderID = oc.COrderID
+					WHERE PurchaseDate >= TIMESTAMP(CURDATE(),'00:00:00') AND p.InvoiceNo = o.POrderID AND o.POrderID = oc.COrderID
 					GROUP BY oc.IId) AS sales, Item i
 			WHERE sales.IId = i.IId";
 $querytoday = mysqli_query($con,$sqltoday) or die(mysqli_error($con));
@@ -61,7 +56,7 @@ if(isset($_POST['period'])&& $_POST['period'] == 'LastWeek'){
 $sqlweek = "SELECT i.IId, i.IName, sales.total, (IFNULL(i.PromoPrice,i.IPrice)*sales.total) AS subtotal
 			FROM (SELECT oc.IId, sum(oc.OQuantity) AS total
 					FROM Purchase p, Orders o, OrderContains oc
-					WHERE PurchaseDate >= $last7days AND p.InvoiceNo = o.POrderID AND o.POrderID = oc.COrderID
+					WHERE DATE(PurchaseDate) >= TIMESTAMP(SUBDATE(CURDATE(), INTERVAL 7 DAY),'00:00:00') AND p.InvoiceNo = o.POrderID AND o.POrderID = oc.COrderID
 					GROUP BY oc.IId) AS sales, Item i
 			WHERE sales.IId = i.IId";
 $queryweek = mysqli_query($con,$sqlweek) or die(mysqli_error($con));
@@ -100,7 +95,7 @@ if(isset($_POST['period'])&& $_POST['period'] == 'LastMonth'){
 $sqlmonth = "SELECT i.IId, i.IName, sales.total, (IFNULL(i.PromoPrice,i.IPrice)*sales.total) AS subtotal
 			FROM (SELECT oc.IId, sum(oc.OQuantity) AS total
 					FROM Purchase p, Orders o, OrderContains oc
-					WHERE PurchaseDate >= $last30days AND p.InvoiceNo = o.POrderID AND o.POrderID = oc.COrderID
+					WHERE DATE(PurchaseDate) >= TIMESTAMP(SUBDATE(CURDATE(), INTERVAL 30 DAY),'00:00:00') AND p.InvoiceNo = o.POrderID AND o.POrderID = oc.COrderID
 					GROUP BY oc.IId) AS sales, Item i
 			WHERE sales.IId = i.IId";
 $querymonth = mysqli_query($con,$sqlmonth) or die(mysqli_error($con));
@@ -138,7 +133,7 @@ if(isset($_POST['period'])&& $_POST['period'] == 'LastYear'){
 $sqlyear = "SELECT i.IId, i.IName, sales.total, (IFNULL(i.PromoPrice,i.IPrice)*sales.total) AS subtotal
 			FROM (SELECT oc.IId, sum(oc.OQuantity) AS total
 					FROM Purchase p, Orders o, OrderContains oc
-					WHERE PurchaseDate >= $lastyear AND p.InvoiceNo = o.POrderID AND o.POrderID = oc.COrderID
+					WHERE DATE(PurchaseDate) >= TIMESTAMP(SUBDATE(CURDATE(), INTERVAL 365 DAY),'00:00:00') AND p.InvoiceNo = o.POrderID AND o.POrderID = oc.COrderID
 					GROUP BY oc.IId) AS sales, Item i
 			WHERE sales.IId = i.IId";
 $queryyear = mysqli_query($con,$sqlyear) or die(mysqli_error($con));
