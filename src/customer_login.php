@@ -17,14 +17,14 @@ Edit Date: 11/12/2013 -->
 </div>
 <div id="loginInfo" style="background-color:#FFFFFF;clear:both;text-align:center;">
 <form action="account_home.php" method= "POST">
-Email: &nbsp;&nbsp; <input type="text" name="Email"><br>
+Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="Email"><br>
 Password: <input type="password" name="Password"><br>
 <input type="submit" value="Login!" name="loginBtn">
 </form>
 </div>
 
 <div id="newuser" style="background-color:#FFFFFF;clear:both;text-align:center;">
-Or <a href="customer_registration.php">Create Account</a>
+Don't have an account? <a href="customer_registration.php">Create Account</a>.
 </div>
 
 </BODY>
