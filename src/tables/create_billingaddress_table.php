@@ -1,19 +1,19 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/6/2013
-//Last Edited: 
-//Date: 
+//Last Edited: Libby Ferland
+//Date: 11/20/2013
+//Note: Removed foreign key dependency on AddressBook table (unable to delete customer addresses otherwise)
 
 //create table
-$create_billingaddress_table = "CREATE TABLE BillingAddress
+$create_billingaddress_table = "CREATE TABLE BillingAddress 
     (CEmail 		VARCHAR(30) 	NOT NULL,
      CardNo 		BIGINT 			NOT NULL,
      Baddr1			VARCHAR(50)			NOT NULL,
      BCity			VARCHAR(50)			NOT NULL,
      BState			CHAR(2)			NOT NULL,
      PRIMARY KEY (CEmail, CardNo, Baddr1,BCity,BState),
- 	 FOREIGN KEY (CEmail,CardNo) REFERENCES PaymentMethods(CEmail,CardNo),
- 	 FOREIGN KEY (CEmail,Baddr1,BCity,BState) REFERENCES AddressBook(CEmail,AddrLine1, City, State) )";
+ 	 FOREIGN KEY (CEmail,CardNo) REFERENCES PaymentMethods(CEmail,CardNo) );";
 
 //check to make sure table is there
 

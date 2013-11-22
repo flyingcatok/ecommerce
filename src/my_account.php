@@ -54,7 +54,7 @@
         <b>Manage My Account</b><br>
         <a href ="customer_order_history.php">My Orders</a><br>
         <a href ="#payment">My Payment Info</a><br>
-        <a href ="#address">My Address</a><br>
+        <a href ="my_address.php">My Address</a><br>
 <!--         <a href ="customer_basket.php">My Basket</a><br> -->
         <a href ="main.php">Go Shopping!</a><br><br>
         <b>VIP</b><br>
