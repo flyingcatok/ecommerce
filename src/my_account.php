@@ -52,9 +52,9 @@
     </div>
     <div id ="navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
         <h4>Manage My Account</h4>
-        <a href ="customer_order_history.php">My Orders</a><br>
+        <a href ="customer_order_history.php">My Orders</a><br/>
         <a href ="my_payment.php">My Payment Info</a><br>
-        <a href ="my_address.php">My Address</a><br> 
+        <a href ="my_address.php">My Address Book</a><br> 
 <!--         <a href ="customer_basket.php">My Basket</a><br> -->
         <a href ="main.php">Go Shopping!</a><br><br>
         
