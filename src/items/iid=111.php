@@ -2,13 +2,13 @@
 //Author: Feiyu Shi
 //Date: 11/9/2013
 //Last Edited: Feiyu Shi
-//Date: 11/16/2013
+//Date: 11/22/2013
 
 // display attributes of the item
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 ini_set('display_startup_errors','1');
-
+    
 $item_output = "";
 // process the query
 	$sqlCommand = "SELECT i.IId, i.IName, i.Category, i.Description, i.Quantity, i.IPrice, i.PromoPrice
@@ -64,18 +64,23 @@ while($row = mysqli_fetch_array($query)){
 </div>
 
 <div id="quantity dropdown" style="background-color:#FFFFFF;height:20px;width:500px;float:right;">
-<form action="../add_item_to_basket.php" method = "post">
-<label for="iquantity">Quantity:</label>
-<select name="iquantity" id="iquantity">
-  <option value="1" selected>1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select>
-<input type="hidden" name="IID" value="111">
-<input type="submit" value="Add to Basket">
-</form>
+<?php if(isset($_SESSION['email'])){
+echo "<form action='../add_item_to_basket.php' method = 'post'>";
+echo "<label for='iquantity'>Quantity:</label>";
+echo "<select name='iquantity' id='iquantity'>";
+echo  "<option value='1' selected>1</option>";
+echo  "<option value='2'>2</option>";
+echo  "<option value='3'>3</option>";
+echo  "<option value='4'>4</option>";
+echo  "<option value='5'>5</option>";
+echo "</select>";
+
+echo "<input type='hidden' name='IID' value='111'>";
+echo "<input type='submit' value='Add to Basket'>";
+
+echo "</form>";
+}
+?>
 </div>
 
 <div id="customer review" style="background-color:#FFFFFF;width:500px;float:right;">
