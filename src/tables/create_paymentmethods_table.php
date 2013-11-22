@@ -6,7 +6,8 @@
 
 //create table
 $create_paymentmethods_table = "CREATE TABLE PaymentMethods
-    (CEmail 		VARCHAR(30) 	NOT NULL,
+    (IsVisible            BIT             NOT NULL,
+    CEmail 		VARCHAR(30) 	NOT NULL,
      CardNo 		BIGINT 			NOT NULL,
      CHolderLastName 	TEXT 			NOT NULL, 
      CHolderFirstName 	TEXT 			NOT NULL,

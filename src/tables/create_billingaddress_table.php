@@ -7,7 +7,8 @@
 
 //create table
 $create_billingaddress_table = "CREATE TABLE BillingAddress 
-    (CEmail 		VARCHAR(30) 	NOT NULL,
+    (IsVisible          BIT             NOT NULL,
+     CEmail 		VARCHAR(30) 	NOT NULL,
      CardNo 		BIGINT 			NOT NULL,
      Baddr1			VARCHAR(50)			NOT NULL,
      BCity			VARCHAR(50)			NOT NULL,

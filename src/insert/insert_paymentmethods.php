@@ -2,8 +2,8 @@
 //Author: Feiyu Shi
 //Date: 11/7/2013
 
-$add_payment_1 = "INSERT INTO PaymentMethods (CEmail, CardNo, CHolderLastName, CHolderFirstName, CExpirDate) VALUES ('john.smith@gmail.com','4128004598906574','Smith','John','0415');";
-$add_payment_2 = "INSERT INTO PaymentMethods (CEmail, CardNo, CHolderLastName, CHolderFirstName, CExpirDate) VALUES ('john.smith@gmail.com','379787674561223','Taylor','Marry','1214');";
+$add_payment_1 = "INSERT INTO PaymentMethods (IsVisible, CEmail, CardNo, CHolderLastName, CHolderFirstName, CExpirDate) VALUES ('1', 'john.smith@gmail.com','4128004598906574','Smith','John','0415');";
+$add_payment_2 = "INSERT INTO PaymentMethods (IsVisible, CEmail, CardNo, CHolderLastName, CHolderFirstName, CExpirDate) VALUES ('1', 'john.smith@gmail.com','379787674561223','Taylor','Marry','1214');";
 
 
 if (mysqli_query($con, $add_payment_1)) 
