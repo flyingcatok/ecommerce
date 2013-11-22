@@ -3,7 +3,7 @@
 //Author: Libby Ferland
 //Date: 11/11/2013
 //Last Edit: Feiyu Shi 
-//Edit Date: 11/16/2013
+//Edit Date: 11/22/2013
 
 
     error_reporting(E_ALL);
@@ -51,19 +51,36 @@
         <h3>Welcome back, <?php echo $custFirst ?>! </h3>    
     </div>
     <div id ="navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
-        <b>Manage My Account</b><br>
+        <h4>Manage My Account</h4>
         <a href ="customer_order_history.php">My Orders</a><br>
         <a href ="#payment">My Payment Info</a><br>
         <a href ="my_address.php">My Address</a><br>
 <!--         <a href ="customer_basket.php">My Basket</a><br> -->
         <a href ="main.php">Go Shopping!</a><br><br>
-        <b>VIP</b><br>
+        
     <?php
         if ($vipStatus == 1) {
     ?>
-        <a href="vip_home.php">My Store</a><br>
-    <?php       }
+    	<h4>VIP</h4>
+        <a href="vip_home.php">VIP Home</a><br>
+    <?php       }elseif($vipStatus == 0){
+    	//echo "Not a VIP?"."<br>"."<br>";
         ?>
+        <h4>Not a VIP?</h4>
+        <a href="purchase_vip.php">Become a VIP today!</a><br>
+    <?php
+    }
+    ?>
+    </div>
+    <div id="explain VIP" style="float:left">
+    <p>What can VIP do?</p>
+        <p>VIP customer has the privilege to open a mini-store of his/her own.</p> 
+        <p>He/she can list items for sale in the mini-store and can cancel them at any time before the items are sold.</p> 
+        <p>The sale can be in the format of regular sale and bidding.</p>  
+        <p>If the item is for regular sale, registered customers can purchase it. </p>
+        <p>If the item is for bidding, customers can bid on the item and bidding history should be kept for each item in the database. </p>
+        <p>When the bidding finishes, customer offering the highest price wins the item. </p>
+        <p>The item will be shipped to the winning customer by the original seller.</p>
     </div>
     
 <!-- 
