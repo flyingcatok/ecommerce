@@ -10,6 +10,7 @@
     session_start();
     $_SESSION['email'] = $_POST["Email"];
     
+    
     //get variables from text input
     
     if(isset($_POST["loginBtn"])) {
@@ -39,6 +40,8 @@
             Header('Location: my_account.php');
         }
         else {
+            session_unset();
+            session_destroy();
             
             ?>
 <HTML>
