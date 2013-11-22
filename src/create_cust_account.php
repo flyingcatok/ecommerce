@@ -1,25 +1,25 @@
 <?php 
 //Author: Libby Ferland
 //Date: 11/12/2013
-//Last Edited:
-//Edit Date:
+//Last Edited: Feiyu Shi	
+//Edit Date: 11/22/2013
 
     if(isset($_POST["createAccBtn"])) {
-        if(isset($_POST["firstName"])) {
+        if(isset($_POST["firstName"])&&$_POST["firstName"]!="") {
             $newCFirstName = $_POST["firstName"];
         }
-        if(isset($_POST["lastName"])) {
+        if(isset($_POST["lastName"])&&$_POST["lastName"]!="") {
             $newCLastName = $_POST["lastName"];
                 
         }
-        if(isset($_POST["newEmail"])) {
+        if(isset($_POST["newEmail"])&&$_POST["newEmail"]!="") {
             $newCEmail = $_POST["newEmail"];
         }
-        if (isset($_POST["newPass"])) {
+        if (isset($_POST["newPass"])&&$_POST["newPass"]!="") {
             $newAccPass = $_POST["newPass"];
         }
         
-        if(isset($_POST["passConf"])) {
+        if(isset($_POST["passConf"])&&$_POST["passConf"]!="") {
             $confirmedPass = $_POST["passConf"];
         }
     }
@@ -51,6 +51,6 @@
 ?>
 <html>
 <head>
-<meta http-equiv="refresh" content="0;url=customer_login.php"> 
+<!-- <meta http-equiv="refresh" content="0;url=customer_login.php">  -->
 </head>
 </html>
