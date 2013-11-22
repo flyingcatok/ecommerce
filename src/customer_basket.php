@@ -75,6 +75,13 @@ if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>0&&$_P
 					WHERE IId = $selectedid";
 	$updatequery = mysqli_query($con,$sqlupdate) or die(mysqli_error($con));	
 	}
+// if the new quantity is 0, delete this item
+if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']==0){
+	$selectedid = mysqli_real_escape_string($con,$_POST['IID']);
+	$sqldelete = "DELETE FROM BasketContains
+					WHERE IId=$selectedid;";
+	$deletequery = mysqli_query($con,$sqldelete) or die(mysqli_error($con));		
+	}
 // delete this item
 if(isset($_POST['remove'])){
 	$selectedid = mysqli_real_escape_string($con,$_POST['IID']);
