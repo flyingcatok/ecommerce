@@ -1,8 +1,8 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/19/2013
-//Last Edit: 
-//Edit Date: 
+//Last Edit: Feiyu Shi
+//Edit Date: 11/22/2013
  session_start();
 if(isset($_SESSION['empID'])) {
         $processEID = $_SESSION['empID'];
