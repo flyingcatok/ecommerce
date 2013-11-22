@@ -3,7 +3,7 @@
 //Date: 11/19/2013
 //Last Edit: 
 //Edit Date: 
-
+ session_start();
 if(isset($_SESSION['empID'])) {
         $processEID = $_SESSION['empID'];
     }
@@ -36,7 +36,7 @@ if(isset($_SESSION['empID'])) {
 					ORDER BY p.PurchaseDate;";
 	$query = mysqli_query($con,$sqlpending) or die(mysqli_error($con));
 	$count = mysqli_num_rows($query);
-	echo $count;
+// 	echo $count;
 if($count > 0){
 
 	while($row = mysqli_fetch_array($query)){
@@ -96,7 +96,7 @@ if($count > 0){
 					echo ("<td>\$ $price</td>");
 					echo ("<td>$oquantity</td></tr>");
 					
-					if(isset($_POST['OrderID'])&&isset($_POST['Shipped'])&&isset($_POST['Shortage'])&&$_POST['Shortage']==0){
+					if(isset($_SESSION['empID'])&&isset($_POST['OrderID'])&&isset($_POST['Shipped'])&&isset($_POST['Shortage'])&&$_POST['Shortage']==0){
 						//update inventory
 						$sqlinvent = "UPDATE Item
 										SET Quantity = $invent - $oquantity
@@ -121,13 +121,18 @@ if($count > 0){
 		echo "<tr><td>No Pending Orders.</td></tr>";	
 		echo "</table>";}
 		
-		if(isset($_POST['OrderID'])&&isset($_POST['Shipped'])&&isset($_POST['Shortage'])&&$_POST['Shortage']==0){
+		if(isset($_SESSION['empID'])&&isset($_POST['OrderID'])&&isset($_POST['Shipped'])&&isset($_POST['Shortage'])&&$_POST['Shortage']==0){
 			$orderid = $_POST['OrderID'];
 			//update order status
 			$sqlstatus = "UPDATE Orders
 							SET Status = 'Shipped'
 							WHERE POrderID = $orderid;";
 			$update = mysqli_query($con,$sqlstatus) or die(mysqli_error($con));
+			
+			// update ship table and timestamp it
+			$sqlship = "INSERT INTO Ship(EId, OrderID, ShipDate)
+						VALUES ('$processEID', '$orderid', TIMESTAMP(NOW()));";
+			$insert = mysqli_query($con,$sqlship) or die(mysqli_error($con));
 			echo "<hr/>"."Shiped!";
 		}
 	include "disconnect.php";

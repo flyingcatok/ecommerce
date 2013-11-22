@@ -44,9 +44,9 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 // connect to server
 include_once "connect_local.php";
 // process the query
-$sqlCommand0 = "SELECT p.InvoiceNo, o.Status, p.PurchaseDate
-					FROM Customer c, Purchase p, Orders o
-					WHERE c.Email = '$historicEmail' AND c.Email = p.CEmail AND p.InvoiceNo = o.POrderID
+$sqlCommand0 = "SELECT p.InvoiceNo, o.Status, p.PurchaseDate, s.ShipDate
+					FROM Customer c, Purchase p, Orders o, Ship s
+					WHERE c.Email = '$historicEmail' AND c.Email = p.CEmail AND p.InvoiceNo = o.POrderID AND o.POrderID = s.OrderID
 					ORDER BY p.PurchaseDate;";
 							
 	
@@ -58,23 +58,28 @@ if($count > 0){
 
 		while($row = mysqli_fetch_array($query0)){
 				echo "<table border=1>";
-				echo ("<tr><td>Invoice No</td>");
-				echo ("<td>Status</td>");
-				echo ("<td>Purchase Date</td></tr>");
 				$invoiceno = $row["InvoiceNo"];
 				$status = $row["Status"];
 				$purchasedate = $row["PurchaseDate"];
+				$shipdate = $row["ShipDate"];
 				$subtotal = 0;
-				echo ("<tr><td>$invoiceno</td>");
-				echo ("<td>$status</td>");
-				echo ("<td>$purchasedate</td></tr>");
+				if($status =='Pending'){
+					echo ("<tr><td colspan=3>Invoice No: $invoiceno</td></tr>");
+					echo ("<td colspan=3>Purchase Date: $purchasedate</td></tr>");
+					echo ("<td colspan=3>Status: $status</td></tr>");
+					}elseif($status == "Shipped"){
+					echo ("<tr><td colspan=3>Invoice No: $invoiceno</td></tr>");
+					echo ("<td colspan=3>Purchase Date: $purchasedate</td></tr>");
+					echo ("<td colspan=3>Status: $status</td></tr>");
+					echo "<td colspan=3>Shipping Date: $shipdate</td></tr>";
+					}
 				// query items in this order
 				$sqlCommand = "SELECT i.IId, i.IName, i.IPrice, oc.OQuantity, i.PromoPrice 
 					FROM  OrderContains oc, Item i
 					WHERE oc.COrderID = $invoiceno AND oc.IId = i.IId;";
 
 				$query = mysqli_query($con,$sqlCommand) or die(mysqli_error($con));
-
+				echo "<tr><td colspan=3></td></tr>";
 				echo "<tr><td>Item</td>";
 				echo "<td>Price</td>";
 				echo "<td>Quantity</td></tr>";
