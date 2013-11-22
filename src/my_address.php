@@ -26,6 +26,7 @@
     if($isAddressPresent->fetch_row() == 0) {
         echo "You have not entered a shipping address.<br>";
         echo "Please enter an address <a href=\"add_address.php\">here.</a>";
+        include "disconnect.php";
     }
     else {
         $getShippingAddr = mysqli_query($con, $findShippingAddr);
@@ -47,7 +48,7 @@
             $zip[$i] = $myAddr["Zip"];
             $i++;
         }
-    }
+    
     
     include "disconnect.php";
     
@@ -77,3 +78,4 @@
         </div>
         
 </HTML>
+    <?php } ?>
