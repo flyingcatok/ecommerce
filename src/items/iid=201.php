@@ -28,12 +28,12 @@ while($row = mysqli_fetch_array($query)){
 		$quantity = $row["Quantity"];
 		$oprice = $row["IPrice"];
 		$promoprice = $row["PromoPrice"];
-		$promoprice = number_format($promoprice, 2, '.', ',');
 		$item_output .= "Item ID: $id - $name <br /> 
 		Category: $category <br />
 		Description: $descript <br />
 		Original Price: \$ $oprice <br />";
 		if(!is_null($promoprice)){
+			$promoprice = number_format($promoprice, 2, '.', ',');
 			$item_output.= "Sales Price: \$ $promoprice <br />";
 			}
 		$item_output .= "	
