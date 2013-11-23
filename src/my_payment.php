@@ -91,6 +91,12 @@
         <br><br>
         </form>
         <?php } ?>
+        <form action="new_payment_method.php">
+            <input type="submit" value="Add New Payment Method">
+        </form>
+        
+         <br><br><br>
+        <a href="my_account.php">Return to account home.</a>
         </div>
         
 </HTML>

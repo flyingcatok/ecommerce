@@ -30,6 +30,7 @@
         echo "<form action = \"new_address.php\">";
         echo "<input type=\"submit\" value = \"Add a new address\"";
         echo"<\form>";
+        echo "<a href=\"my_account.php\">Return to account home</a>";
         include "disconnect.php";
     }
     else {
