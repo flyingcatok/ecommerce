@@ -78,7 +78,9 @@
     </div>
         <div id ="no-navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
         <b>Manage My Account</b><br>
+        <a href ="customer_order_history.php">My Orders</a><br>
         <a href ="main.php">Go Shopping!</a><br><br>
+        </div>
   
     <?php } 
         else if ($addExists == "no" && $payExists=="yes") { ?>
@@ -86,26 +88,38 @@
         <form action="new_address.php">
             <input type ="submit" value="Add a new shipping address">
         </form>
-        </div>
+    </div>
         <div id ="pay-navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
         <b>Manage My Account</b><br>
         <a href ="my_payment.php">My Payment Info</a><br>
+        <a href ="customer_order_history.php">My Orders</a><br>
         <a href ="main.php">Go Shopping!</a><br><br>
- 
+ 		</div>
     <?php }
         else if ($addExists == "yes" && $payExists=="no") { ?>
         You haven't saved any payment methods yet.
         <form action ="new_payment_method.php">
             <input type="submit" value="Add a new payment method">
         </form>
-        </div>
+    </div>
         <div id ="add-navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
         <b>Manage My Account</b><br>
         <a href ="my_address.php">My Address</a><br> 
+        <a href ="customer_order_history.php">My Orders</a><br>
         <a href ="main.php">Go Shopping!</a><br><br>
-
+		</div>
         
-        <?php } ?>
+        <?php }else if ($addExists == "yes" && $payExists=="yes"){?>
+    </div>
+        <div id ="no-navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
+        <b>Manage My Account</b><br>
+        <a href ="my_address.php">My Address</a><br> 
+        <a href ="my_payment.php">My Payment Info</a><br>
+        <a href ="customer_order_history.php">My Orders</a><br>
+        <a href ="main.php">Go Shopping!</a><br><br>
+        </div>
+        
+       <?php } ?>
     
 </HTML>
 
