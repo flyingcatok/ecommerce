@@ -25,7 +25,7 @@ else {
 //query new tables to echo info back to user
 $findMyName = "SELECT Lname, Fname FROM Customer WHERE Email = '$confEmail'";
 $findNewContents = "SELECT c.IId, c.OQuantity, i.IName FROM OrderContains c, Item i WHERE c.COrderID = '$confONum' AND c.IId = i.IId;";
-$findWhereSent = "SELECT * FROM ShippedTo WHERE OrderID = '$confONum' AND CEmail = '$confEmail'; ";
+$findWhereSent = "SELECT AddrIndex FROM ShippedTo WHERE OrderID = '$confONum' AND CEmail = '$confEmail'; ";
 $findHowPaid = "SELECT p.CardNo, m.CExpirDate FROM PaidWith p, PaymentMethods m WHERE p.OrderID = '$confONum' AND p.CEmail = '$confEmail' AND p.CardNo = m.CardNo;";
 $returnBasket = "TRUNCATE TABLE BasketContains;";
 
@@ -36,6 +36,11 @@ $newContents = mysqli_query($con, $findNewContents);
 $whereSent = mysqli_query($con, $findWhereSent);
 $howPaid = mysqli_query($con, $findHowPaid);
 $emptyBasket = mysqli_query($con, $returnBasket); //This truncate command empties the basket after the order is confirmed as processed
+
+$aIndex = $whereSent->fetch_row();
+
+$getSAddr = "SELECT * FROM AddressBook WHERE AddrIndex = '$aIndex[0]';";
+$shippedHere = mysqli_query($con, $getSAddr);
 
 include "disconnect.php";
 
@@ -64,16 +69,20 @@ include "disconnect.php";
         $oLName = $nrow["Lname"];
         $oFName = $nrow["Fname"];
     }
-    echo ("Shipped to:<br> <b> $oFName  $oLName</b> <br>");
+    echo ("Shipped to:<br> <b> $oFName  $oLName</b> <br><br>");
     
-    while ($srow = mysqli_fetch_array($whereSent)) {
-        $sentLineOne = $srow["SAddr1"];
-        $sentCity = $srow["City"];
-        $sentState = $srow["State"];
-    }
+    $qrow = $shippedHere->fetch_row();
+        $sentLineOne = $qrow[2];
+        $sentLineTwo = $qrow[3];
+        $sentCity = $qrow[4];
+        $sentState = $qrow[5];
+        $sentZip = $qrow[6];
+    
     echo ("$sentLineOne <br>");
+    echo("$sentLineTwo <br>");
     echo ("$sentCity <br>");
     echo ("$sentState <br>");
+    echo ("$sentZip <br>");
     
     echo("<br><br>");
     

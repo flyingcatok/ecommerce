@@ -15,9 +15,9 @@ session_start();
 					FROM Customer c, Basket b, BasketContains bc, Item i
 					WHERE b.CEmail = '$reviewerEmail' AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
 							AND bc.IId = i.IId;";
-        $findOAddress = "SELECT AddrLine1, AddrLine2, City, State, Zip FROM AddressBook WHERE CEmail = '$reviewerEmail'";
-        $findOPay = "SELECT p.CardNo, p.CHolderLastName, p.CHolderFirstName, p.CExpirDate, b.Baddr1, b.BCity, b.BState
-                 FROM PaymentMethods p, BillingAddress b WHERE p.CEmail = '$reviewerEmail' AND p.CardNo = b.CardNo";
+        $findOAddress = "SELECT AddrIndex, AddrLine1, AddrLine2, City, State, Zip FROM AddressBook WHERE CEmail = '$reviewerEmail' AND IsVisible = 1";
+        $findOPay = "SELECT p.CardNo, p.CHolderLastName, p.CHolderFirstName, p.CExpirDate, a.AddrLine1, a.AddrLine2, a.City, a.State, a.Zip, b.AddrIndex
+                 FROM PaymentMethods p, AddressBook a, BillingAddress b WHERE p.CEmail = '$reviewerEmail' AND p.CardNo = b.CardNo AND p.IsVisible = 1 AND b.AddrIndex = a.AddrIndex;";
         
         include "connect_local.php";
         $getContents = mysqli_query($con, $findContents);
@@ -87,9 +87,9 @@ session_start();
                 ?>
             
                <!-- <input type = "hidden" name = "<?php $addrin ?>" value = "<?php $addresses[$j]?>" > -->
-                Address <?php $addrin ?> <br>
                 <?php
                 echo ("<table border = \"0\">");
+                $addrInShip = $addresses[$j]["AddrIndex"];
                 $lineOne = $addresses[$j]["AddrLine1"];
                 $lineTwo = $addresses[$j]["AddrLine2"];
                 $aCity = $addresses[$j]["City"];
@@ -103,7 +103,7 @@ session_start();
                 echo ("</table>");
                 echo("<br>");
                 $addrin++;
-                $thisAdd = array("a",$lineOne, $lineTwo, $aCity, $aState, $aZip);
+                $thisAdd = array("a",$lineOne, $lineTwo, $aCity, $aState, $aZip, $addrInShip);
                 $addSelect = implode(',', $thisAdd);
                 ?>
                 <input type="radio" name = "address_choice" value = "<?php echo $addSelect; ?>">Select this address<br> <br>
@@ -159,28 +159,34 @@ session_start();
                 if (isset($bills[$m])) {
                     ?>
            <!-- <input type ="hidden" name ="<?php $billerin ?>" value="<?php $bills[$m] ?>" >  -->
-            Payment method <?php $billerin ?><br>
             <?php 
+            echo "<br>";
             echo ("<table border = \"0\">");
             $cardn = $bills[$m]["CardNo"];
             $cardLast = $bills[$m]["CHolderLastName"];
             $cardFirst = $bills[$m]["CHolderFirstName"];
             $expydate = $bills[$m]["CExpirDate"];
-            $billLineOne = $bills[$m]["Baddr1"];
-            $bCity = $bills[$m]["BCity"];
-            $bState = $bills[$m]["BState"];
+            $billLineOne = $bills[$m]["AddrLine1"];
+            $billLineTwo = $bills[$m]["AddrLine2"];
+            $bCity = $bills[$m]["City"];
+            $bState = $bills[$m]["State"];
+            $bZip = $bills[$m]["Zip"];
+            $addrInBill = $bills[$m]["AddrIndex"];
             $cardn2 = "...-**" . substr($cardn, -4, 4);
             echo("Card Number: $cardn2<br>");
             echo("Expiration date: $expydate<br>");
             echo("Card Holder: $cardFirst ");
             echo("$cardLast<br>");
-            echo("Billing Address: $billLineOne<br>");
+            echo("<br>");
+            echo("Billing Address: <br> $billLineOne<br>");
+            echo("$billLineTwo <br>");
             echo("Billing City:$bCity<br>");
             echo("Billing State: $bState<br>");
+            echo ("Billing Zip: $bZip<br>");
             echo("</table>");
             echo("<br>");
             $billerin++;
-            $thisCard = array("b", $cardn, $expydate, $cardFirst, $cardLast, $billLineOne, $bCity, $bState);
+            $thisCard = array("b", $cardn, $expydate, $cardFirst, $cardLast, $billLineOne, $billLineTwo, $bCity, $bState, $bZip, $addrInBill);
             $cardSelect = implode(',', $thisCard);
             ?>
             <input type="radio" name="bill_choice" value ="<?php echo $cardSelect ?>" > Select this method <br>
