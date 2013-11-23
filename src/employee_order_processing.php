@@ -133,7 +133,7 @@ if($count > 0){
 			$sqlship = "INSERT INTO Ship(EId, OrderID, ShipDate)
 						VALUES ('$processEID', '$orderid', TIMESTAMP(NOW()));";
 			$insert = mysqli_query($con,$sqlship) or die(mysqli_error($con));
-			echo "<hr/>"."Shiped!";
+			echo "<hr/>"."Shipped!";
 		}
 	include "disconnect.php";
 	echo "<hr />";
