@@ -2,7 +2,7 @@
 //Author: Libby Ferland
 //Date: 11/13/2013
 //Last Edit: Libby Ferland
-//Edit Date: 11/20/2013
+//Edit Date: 11/22/2013
 
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
@@ -16,16 +16,20 @@
     else {
         echo "too bad";
     }
-    $checkAddr = "SELECT COUNT(*) FROM AddressBook WHERE CEmail = '$addrEmail'";
+    $checkAddr = "SELECT COUNT(*) FROM AddressBook WHERE CEmail = '$addrEmail';";
     $findShippingAddr = "SELECT * FROM AddressBook WHERE CEmail = '$addrEmail'";
-    
+   
     include "connect_local.php";
     
     $isAddressPresent = mysqli_query($con, $checkAddr);
+    $pAddress = $isAddressPresent->fetch_row();
     
-    if($isAddressPresent->fetch_row() == 0) {
+    if($pAddress[0] == 0) {
+        echo "<H1>My Shipping Information</H1>";
         echo "You have not entered a shipping address.<br>";
-        echo "Please enter an address <a href=\"add_address.php\">here.</a>";
+        echo "<form action = \"new_address.php\">";
+        echo "<input type=\"submit\" value = \"Add a new address\"";
+        echo"<\form>";
         include "disconnect.php";
     }
     else {
@@ -84,6 +88,11 @@
         <br><br>
         </form>
         <?php } ?>
+        <form action="new_address.php">
+            <input type ="submit" value="Add new address">
+        </form>
+        <br><br><br>
+        <a href="my_account.php">Return to account home.</a>
         </div>
         
 </HTML>
