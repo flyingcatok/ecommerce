@@ -10,7 +10,7 @@ ini_set('display_errors', '1');
 session_start();
     if(isset($_SESSION['email'])) {
         $historicEmail = $_SESSION['email'];
-        echo $historicEmail;
+//         echo $historicEmail;
     }
 ?>
 
@@ -44,16 +44,16 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 // connect to server
 include_once "connect_local.php";
 // process the query
-$sqlCommand0 = "SELECT p.InvoiceNo, o.Status, p.PurchaseDate, s.ShipDate
-					FROM Customer c, Purchase p, Orders o, Ship s
-					WHERE c.Email = '$historicEmail' AND c.Email = p.CEmail AND p.InvoiceNo = o.POrderID AND o.POrderID = s.OrderID
+$sqlCommand0 = "SELECT p.InvoiceNo, o.Status, p.PurchaseDate
+					FROM Customer c, Purchase p, Orders o
+					WHERE c.Email = '$historicEmail' AND c.Email = p.CEmail AND p.InvoiceNo = o.POrderID
 					ORDER BY p.PurchaseDate;";
 							
 	
 $query0 = mysqli_query($con,$sqlCommand0) or die(mysqli_error($con));
 
 $count = mysqli_num_rows($query0);
-
+echo $count;
 if($count > 0){
 
 		while($row = mysqli_fetch_array($query0)){
@@ -61,13 +61,19 @@ if($count > 0){
 				$invoiceno = $row["InvoiceNo"];
 				$status = $row["Status"];
 				$purchasedate = $row["PurchaseDate"];
-				$shipdate = $row["ShipDate"];
+// 				$shipdate = $row["ShipDate"];
 				$subtotal = 0;
 				if($status =='Pending'){
 					echo ("<tr><td colspan=3>Invoice No: $invoiceno</td></tr>");
 					echo ("<td colspan=3>Purchase Date: $purchasedate</td></tr>");
 					echo ("<td colspan=3>Status: $status</td></tr>");
 					}elseif($status == "Shipped"){
+					$sqlshipdate = "SELECT ShipDate
+									FROM Ship
+									WHERE OrderID = $invoiceno";
+					$date = mysqli_query($con,$sqlshipdate) or die(mysqli_error($con));
+					$row2 = mysqli_fetch_array($date);
+					$shipdate = $row2["ShipDate"];
 					echo ("<tr><td colspan=3>Invoice No: $invoiceno</td></tr>");
 					echo ("<td colspan=3>Purchase Date: $purchasedate</td></tr>");
 					echo ("<td colspan=3>Status: $status</td></tr>");
