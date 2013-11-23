@@ -1,0 +1,9 @@
+1. check if email is valid in registration page
+2. check if password is at least of lenght n
+3. if any aristerisk field are null or not appropriate, force customer to give proper entries
+4. address primary keys: line 1(number + street), city, state, zip(5 digits) are required, and force customer to provide all valid info in order to add an adress
+5. proper links on add address 
+6. automatically assign a basket id to customer during registration.
+7. customer order history didn't show all the orders
+8. employee pending orders can't see all pending orders.
+
