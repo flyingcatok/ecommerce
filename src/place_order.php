@@ -42,6 +42,7 @@ session_start();
     $shipAddrCity = $myAdd[3];
     $shipAddrState = $myAdd[4];
     $shipAddrZip = $myAdd[5];
+    $shipAddrIn = $myAdd[6];
     
     //purchase  needs to contain payment method and shipping address
     $payNum = $myPay[1];
@@ -49,8 +50,11 @@ session_start();
     $payFirstName = $myPay[3];
     $payLastName = $myPay[4];
     $payAddrOne = $myPay[5];
-    $payCity = $myPay[6];
-    $payState = $myPay[7];
+    $payAddrTwo = $myPay[6];
+    $payCity = $myPay[7];
+    $payState = $myPay[8];
+    $payZip = $myPay[9];
+    $payAddrIn = $myPay[10];
   
     
     //queries
@@ -68,7 +72,7 @@ session_start();
     $newID = $lastID + 1;
     $create_new_order = "INSERT INTO Orders(POrderID, Status) VALUES ('$newID', 'Pending');";
     $create_new_purchase = "INSERT INTO Purchase(CEmail, InvoiceNo, PurchaseDate, PurchaseRating, Review) VALUES ('$placerEmail', '$newID', NOW(), '4', 'It was OK');";
-    $create_new_shipped_to = "INSERT INTO ShippedTo(OrderID, CEmail, SAddr1, City, State) VALUES('$newID', '$placerEmail', '$shipAddrOne', '$shipAddrCity', '$shipAddrState');";
+    $create_new_shipped_to = "INSERT INTO ShippedTo(OrderID, CEmail, AddrIndex) VALUES('$newID', '$placerEmail', '$shipAddrIn');";
     $create_new_paid_with = "INSERT INTO PaidWith(OrderID, CEmail, CardNo) VALUES('$newID', '$placerEmail', '$payNum');";
     
     
