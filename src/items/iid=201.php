@@ -2,7 +2,7 @@
 //Author: Feiyu Shi
 //Date: 11/9/2013
 //Last Edited: Feiyu Shi
-//Date: 11/22/2013
+//Date: 11/23/2013
 
 // display attributes of the item
 error_reporting(E_ALL);
@@ -78,7 +78,7 @@ echo  "<option value='4'>4</option>";
 echo  "<option value='5'>5</option>";
 echo "</select>";
 
-echo "<input type='hidden' name='IID' value='111'>";
+echo "<input type='hidden' name='IID' value='201'>";
 echo "<input type='submit' value='Add to Basket'>";
 
 echo "</form>";

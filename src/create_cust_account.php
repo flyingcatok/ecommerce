@@ -40,9 +40,13 @@
         echo "There is already an account associated with this email address.&nbsp&nbsp <a href=\"customer_login.php\">Log in now?</a>";
     }
     else {
+    // create customer info
     $createNewAcct = "INSERT INTO Customer(Email, Password, LName, FName, IsVIP) VALUES('$newCEmail', '$newAccPass', '$newCLastName', '$newCFirstName', 0)";
     
     $acctquery = mysqli_query($con,$createNewAcct) or die(mysqli_error($con));
+    // assign a basket id to this customer
+    $assignbskid = "INSERT INTO Basket(CEmail) VALUES('$newCEmail')";
+    $bskid = mysqli_query($con,$assignbskid) or die(mysqli_error($con));
     echo "Account creation successful!<br>";
     echo "<a href=\"customer_login.php\">Log in now?</a>";
     }

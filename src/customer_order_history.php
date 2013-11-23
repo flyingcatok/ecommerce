@@ -53,7 +53,7 @@ $sqlCommand0 = "SELECT p.InvoiceNo, o.Status, p.PurchaseDate
 $query0 = mysqli_query($con,$sqlCommand0) or die(mysqli_error($con));
 
 $count = mysqli_num_rows($query0);
-echo $count;
+// echo $count;
 if($count > 0){
 
 		while($row = mysqli_fetch_array($query0)){

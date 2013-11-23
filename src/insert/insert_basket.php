@@ -2,7 +2,7 @@
 //Author: Feiyu Shi
 //Date: 11/7/2013
 
-$add_basket_1 = "INSERT INTO Basket (CEmail, BasketId, ShopDate) VALUES ('john.smith@gmail.com','100001','2013-11-7 22:45:44');";
+$add_basket_1 = "INSERT INTO Basket (CEmail, BasketId, ShopDate) VALUES ('john.smith@gmail.com','1','2013-11-7 22:45:44');";
 
 
 
