@@ -6,14 +6,15 @@
 
 //create table
 $create_addressbook_table = "CREATE TABLE AddressBook
-    (AddrIndex          INT                     NOT NULL AUTO_INCREMENT,
-    CEmail 		VARCHAR(30) 		NOT NULL,
+    (AddrIndex          INT          NOT NULL AUTO_INCREMENT,
+     CEmail 		VARCHAR(30) 		NOT NULL,
      AddrLine1 		VARCHAR(50) 			NOT NULL,
      AddrLine2 		VARCHAR(50),
      City 		VARCHAR(50) 			NOT NULL,
      State 		CHAR(2) 		NOT NULL,
      Zip 		INT 			NOT NULL, 
-     PRIMARY KEY (AddrIndex, CEmail, AddrLine1, City, State),
+     IsVisible 		BOOLEAN		NOT NULL,
+     PRIMARY KEY (AddrIndex, CEmail),
  	 FOREIGN KEY (CEmail) REFERENCES Customer(Email))";
 
 //check to make sure table is there

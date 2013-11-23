@@ -2,8 +2,8 @@
 //Author: Feiyu Shi
 //Date: 11/7/2013
 
-$add_billingaddr_1 = "INSERT INTO BillingAddress (IsVisible, CEmail, CardNo, Baddr1, BCity, BState) VALUES ('1', 'john.smith@gmail.com','4128004598906574','434 Transylvania Ave','Lexington','KY');";
-$add_billingaddr_2 = "INSERT INTO BillingAddress (IsVisible, CEmail, CardNo, Baddr1, BCity, BState) VALUES ('1', 'john.smith@gmail.com','379787674561223','189 Lake Lila Ln','Ann Arbor','MI');";
+$add_billingaddr_1 = "INSERT INTO BillingAddress (CEmail, CardNo,AddrIndex,IsVisible) VALUES ('john.smith@gmail.com','4128004598906574','1','1');";
+$add_billingaddr_2 = "INSERT INTO BillingAddress (CEmail, CardNo,AddrIndex,IsVisible ) VALUES ('john.smith@gmail.com','379787674561223','2','1');";
 
 
 if (mysqli_query($con, $add_billingaddr_1)) 

@@ -2,8 +2,8 @@
 //Author: Feiyu Shi
 //Date: 11/7/2013
 
-$add_addr_1 = "INSERT INTO AddressBook (CEmail, AddrLine1, AddrLine2, City, State, Zip) VALUES ('john.smith@gmail.com','434 Transylvania Ave','APT 114','Lexington','KY', '40508');";
-$add_addr_2 = "INSERT INTO AddressBook (CEmail, AddrLine1, AddrLine2, City, State, Zip) VALUES ('john.smith@gmail.com','189 Lake Lila Ln','APT 8A3','Ann Arbor','MI', '48105');";
+$add_addr_1 = "INSERT INTO AddressBook (CEmail, AddrLine1, AddrLine2, City, State, Zip, IsVisible) VALUES ('john.smith@gmail.com','434 Transylvania Ave','APT 114','Lexington','KY', '40508','1');";
+$add_addr_2 = "INSERT INTO AddressBook (CEmail, AddrLine1, AddrLine2, City, State, Zip, IsVisible) VALUES ('john.smith@gmail.com','189 Lake Lila Ln','APT 8A3','Ann Arbor','MI', '48105','1');";
 
 
 if (mysqli_query($con, $add_addr_1)) 

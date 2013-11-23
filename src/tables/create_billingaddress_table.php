@@ -7,14 +7,13 @@
 
 //create table
 $create_billingaddress_table = "CREATE TABLE BillingAddress 
-    (IsVisible          BIT             NOT NULL,
-     CEmail 		VARCHAR(30) 	NOT NULL,
+    (CEmail 		VARCHAR(30) 	NOT NULL,
      CardNo 		BIGINT 			NOT NULL,
-     Baddr1			VARCHAR(50)			NOT NULL,
-     BCity			VARCHAR(50)			NOT NULL,
-     BState			CHAR(2)			NOT NULL,
-     PRIMARY KEY (CEmail, CardNo, Baddr1,BCity,BState),
- 	 FOREIGN KEY (CEmail,CardNo) REFERENCES PaymentMethods(CEmail,CardNo) );";
+     AddrIndex		INT				NOT NULL,
+     IsVisible      BOOLEAN             NOT NULL,
+     PRIMARY KEY (CEmail, CardNo, AddrIndex),
+ 	 FOREIGN KEY (CEmail,CardNo) REFERENCES PaymentMethods(CEmail,CardNo),
+ 	 FOREIGN KEY (CEmail,AddrIndex) REFERENCES AddressBook(CEmail,AddrIndex) );";
 
 //check to make sure table is there
 

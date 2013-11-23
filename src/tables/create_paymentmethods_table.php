@@ -6,12 +6,12 @@
 
 //create table
 $create_paymentmethods_table = "CREATE TABLE PaymentMethods
-    (IsVisible            BIT             NOT NULL,
-    CEmail 		VARCHAR(30) 	NOT NULL,
+    (CEmail 		VARCHAR(30) 	NOT NULL,
      CardNo 		BIGINT 			NOT NULL,
      CHolderLastName 	TEXT 			NOT NULL, 
      CHolderFirstName 	TEXT 			NOT NULL,
      CExpirDate 	TEXT 			NOT NULL,
+     IsVisible            BOOLEAN         NOT NULL,
      PRIMARY KEY (CEmail, CardNo),
  	 FOREIGN KEY (CEmail) REFERENCES Customer(Email))";
 
