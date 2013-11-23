@@ -3,7 +3,7 @@
 //Author: Libby Ferland
 //Date: 11/11/2013
 //Last Edit: Feiyu Shi 
-//Edit Date: 11/16/2013
+//Edit Date: 11/22/2013
 
 
     error_reporting(E_ALL);
@@ -79,16 +79,8 @@
         <div id ="no-navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
         <b>Manage My Account</b><br>
         <a href ="main.php">Go Shopping!</a><br><br>
-        <b>VIP</b><br>
-    <?php
-        if ($vipStatus == 1) {
-    ?>
-        <a href="vip_home.php">My Store</a><br>
-    <?php       }
-    else { ?>
-        We love our VIP customers! <a href="dummy_vip.php">Upgrade now?</a>
-    <?php }
-        } 
+  
+    <?php } 
         else if ($addExists == "no" && $payExists=="yes") { ?>
         You haven't saved any addresses yet.  
         <form action="new_address.php">
@@ -99,16 +91,8 @@
         <b>Manage My Account</b><br>
         <a href ="my_payment.php">My Payment Info</a><br>
         <a href ="main.php">Go Shopping!</a><br><br>
-        <b>VIP</b><br>
-    <?php
-        if ($vipStatus == 1) {
-    ?>
-        <a href="vip_home.php">My Store</a><br>
-    <?php       }
-    else { ?>
-        We love our VIP customers! <a href="dummy_vip.php">Upgrade now?</a>
+ 
     <?php }
-        } 
         else if ($addExists == "yes" && $payExists=="no") { ?>
         You haven't saved any payment methods yet.
         <form action ="new_payment_method.php">
@@ -119,41 +103,9 @@
         <b>Manage My Account</b><br>
         <a href ="my_address.php">My Address</a><br> 
         <a href ="main.php">Go Shopping!</a><br><br>
-        <b>VIP</b><br>
-    <?php
-        if ($vipStatus == 1) {
-    ?>
-        <a href="vip_home.php">My Store</a><br>
-    <?php       }
-    else { ?>
-        We love our VIP customers! <a href="dummy_vip.php">Upgrade now?</a>
-    <?php }
-        }
-        else { ?>
-    <div id ="navigation" style ="background-color: #FFFFFF; clear:both;height:300px;width:300px;float:left">
-        <b>Manage My Account</b><br>
-        <a href ="customer_order_history.php">My Orders</a><br>
-        <a href ="my_payment.php">My Payment Info</a><br>
-        <a href ="my_address.php">My Address</a><br> 
-<!--         <a href ="customer_basket.php">My Basket</a><br> -->
-        <a href ="main.php">Go Shopping!</a><br><br>
-        <b>VIP</b><br>
-    <?php
-        if ($vipStatus == 1) {
-    ?>
-        <a href="vip_home.php">My Store</a><br>
-    <?php       }
-    else { ?>
-        We love our VIP customers! <a href="dummy_vip.php">Upgrade now?</a>
-    <?php }
-        } ?>
-    </div>
-    
-<!-- 
-    <div id="logoff" style="background-color:#FFFFFF; clear:both;text-align:left">
-        <a href ="customer_logout.php">Logout</a>
-    </div>
- -->
+
+        
+        <?php } ?>
     
 </HTML>
 

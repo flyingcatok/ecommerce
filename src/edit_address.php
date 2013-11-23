@@ -51,7 +51,17 @@ if(isset($_POST["delete-button"])) {
         $indexChange = $changeThisAddr[6];
         ?>
 <HTML>
-    <HEADER><H1>Edit Address</H1></HEADER><br><br>
+<TITLE> Edit Address </TITLE>
+    <div id="log_control" style="float:right; background-color: #FFFFFF">
+        <a href="my_account.php">My Account</a>
+        <a href="customer_basket.php">My Shopping Basket</a>
+        <a href="customer_logout.php">Logout</a>
+    </div>
+    <div id="logo" style="background-color:#FFFFFF;clear:both;text-align:left;">
+	<H2> <a href="main.php" style="text-decoration: none">F&L Gift Store</a> </H2>
+	</div>
+    <HEADER><H3>Edit Address</H3></HEADER>
+	<br>
     <div id="address-edit-form" style ="background-color:#FFFFFF; clear:both; text-align:left">
         <form action ="update_address.php" method ="POST">
             Line One: &nbsp; &nbsp; <input type="text" name="lineOne" value=" <?php echo $lineOneChange; ?>" ><br>

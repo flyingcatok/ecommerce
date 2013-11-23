@@ -56,7 +56,17 @@ if(isset($_POST["delete-button"])) {
         
          ?>
 <HTML>
-    <HEADER><H1>Edit Payment Information</H1></HEADER><br><br>
+	<TITLE> Edit Payment Information </TITLE>
+    <div id="log_control" style="float:right; background-color: #FFFFFF">
+        <a href="my_account.php">My Account</a>
+        <a href="customer_basket.php">My Shopping Basket</a>
+        <a href="customer_logout.php">Logout</a>
+    </div>
+    <div id="logo" style="background-color:#FFFFFF;clear:both;text-align:left;">
+	<H2> <a href="main.php" style="text-decoration: none">F&L Gift Store</a> </H2>
+	</div>
+    <HEADER><H3>Edit Payment Information</H3></HEADER>
+    <br>
     <div id="card-edit-form" style ="background-color:#FFFFFF; clear:both; text-align:left">
         <form action ="update_payment.php" method ="POST">
             Card Number: &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; <input type="text" name="ccNum" value=" <?php echo $cardNoChange; ?>" ><br>

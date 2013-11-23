@@ -120,9 +120,11 @@ if($count > 0){
 		if(is_null($promoprice)){
 			$promo = 0;
 			$subtotal = $subtotal + $oprice * $quantity;
+			$subtotal = number_format($subtotal, 2, '.', ',');
 			}else{
 			$promo = 1;
 			$subtotal = $subtotal + $promoprice * $quantity;
+			$subtotal = number_format($subtotal, 2, '.', ',');
 			}
 		$promoprice = number_format($promoprice, 2, '.', ',');		
 		echo ("<tr><td><a href=items/iid=$iid.php>$itemName</a></td>");
