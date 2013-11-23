@@ -8,7 +8,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 ini_set('display_startup_errors','1');
-    
+session_start();    
 $item_output = "";
 // process the query
 	$sqlCommand = "SELECT i.IId, i.IName, i.Category, i.Description, i.Quantity, i.IPrice, i.PromoPrice
