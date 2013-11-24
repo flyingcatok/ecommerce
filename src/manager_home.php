@@ -2,7 +2,7 @@
 //Author: Feiyu Shi
 //Date: 11/16/2013
 //Last Edit: Feiyu Shi
-//Edit Date: 11/19/2013
+//Edit Date: 11/23/2013
 
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
@@ -58,6 +58,47 @@
     ini_set('display_startup_errors','1');
     // connect to server
 	include "connect_local.php";
+	//update new promotion rate
+	if(isset($_POST['IID'])&&isset($_POST['promorate'])&& $_POST['promorate']!=""&&$_POST['promorate']>0&&$_POST['promorate']<100&&is_numeric($_POST['promorate'])){
+		$promorate = $_POST['promorate']*0.01;
+		$iid = $_POST['IID'];
+		$sqlrate = "UPDATE Promote SET PromoteRate = $promorate WHERE IId = $iid";
+		$rateupdate = mysqli_query($con,$sqlrate) or die(mysqli_error($con));
+		// //update the item promo price
+// 		$sqlupdate = "UPDATE Item i, Promote p
+// 					SET i.PromoPrice = i.IPrice * (1-p.PromoteRate)
+// 					WHERE p.IId = i.IId AND p.IId = $iid";
+// 		$queryupdate = mysqli_query($con,$sqlupdate) or die(mysqli_error($con));
+	}
+	//extend a promotion
+	// function checkDateTime($data) {
+//     if (date('Y-m-d', strtotime($data)) == $data) {
+//         return true;
+//     } else {
+//         return false;
+//     	}
+// 	}
+// 	if(isset($_POST['extentionbutton'])&&isset($_POST['IID'])&&isset($_POST['extention'])&& $_POST['extention']!=""){
+// 		$endingdate = $_POST['extention'];
+// 		$iid = $_POST['IID'];
+// 		$sqldate = "UPDATE Promote SET PEndDate = $endingdate WHERE IId = $iid";
+// 		$dateupdate = mysqli_query($con,$sqldate) or die(mysqli_error($con));
+// 	}
+	// delete this promotion
+	if(isset($_POST['IID'])&&isset($_POST['removepromo'])){
+		$selectedid = mysqli_real_escape_string($con,$_POST['IID']);
+		//update item price
+		$sqlupdate3 = "UPDATE Item
+					SET PromoPrice = NULL
+					WHERE IId =$selectedid";
+		$queryupdate3 = mysqli_query($con,$sqlupdate3) or die(mysqli_error($con));
+		//delete promotion
+		$sqldelete = "DELETE FROM Promote
+					WHERE IId=$selectedid;";
+		$deletequery = mysqli_query($con,$sqldelete) or die(mysqli_error($con));
+			
+	}
+
 	// set the promotion price when the promotion start date is today
 	$sqlupdate = "UPDATE Item i, Promote p
 					SET i.PromoPrice = i.IPrice * (1-p.PromoteRate)
@@ -71,11 +112,11 @@
 	$queryupdate2 = mysqli_query($con,$sqlupdate2) or die(mysqli_error($con));
 	
 	$sqldelete = "DELETE FROM Promote
-					WHERE PEndDate < CURDATE();";
+ 					WHERE PEndDate < CURDATE();";
 	$querydelete = mysqli_query($con,$sqldelete) or die(mysqli_error($con));
 	
 	
-	// displat current promotion
+	// display current promotion
 	$sqlpromo = "SELECT p.IId, i.IName, i.IPrice, p.PromoteRate, i.PromoPrice AS CurrPrice, p.PStartDate, p.PEndDate
 					FROM Promote p,Item i
 					WHERE p.IId = i.IId AND p.PEndDate >= CURDATE()";
@@ -89,23 +130,47 @@
 		echo "<td>Promotion Rate</td>";
 		echo "<td>Current Price</td>";
 		echo "<td>Starting Date</td>";
-		echo "<td>Ending Date</td></tr>";
+		echo "<td>Ending Date</td>";
+// 		echo "<td>Extend?</td>";
+		echo "<td>Remove?</td></tr>";
 		while($row = mysqli_fetch_array($querypromo)){
 	        $id = $row["IId"];
 	        $name = $row["IName"];
 		    $price = $row["IPrice"];
 		    $rate = $row["PromoteRate"]*100;
 		    $currprice = $row["CurrPrice"];
-		    $currprice = number_format($currprice, 2, '.', ',');
+		    if(!is_null($currprice)){
+		    	$currprice = number_format($currprice, 2, '.', ',');
+		    }
 		    $startdate = $row["PStartDate"];
 		    $enddate = $row["PEndDate"];
 		    echo ("<tr><td>$id</td>");
 			echo ("<td>$name</td>");
 			echo ("<td>$price</td>");
-			echo ("<td>$rate% off</td>");
+// 			echo ("<td>$rate% off</td>");?>
+			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
+			<?php echo "<td><input type='text' name=promorate value = $rate size = '3'>% off" ?>
+			<?php echo "<input type ='hidden' name=IID value = $id>";?>
+			<input type="submit" value="set"></td>
+			</form>
+			<?php
 			echo ("<td>$currprice</td>");
 			echo ("<td>$startdate</td>");
-			echo ("<td>$enddate</td></tr>");
+			echo ("<td>$enddate</td>");?>
+<!-- 			extension -->
+<!-- 			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post"> -->
+ 			<?php //echo "<td><input type='datetime' name=extention value = $enddate size = '20'></td>" ?>
+			<?php //echo "<input type ='hidden' name=IID value = $id>";?>
+<!-- 			<td><input type="submit" name = "extentionbutton" value="extend"></td> -->
+<!-- 			</form> -->
+<!-- 			remove -->
+			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
+			<td>
+			<?php echo "<input type ='hidden' name=IID value = $id>";?>
+			<input type="submit" name = "removepromo" value="remove">
+			</td></tr>
+			</form>
+			<?php
             } // close while
         echo "</table>";
 		} else {
@@ -123,7 +188,9 @@
 	<input name="searchquery" type="text" size = "60" maxlength = "80">
 	<input name = "myBtn" type = "submit" value = "GO!">
 	</form>
-	<?php include "search_for_promotion.php";?>
+	<?php 
+	include "search_for_promotion.php";
+	?>
 	</div>
 
     </div>
