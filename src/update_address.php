@@ -26,21 +26,21 @@ if (isset($_POST["confirm-edit"])) {
         $pastAddr = $_POST["old-address"];
         $oldAddr = explode(',', $pastAddr);
     }
-    if(isset($_POST["lineOne"]) && ($_POST["lineOne"] != $oldAddr[1])) {
+    if(isset($_POST["lineOne"]) && ($_POST["lineOne"] != $oldAddr[1]) && ($_POST["lineOne"] != "")) {
         $editLineOne = $_POST["lineOne"];
         $myQueries[$numEdits] = "UPDATE AddressBook SET AddrLine1 = '$editLineOne' WHERE CEmail = '$addrCEmail' AND AddrIndex = '$oldAddr[6]';";
        // $columnNames[$numEdits] = "AddrLine1";
         //$newValues[$numEdits] = $editLineOne;
         $numEdits++;
        }
-       if(isset($_POST["lineTwo"]) && ($_POST["lineTwo"] != $oldAddr[2])) {
+       if(isset($_POST["lineTwo"]) && ($_POST["lineTwo"] != $oldAddr[2]) && ($_POST["lineTwo"] != "")) {
            $editLineTwo = $_POST["lineTwo"];
            $myQueries[$numEdits] = "UPDATE AddressBook SET AddrLine2 = '$editLineTwo' WHERE CEmail = '$addrCEmail' AND AddrIndex = '$oldAddr[6]';";
            //$columnNames[$numEdits] = "AddrLine2";
            //$newValues[$numEdits] = $editLineTwo;
            $numEdits++;
        }
-       if (isset($_POST["city"]) && ($_POST["city"] != $oldAddr[3])) {
+       if (isset($_POST["city"]) && ($_POST["city"] != $oldAddr[3]) && ($_POST["city"] != "")) {
            $editCity = $_POST["city"];
            $myQueries[$numEdits] = "UPDATE AddressBook SET City = '$editCity' WHERE CEmail = '$addrCEmail' AND AddrIndex = '$oldAddr[6]'; ";
           // $columnNames[$numEdits] = "City";
@@ -54,7 +54,7 @@ if (isset($_POST["confirm-edit"])) {
           // $newValues[$numEdits] = $editState;
            $numEdits++;
        }
-       if (isset($_POST["zip"]) && ($_POST["zip"] != $oldAddr[5])) {
+       if (isset($_POST["zip"]) && ($_POST["zip"] != $oldAddr[5]) && ($_POST["zip"] != "")) {
            $editZip = $_POST["zip"];
            $myQueries[$numEdits] = "UPDATE AddressBook SET Zip = '$editZip' WHERE CEmail = '$addrCEmail' AND AddrIndex = '$oldAddr[6]';";
            //$columnNames[$numEdits] = "Zip";
