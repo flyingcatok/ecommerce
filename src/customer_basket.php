@@ -9,7 +9,7 @@ ini_set('display_errors', '1');
 session_start();
     if(isset($_SESSION['email'])) {
         $basketEmail = $_SESSION['email'];
-        echo $basketEmail;
+//         echo $basketEmail;
     }
     
 ?>
@@ -51,7 +51,7 @@ Search <input name="searchquery" type="text" size = "60" maxlength = "80">
 // connect to server
 include "connect_local.php";
 //check inventory,print out of stock info
-if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>0){
+if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>0&&is_numeric($_POST['quantity'])){
 	$updatedquan = mysqli_real_escape_string($con,$_POST['quantity']);
 	$selectedid = mysqli_real_escape_string($con,$_POST['IID']);
 	$sqlinvent = "SELECT Quantity
@@ -67,7 +67,7 @@ if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>0){
 	}
 }
 // check if the quantity is updated
-if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>0&&$_POST['quantity']<=$invent){
+if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>0&&$_POST['quantity']<=$invent&&is_numeric($_POST['quantity'])){
 	$updatedquan = mysqli_real_escape_string($con,$_POST['quantity']);
 	$selectedid = mysqli_real_escape_string($con,$_POST['IID']);
 	$sqlupdate = "UPDATE BasketContains
@@ -76,7 +76,7 @@ if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>0&&$_P
 	$updatequery = mysqli_query($con,$sqlupdate) or die(mysqli_error($con));	
 	}
 // if the new quantity is 0, delete this item
-if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']==0){
+if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']==0&&is_numeric($_POST['quantity'])){
 	$selectedid = mysqli_real_escape_string($con,$_POST['IID']);
 	$sqldelete = "DELETE FROM BasketContains
 					WHERE IId=$selectedid;";
@@ -152,7 +152,7 @@ if($count > 0){
         echo "<tr><th colspan=6>Subtotal: \$ $subtotal</th></tr>";
         echo "</table>";
         ?>
-    	<div id ="order_button" style ="background-color:#FFFFFF; clear:both; height:200px;width:450; text-align: right;">
+    	<div id ="order_button" style ="background-color:#FFFFFF; clear:both; text-align: left;">
         <form action = "review_order.php" method ="POST">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>

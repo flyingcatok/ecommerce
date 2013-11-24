@@ -27,7 +27,7 @@ if(isset($_SESSION['empID'])) {
     <?php
     // connect to server
 	include "connect_local.php";
-	if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>=0){
+	if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>=0&&is_numeric($_POST['quantity'])){
 	$updatedquan = mysqli_real_escape_string($con,$_POST['quantity']);
 	$selectedid = mysqli_real_escape_string($con,$_POST['IID']);
 	$sqlupdate = "UPDATE Item
