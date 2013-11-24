@@ -112,6 +112,7 @@ if($count > 0){
 			echo "No one purchased this item.";	
 		}
 $averagerating = array_sum($rating) / count($rating);
+$averagerating = number_format($averagerating, 2, '.', ',');
 echo "Average Rating: ". $averagerating."<br />";
 echo $reviewresult;
 include "../disconnect.php";
