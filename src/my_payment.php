@@ -86,7 +86,7 @@
        ?>
        <form action ="edit_payment.php" method="POST"> 
        <table>
-       	   <tr><td colspan="2"><h4>Card:</h4></td></tr>
+       	   <tr><td colspan="2"><h4>Card # <?php echo $b+1;?>:</h4></td></tr>
            <tr><td>Number:</td><td> <?php echo $displayCard ?> </td><tr>
            <tr><td>Card Holder: </td><td><?php echo $fNames[$b] ?>&nbsp;<?php echo $lNames[$b]?></td><tr>
            <tr><td>Exp. Date:</td><td> <?php echo $expyDates[$b] ?> </td><tr>

@@ -9,7 +9,7 @@ ini_set('display_errors', '1');
 session_start();
     if(isset($_SESSION['email'])) {
         $reviewerEmail = $_SESSION['email'];
-        echo $reviewerEmail;
+//         echo $reviewerEmail;
         
         $findContents = "SELECT DISTINCT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate, i.PromoPrice
 					FROM Customer c, Basket b, BasketContains bc, Item i
