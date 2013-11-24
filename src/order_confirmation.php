@@ -9,7 +9,7 @@ ini_set('display_errors', '1');
 session_start();
 if(isset($_SESSION['email'])) {
     $confEmail = $_SESSION['email'];
-    echo $confEmail;
+//     echo $confEmail;
 }
 else {
     echo "There are bigger problems <br>";
@@ -69,7 +69,7 @@ include "disconnect.php";
         $oLName = $nrow["Lname"];
         $oFName = $nrow["Fname"];
     }
-    echo ("Shipped to:<br> <b> $oFName  $oLName</b> <br><br>");
+    echo ("<b>Shipped to:</b>");
     
     $qrow = $shippedHere->fetch_row();
         $sentLineOne = $qrow[2];
@@ -77,37 +77,40 @@ include "disconnect.php";
         $sentCity = $qrow[4];
         $sentState = $qrow[5];
         $sentZip = $qrow[6];
-    
-    echo ("$sentLineOne <br>");
-    echo("$sentLineTwo <br>");
-    echo ("$sentCity <br>");
-    echo ("$sentState <br>");
-    echo ("$sentZip <br>");
-    
+    echo "<table>";
+    echo "<tr><td colspan=2>$oFName  $oLName</td></tr>";
+    echo ("<tr><td>$sentLineOne</td></tr>");
+    echo("<tr><td>$sentLineTwo </td></tr>");
+    echo ("<tr><td>$sentCity </td></tr>");
+    echo ("<tr><td>$sentState </td></tr>");
+    echo ("<tr><td>$sentZip </td></tr>");
+    echo "</table>";
     echo("<br><br>");
     
-    echo ("Payment Method <br>");
+    echo ("<b>Payment Method:</b> <br>");
     
     while ($prow = mysqli_fetch_array($howPaid)) {
         $pCard = $prow["CardNo"];
         $pExp = $prow["CExpirDate"];
     }
     $pCard2 = "...-**" . substr($pCard, -4, 4);
-    echo("Card number $pCard2 <br>");
-    echo("Expiration date $pExp <br>");
-    
+    echo "<table>";
+    echo("<tr><td>Number:</td><td> $pCard2</td></tr>");
+    echo("<tr><td>Exp. Date:</td><td> $pExp </td></tr>");
+    echo "</table>";
     echo("<br><br>");
     
-    echo("Order Contents <br>");
+    echo("<b>Order Contents<b> <br>");
     
     while ($orow = mysqli_fetch_array($newContents)) {
         $itemNum = $orow["IId"];
         $itemQuant = $orow["OQuantity"];
         $itemName = $orow["IName"];
-        
-        echo("Item ID: $itemNum");
-        echo(" Name: $itemName");
-        echo(" Quantity: $itemQuant <br>");
+        echo "<table>";
+        echo("<tr><td>Item ID:</td><td> $itemNum</td></tr>");
+        echo("<tr><td>Name:</td><td> $itemName</td></tr>");
+        echo("<tr><td>Quantity: </td><td>$itemQuant </td></tr>");
+        echo "</table>";
     }
     ?>
     </div>

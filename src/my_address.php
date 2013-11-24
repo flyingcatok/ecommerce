@@ -1,8 +1,8 @@
 <?php
 //Author: Libby Ferland
 //Date: 11/13/2013
-//Last Edit: Libby Ferland
-//Edit Date: 11/22/2013
+//Last Edit: Feiyu Shi
+//Edit Date: 11/24/2013
 
     error_reporting(E_ALL);
     ini_set('display_errors', '1');
@@ -78,14 +78,19 @@
         $thisAddrString = implode(',', $thisAddr);
        ?>
        <form action ="edit_address.php" method="POST"> 
-        Street Address: <?php echo $lineOne[$j] ?> <br> <?php echo $lineTwo[$j] ?> <br>
-        City: <?php echo $city[$j] ?> <br>
-        State: <?php echo $state[$j] ?> <br>
-        Zip: <?php echo $zip[$j] ?> <br><br>
-        <input type="hidden" name="address_to_change" value="<?php echo $thisAddrString ?>" >
-        <input type ="submit" value = "Edit" name = "edit-button">
-        &nbsp;&nbsp;&nbsp;
-        <input type ="submit" value ="Delete" name="delete-button">
+       <table>
+        <tr><td>Street:</td><td> <?php echo $lineOne[$j] ?>&nbsp;<?php echo $lineTwo[$j] ?> </td><tr>
+        <tr><td>City: </td><td><?php echo $city[$j] ?> </td></tr>
+        <tr><td>State: </td><td><?php echo $state[$j] ?> </td></tr>
+        <tr><td>Zip: </td><td><?php echo $zip[$j] ?> </td></tr>
+<!--         </table> -->
+<!--         <table> -->
+		<tr><td><br></td><td><br></td></tr>
+        <tr><td><input type="hidden" name="address_to_change" value="<?php echo $thisAddrString ?>" >
+        <input type ="submit" value = "Edit" name = "edit-button"></td>
+<!--         &nbsp;&nbsp;&nbsp; -->
+        <td><input type ="submit" value ="Delete" name="delete-button"></td></tr>
+        </table>
         <br><br>
         </form>
         <?php } ?>
@@ -93,7 +98,7 @@
             <input type ="submit" value="Add new address">
         </form>
         <br><br><br>
-        <a href="my_account.php">Return to account home.</a>
+        <a href="my_account.php">Return to account home</a>.
         </div>
         
 </HTML>

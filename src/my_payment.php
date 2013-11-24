@@ -1,8 +1,8 @@
 <?php
 //Author: Libby Ferland
 //Date: 11/22/2013
-//Last Edit:
-//Edit date:
+//Last Edit: Feiyu Shi
+//Edit date: 11/24/2013
 
    error_reporting(E_ALL);
    ini_set('display_errors', '1');
@@ -85,18 +85,21 @@
         $displayCard = "...-**" . substr($ccNums[$b], -4, 4);
        ?>
        <form action ="edit_payment.php" method="POST"> 
-           Card Number: <?php echo $displayCard ?> <br>
-           Card Holder: <?php echo $fNames[$b] ?>  <?php echo $lNames[$b]?> <br>
-           Expiration Date: <?php echo $expyDates[$b] ?> <br>
-           <br>
-           Billing Address <br>
-           Street: <?php echo $bALine1[$b] ?> <br> <?php echo $bALine2[$b] ?> <br>
-           City, State, Zip: <?php echo $bACity[$b] ?>, <?php echo $bAState[$b] ?> <br> <?php echo $bAZip[$b] ?> <br>
-           <br>
-        <input type="hidden" name="card_to_change" value="<?php echo $thisCardString ?>" >
-        <input type ="submit" value = "Edit" name = "edit-button">
-        &nbsp;&nbsp;&nbsp;
-        <input type ="submit" value ="Delete" name="delete-button">
+       <table>
+       	   <tr><td colspan="2"><h4>Card:</h4></td></tr>
+           <tr><td>Number:</td><td> <?php echo $displayCard ?> </td><tr>
+           <tr><td>Card Holder: </td><td><?php echo $fNames[$b] ?>&nbsp;<?php echo $lNames[$b]?></td><tr>
+           <tr><td>Exp. Date:</td><td> <?php echo $expyDates[$b] ?> </td><tr>
+           <tr><td><br></td><td> <br></td><tr>
+           <tr><td><h4>Billing Address:</h4> </td><td> <br></td><tr>
+           <tr><td>Street:</td><td> <?php echo $bALine1[$b] ?> <br> <?php echo $bALine2[$b] ?></td><tr>
+           <tr><td>City, State, Zip: </td><td><?php echo $bACity[$b] ?>, <?php echo $bAState[$b] ?> <br> <?php echo $bAZip[$b] ?> </td><tr>
+           <tr><td><br></td><td><br></td></tr>
+        <tr><td><input type="hidden" name="card_to_change" value="<?php echo $thisCardString ?>" >
+        <input type ="submit" value = "Edit" name = "edit-button"></td>
+<!--         &nbsp;&nbsp;&nbsp; -->
+        <td><input type ="submit" value ="Delete" name="delete-button"></td></tr>
+        </table>
         <br><br>
         </form>
         <?php } ?>

@@ -1,15 +1,15 @@
 <?php
 //Author: Libby Ferland
 //Date: 11/16/2013
-//Last Edited: 
-//Date: 
+//Last Edited: Feiyu Shi
+//Date: 11/24/2013
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 session_start();
     if(isset($_SESSION['email'])) {
         $reviewerEmail = $_SESSION['email'];
-        echo $reviewerEmail;
+//         echo $reviewerEmail;
         
         $findContents = "SELECT DISTINCT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate, i.PromoPrice
 					FROM Customer c, Basket b, BasketContains bc, Item i
@@ -42,9 +42,9 @@ session_start();
 	<H2> <a href="main.php" style="text-decoration: none">F&L Gift Store</a></H2>
 	</div>
     <BODY>
-        <H1>Review Your Order Information</H1>
+        <H3>Review Your Order Information</H3>
         <div id ="contents" style ="background-color:#FFFFFF; clear:both; text-align:left">
-            <H3>Your Order</H3>
+            <H4>Your Order</H4>
             <table border="1">
                 <?php
 		echo ("<tr><td>Item</td>");
@@ -87,7 +87,7 @@ session_start();
         
         <form action ="place_order.php" method="POST">
         <div id ="shippingaddr" style ="background-color:#FFFFFF; clear:both; text-align:left">
-            <H3> Select Shipping Address </H3>
+            <H4> Select Shipping Address </H4>
             <?php
             $addresses = array();
             $i = 0;
@@ -110,23 +110,24 @@ session_start();
                 $aCity = $addresses[$j]["City"];
                 $aState = $addresses[$j]["State"];
                 $aZip = $addresses[$j]["Zip"];
-                echo ("Street Address: $lineOne<br>");
-                echo ("Apartment/Suite Number: $lineTwo<br>");
-                echo ("City: $aCity<br>");
-                echo ("State: $aState<br>");
-                echo ("Zip: $aZip<br>");
-                echo ("</table>");
-                echo("<br>");
+                echo ("<tr><td>Street:</td> <td>$lineOne</td></tr>");
+                echo ("<tr><td>Apt/Suite: </td> <td>$lineTwo</td></tr>");
+                echo ("<tr><td>City:</td> <td> $aCity</td></tr>");
+                echo ("<tr><td>State:</td> <td> $aState</td></tr>");
+                echo ("<tr><td>Zip:</td> <td> $aZip</td></tr>");
+//                 echo ("</table>");
+                echo("<tr><td><br></td> <td><br></td></tr>");
                 $addrin++;
                 $thisAdd = array("a",$lineOne, $lineTwo, $aCity, $aState, $aZip, $addrInShip);
                 $addSelect = implode(',', $thisAdd);
                 ?>
-                <input type="radio" name = "address_choice" value = "<?php echo $addSelect; ?>">Select this address<br> <br>
+                <tr><td colspan="2"><input type="radio" name = "address_choice" value = "<?php echo $addSelect; ?>">Select this address</td></tr>
                 <?php
                 $buttonin++;
+                echo ("</table>");
                 }
             }
-            
+            echo "<br><br>";
             /*$addrIndex = 1;
             $buttonIndex = 1;
             while($arow = mysqli_fetch_array($getOAddress)) { 
@@ -159,7 +160,7 @@ session_start();
                 
         </div>
         <div id ="cards" style ="background-color:#FFFFFF; clear:both; text-align:left">
-            <H3>Select Payment Method</H3>
+            <H4>Select Payment Method</H4>
             <?php
             $bills = array();
             $k = 0;
@@ -188,26 +189,28 @@ session_start();
             $bZip = $bills[$m]["Zip"];
             $addrInBill = $bills[$m]["AddrIndex"];
             $cardn2 = "...-**" . substr($cardn, -4, 4);
-            echo("Card Number: $cardn2<br>");
-            echo("Expiration date: $expydate<br>");
-            echo("Card Holder: $cardFirst ");
-            echo("$cardLast<br>");
-            echo("<br>");
-            echo("Billing Address: <br> $billLineOne<br>");
-            echo("$billLineTwo <br>");
-            echo("Billing City:$bCity<br>");
-            echo("Billing State: $bState<br>");
-            echo ("Billing Zip: $bZip<br>");
-            echo("</table>");
-            echo("<br>");
+            echo "<tr><td colspan='2'><b>Card:<b></td></tr>";
+            echo("<tr><td>Number:</td><td> $cardn2</td></tr>");
+            echo("<tr><td>Exp. date:</td><td> $expydate</td></tr>");
+            echo("<tr><td>Card Holder:</td><td> $cardFirst $cardLast</td></tr>");
+//             echo("$cardLast<br>");
+            echo("<tr><td colspan='2'><b>Billing address:<b></td></tr>");
+            echo("<tr><td>Street: </td><td> $billLineOne</td></tr>");
+            echo("<tr><td>Apt/Suite:</td><td>$billLineTwo</td></tr>");
+            echo("<tr><td>City:</td><td>$bCity</td></tr>");
+            echo("<tr><td>State: </td><td>$bState</td></tr>");
+            echo ("<tr><td>Zip:</td><td> $bZip</td></tr>");
+//             echo("</table>");
+            echo("<tr><td><br></td> <td><br></td></tr>");
             $billerin++;
             $thisCard = array("b", $cardn, $expydate, $cardFirst, $cardLast, $billLineOne, $billLineTwo, $bCity, $bState, $bZip, $addrInBill);
             $cardSelect = implode(',', $thisCard);
             ?>
-            <input type="radio" name="bill_choice" value ="<?php echo $cardSelect ?>" > Select this method <br>
+            <tr><td colspan="2"><input type="radio" name="bill_choice" value ="<?php echo $cardSelect ?>" >Select this method </td></tr>
           
            <?php 
-           $billbuttin++;   }
+           $billbuttin++;
+           echo ("</table>");   }
             }
             
             
