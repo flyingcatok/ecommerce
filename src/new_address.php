@@ -6,17 +6,26 @@
 ?>
 
 <HTML>
+	<div id="log_control" style="float:right; background-color: #FFFFFF">
+        <a href="my_account.php">My Account</a>
+        <a href="customer_basket.php">My Shopping Basket</a>
+        <a href="customer_logout.php">Logout</a>
+    </div>
+    <div id="logo" style="background-color:#FFFFFF;clear:both;text-align:left;">
+	<H2> <a href="main.php" style="text-decoration: none">F&L Gift Store</a> </H2>
+	</div>
     <BODY>
         <div id ="new-add-header" style ="background-color:#FFFFFF; clear:both; text-align:center">
     <HEADER><TITLE>New Shipping Address</TITLE></HEADER>
-    <H1>Enter a New Shipping Address</H1>
+    <H3>Enter a New Shipping Address</H3>
         </div>
     <div id ="new-add-form" style ="background-color:#FFFFFF; clear:both; text-align:center">
         <form action="add_address.php" method="POST">
             Line One: &nbsp;&nbsp; <input type="text" name="newl1"> <br>
             Line Two: &nbsp; <input type ="text" name ="newl2"><br>
-            City:   &nbsp;&nbsp;&nbsp; <input type="text" name ="newcity"><br>
-            State: <select name="newstate">
+            City: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name ="newcity"><br>
+            State: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            	<select name="newstate">
                 <option value ="Default">Select your state</option>
                 <option value="AL">Alabama</option>
                 <option value = "AK">Alaska</option>
@@ -70,7 +79,7 @@
                 <option value="WY">Wyoming</option>
             </select>
             <br>
-            Zip: &nbsp;&nbsp;&nbsp; <input type="text" name="zipc"> <br>
+            Zip: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="zipc"> <br>
             <input type="submit" name="addAddBtn" value ="Add Address">
         </form>
     </div> 
