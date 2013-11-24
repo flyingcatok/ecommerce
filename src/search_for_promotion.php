@@ -48,17 +48,17 @@ if($count > 0){?>
 			echo "<td>\$ $price</td></tr>";
             } // close while
         echo "</table>";
+        ?>
+		<br />Promotion Rate: <input name="promotionrate" type="text" size = "5" maxlength = "10"> % off.
+		<br />Promo Starting Date: <input type="datetime" name="promostart">
+		<br />Promo Ending Date: <input type="datetime" name="promoend">
+		<?php
+		echo "<br><input type='submit' value='promote'>";
 		} else {
 			echo "<table>";
 			echo "<tr><td>No item fits your search.</td></tr>";	
 			echo "</table>";
 		}
-		?>
-		<br />Promotion Rate: <input name="promotionrate" type="text" size = "5" maxlength = "10"> % off.
-		<br />Promo Start Date: <input type="datetime" name="promostart">
-		<br />Promo End Date: <input type="datetime" name="promoend">
-		<?php
-		echo "<br><input type='submit' value='promote'>";
 		echo "</form>";	
 }
 
