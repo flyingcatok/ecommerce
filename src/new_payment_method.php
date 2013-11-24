@@ -1,32 +1,42 @@
 <?php 
 //Author: Libby Ferland
 //Date: 11/23/2013
-//Last Edit:
-//Edit Date:
+//Last Edit: Feiyu Shi
+//Edit Date: 11/23/2013
 ?> 
 
 <HTML>
+	<div id="log_control" style="float:right; background-color: #FFFFFF">
+        <a href="my_account.php">My Account</a>
+        <a href="customer_basket.php">My Shopping Basket</a>
+        <a href="customer_logout.php">Logout</a>
+    </div>
+    <div id="logo" style="background-color:#FFFFFF;clear:both;text-align:left;">
+	<H2> <a href="main.php" style="text-decoration: none">F&L Gift Store</a> </H2>
+	</div>
     <BODY>
-        <div id ="new-pay-header" style ="background-color:#FFFFFF; clear:both; text-align:center">
+    <div id ="new-pay-header" style ="background-color:#FFFFFF; clear:both; text-align:center">
     <HEADER><TITLE>New Payment Method</TITLE></HEADER>
-    <H1>Enter a New Payment Method</H1>
-        </div>
+    <H3>Enter a New Payment Method</H3>
+    </div>
     <div id ="new-pay-form" style ="background-color:#FFFFFF; clear:both; text-align:center">
         <form action="add_payment.php" method="POST">
-            <b> Card Information</b>
-            Card Number: &nbsp;&nbsp; <input type="text" name="newcard"> <br>
+            <h4> Card Information</h4>
+            Card Number: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="newcard"> <br>
             Expiration Date (mmyy): &nbsp; <input type ="text" name ="newedate"><br>
-            Card Holder First Name: &nbsp;&nbsp;&nbsp; <input type="text" name ="newchfirst"><br>
-            Card Holder Last Name: &nbsp; <input type="text" name="newchlast"><br>
+            Card Holder First Name: &nbsp; <input type="text" name ="newchfirst"><br>
+            Card Holder Last Name: &nbsp; &nbsp;<input type="text" name="newchlast"><br>
             <br>
-            <b> Billing Address</b>
+            <h4> Billing Address</h4>
             
             Line 1: <input type="text" name="newbill1"><br>
             Line 2: <input type="text" name="newbill2"><br>
-            City: <input type="text" name="newbcity"><br>
+            City: &nbsp;&nbsp;&nbsp;<input type="text" name="newbcity"><br>
             
             
-            State: <select name="newbstate">
+            State:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            	<select name="newbstate">
                 <option value ="Default">Select your state</option>
                 <option value="AL">Alabama</option>
                 <option value = "AK">Alaska</option>
@@ -80,7 +90,7 @@
                 <option value="WY">Wyoming</option>
             </select>
             <br>
-            Zip: &nbsp;&nbsp;&nbsp; <input type="text" name="bzipc"> <br>
+            Zip:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="bzipc"> <br>
             <input type="submit" name="addPayBtn" value ="Add Payment Method">
         </form>
     </div> 
