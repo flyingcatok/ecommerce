@@ -18,9 +18,9 @@
     }
     $visibleCard = 1;
     $checkPayment = "SELECT COUNT(*) FROM PaymentMethods WHERE IsVisible = '$visibleCard' AND CEmail = '$billEmail';";
-    $findPayment = "SELECT p.CardNo, p.CHolderLastName, p.CHolderFirstName, p.CExpirDate, b.Baddr1, b.BCity, b.BState
-                     FROM PaymentMethods p, BillingAddress b WHERE p.IsVisible = '$visibleCard' AND b.IsVisible = '$visibleCard'
-                     AND p.CEmail = '$billEmail' AND b.CEmail = '$billEmail' AND p.CardNo = b.CardNo;";
+    $findPayment = "SELECT p.CardNo, p.CHolderLastName, p.CHolderFirstName, p.CExpirDate, a.AddrLine1, a.AddrLine2, a.City, a.State, a.Zip, b.AddrIndex
+                     FROM PaymentMethods p, BillingAddress b, AddressBook a WHERE p.IsVisible = 1 AND b.IsVisible = 1
+                     AND p.CEmail = '$billEmail' AND b.CEmail = '$billEmail' AND p.CardNo = b.CardNo AND b.AddrIndex = a.AddrIndex;";
     
     include "connect_local.php";
     
@@ -33,14 +33,20 @@
     }
     else {
         $getPayment = mysqli_query($con, $findPayment);
+        if (!$getPayment) {
+            echo "Error!" . mysqli_error($con) . "<br>";
+        }
         include "disconnect.php";
         $ccNums = array();
         $lNames = array();
         $fNames = array();
         $expyDates = array();
         $bALine1 = array();
+        $bALine2 = array();
         $bACity = array();
         $bAState = array();
+        $bAZip = array();
+        $bAIndex = array();
         
         $a = 0;
         
@@ -49,9 +55,12 @@
             $lNames[$a] = $trow["CHolderLastName"];
             $fNames[$a] = $trow["CHolderFirstName"];
             $expyDates[$a] = $trow["CExpirDate"];
-            $bALine1[$a] = $trow["Baddr1"];
-            $bACity[$a] = $trow["BCity"];
-            $bAState[$a] = $trow["BState"];
+            $bALine1[$a] = $trow["AddrLine1"];
+            $bALine2[$a] = $trow["AddrLine2"];
+            $bACity[$a] = $trow["City"];
+            $bAState[$a] = $trow["State"];
+            $bAZip[$a] = $trow["Zip"];
+            $bAIndex[$a] = $trow["AddrIndex"];
             $a++;
         }
         $numCards = $a;
@@ -71,7 +80,7 @@
     <div id="cards" style ="background-color:#FFFFFF; clear:both; text-align:left" > 
   <?php
     for ($b = 0; $b < $numCards; $b++) {
-        $thisCard = array("p",$ccNums[$b], $lNames[$b], $fNames[$b], $expyDates[$b], $bALine1[$b], $bACity[$b], $bAState[$b]);
+        $thisCard = array("p",$ccNums[$b], $lNames[$b], $fNames[$b], $expyDates[$b], $bALine1[$b], $bALine2[$b], $bACity[$b], $bAState[$b], $bAZip[$b], $bAIndex[$b]);
         $thisCardString = implode(',', $thisCard);
         $displayCard = "...-**" . substr($ccNums[$b], -4, 4);
        ?>
@@ -81,8 +90,8 @@
            Expiration Date: <?php echo $expyDates[$b] ?> <br>
            <br>
            Billing Address <br>
-           Street: <?php echo $bALine1[$b] ?> <br>
-           City, State: <?php echo $bACity[$b] ?>, <?php echo $bAState[$b] ?> <br>
+           Street: <?php echo $bALine1[$b] ?> <br> <?php echo $bALine2[$b] ?> <br>
+           City, State, Zip: <?php echo $bACity[$b] ?>, <?php echo $bAState[$b] ?> <br> <?php echo $bAZip[$b] ?> <br>
            <br>
         <input type="hidden" name="card_to_change" value="<?php echo $thisCardString ?>" >
         <input type ="submit" value = "Edit" name = "edit-button">
