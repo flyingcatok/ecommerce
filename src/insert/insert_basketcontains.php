@@ -2,7 +2,7 @@
 //Author: Feiyu Shi
 //Date: 11/7/2013
 
-$add_basketcontains_1 = "INSERT INTO BasketContains (CEmail, BaskId, IId, BQuantity) VALUES ('john.smith@gmail.com','100001','111','2');";
+$add_basketcontains_1 = "INSERT INTO BasketContains (CEmail, BaskId, IId, BQuantity) VALUES ('john.smith@gmail.com','1','111','2');";
 
 
 if (mysqli_query($con, $add_basketcontains_1)) 

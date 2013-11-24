@@ -7,10 +7,10 @@
 // create basket table, merged with shopwith table
 $create_basket_table = "
 CREATE TABLE Basket 
-(CEmail			VARCHAR(30)			NOT NULL,
- BasketId		INT				NOT NULL,
+(BasketId		INT				NOT NULL AUTO_INCREMENT,
+ CEmail			VARCHAR(30)			NOT NULL,
  ShopDate		TIMESTAMP,
- PRIMARY KEY (CEmail, BasketId),
+ PRIMARY KEY (BasketId,CEmail),
  FOREIGN KEY (CEmail) REFERENCES Customer(Email) )";
  
 if (mysqli_query($con,$create_basket_table))

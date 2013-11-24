@@ -31,14 +31,13 @@ if(isset($_SESSION['empID'])) {
 	// display all pending orders
 	$sqlpending = "SELECT o.POrderID, p.PurchaseDate, ab.AddrLine1, ab.AddrLine2,ab.City,ab.State,ab.Zip, sb.ShipMethod
 					FROM Orders o, Purchase p, ShippedTo st, AddressBook ab, ShippedBy sb
-					WHERE o.POrderID = p.InvoiceNo AND o.Status = 'Pending' AND st.OrderID = o.POrderID AND st.CEmail = ab.CEmail
-							AND st.SAddr1 = ab.AddrLine1 AND st.City = ab.City AND st.State = ab.State AND sb.OrderID = o.POrderID
+					WHERE o.Status = 'Pending' AND o.POrderID = p.InvoiceNo AND st.OrderID = o.POrderID AND st.CEmail = ab.CEmail
+							AND st.AddrIndex = ab.AddrIndex AND sb.OrderID = o.POrderID
 					ORDER BY p.PurchaseDate;";
 	$query = mysqli_query($con,$sqlpending) or die(mysqli_error($con));
 	$count = mysqli_num_rows($query);
 // 	echo $count;
 if($count > 0){
-
 	while($row = mysqli_fetch_array($query)){
 		echo "<table border=1>";
 		echo "<tr><td>Invoice No.</td>";

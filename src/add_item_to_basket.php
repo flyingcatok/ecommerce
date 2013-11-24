@@ -2,7 +2,7 @@
 //Author: Feiyu Shi
 //Date: 11/12/2013
 //Last Edited: Feiyu Shi
-//Date: 11/13/2013
+//Date: 11/23/2013
 
 session_start();
     //find customer ID (email) from login info
@@ -23,9 +23,9 @@ session_start();
 
 // queries
 $sqlCommand1 = "SELECT i.IId
-					FROM Customer c, Basket b, BasketContains bc, Item i
+					FROM Basket b, BasketContains bc, Item i
 					WHERE b.CEmail = '$Email201' AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
-							AND bc.IId = i.IId;";// get the iid of items in the basket
+							AND bc.IId = i.IId;";// get the iid of items in the basket at this time
 
 $sqlCommand2 = "SELECT BasketId
 				FROM Basket

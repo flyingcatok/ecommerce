@@ -11,7 +11,7 @@ session_start();
         $reviewerEmail = $_SESSION['email'];
         echo $reviewerEmail;
         
-        $findContents = "SELECT DISTINCT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate
+        $findContents = "SELECT DISTINCT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate, i.PromoPrice
 					FROM Customer c, Basket b, BasketContains bc, Item i
 					WHERE b.CEmail = '$reviewerEmail' AND b.CEmail = bc.CEmail AND b.BasketId = bc.BaskId
 							AND bc.IId = i.IId;";
@@ -49,19 +49,34 @@ session_start();
                 <?php
 		echo ("<tr><td>Item</td>");
 		echo ("<td>Unit Price</td>");
-		echo ("<td>Quantity</td>");
+		echo ("<td>Discount Price</td>");
+		echo ("<td>Quantity</td></tr>");
 		$subtotal = 0;
 		while($row = mysqli_fetch_array($getContents)){
-// 	    $id = $row["IId"];
 // 		$shopdate = $row["ShopDate"];
 		$itemName = $row["IName"];
 		$iid = $row["IId"];
-		$price = $row["IPrice"];
 		$quantity = $row["BQuantity"];
-		$subtotal = $subtotal + $price * $quantity;
+		$oprice = $row["IPrice"];
+	 	$promoprice = $row["PromoPrice"];
+		if(is_null($promoprice)){
+			$promo = 0;
+			$subtotal = $subtotal + $oprice * $quantity;
+			$subtotal = number_format($subtotal, 2, '.', ',');
+			}else{
+			$promo = 1;
+			$subtotal = $subtotal + $promoprice * $quantity;
+			$subtotal = number_format($subtotal, 2, '.', ',');
+			}
+		$promoprice = number_format($promoprice, 2, '.', ',');
 		echo ("<tr><td><a href=items/iid=$iid.php>$itemName</a></td>");
-		echo ("<td>\$ $row[IPrice]</td>");
-		echo ("<td>$row[BQuantity]</td>");
+		echo ("<td>\$ $oprice</td>");
+		if ($promo==1){
+		echo "<td>\$ $promoprice</td>";
+		}elseif ($promo==0){
+		echo "<td></td>";
+		}
+		echo ("<td>$row[BQuantity]</td></tr>");
         } // close while
         echo "<tr><th colspan=5>Subtotal: \$ $subtotal</th></tr>";
         ?>

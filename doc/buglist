@@ -1,9 +1,12 @@
-1. check if email is valid in registration page
-2. check if password is at least of lenght n
-3. if any aristerisk field are null or not appropriate, force customer to give proper entries
-4. address primary keys: line 1(number + street), city, state, zip(5 digits) are required, and force customer to provide all valid info in order to add an adress
-5. proper links on add address 
-6. automatically assign a basket id to customer during registration.
-7. customer order history didn't show all the orders
-8. employee pending orders can't see all pending orders.
+1. CRUCIALLY IMPORTANT: add shipping method to the review order page!
+   (I expect you to have this done tonight. can’t wait! If you don’t have this, whatever how fancy the others are, it’s a failure. This is part of the purchase pipeline!)
 
+2. VERY IMPORTANT: proper links on each page you created. align all text boxes.
+   (Although this is cosmetic stuff, you need to do it as soon as you can! This is related to the customer experience. very important.)
+
+3. LESS IMPORTANT: The reason why address book is here is that when you need to add an address to the payment method or to the shipping address, you can select it from address book.
+So when you ask customer to add address to the payment method, pull out all address in his address book, and let him choose, just like you did in the review order page. if there is not one for this card, then they are asked to type in the text box to create a new one.
+
+4. NOT IMPORTANT: address primary keys: line 1(number + street), city, state, zip(5 digits) are required, and force customer to provide all valid info in order to add an address
+
+NOTE: Because you don’t check in codes frequently, and I’m busy with my stuff, I can’t help you too much. So now the situation is that the whole project relies on your work, how fast you can finish and how well you can get it done. Keep me posted.
