@@ -27,6 +27,7 @@ $findMyName = "SELECT Lname, Fname FROM Customer WHERE Email = '$confEmail'";
 $findNewContents = "SELECT c.IId, c.OQuantity, i.IName FROM OrderContains c, Item i WHERE c.COrderID = '$confONum' AND c.IId = i.IId;";
 $findWhereSent = "SELECT AddrIndex FROM ShippedTo WHERE OrderID = '$confONum' AND CEmail = '$confEmail'; ";
 $findHowPaid = "SELECT p.CardNo, m.CExpirDate FROM PaidWith p, PaymentMethods m WHERE p.OrderID = '$confONum' AND p.CEmail = '$confEmail' AND p.CardNo = m.CardNo;";
+$findSMethod = "SELECT ShipMethod FROM ShippedBY WHERE OrderID = '$confONum';";
 $returnBasket = "TRUNCATE TABLE BasketContains;";
 
 include "connect_local.php";
@@ -35,6 +36,7 @@ $myName = mysqli_query($con, $findMyName);
 $newContents = mysqli_query($con, $findNewContents);
 $whereSent = mysqli_query($con, $findWhereSent);
 $howPaid = mysqli_query($con, $findHowPaid);
+$howShipped = mysqli_query($con, $findSMethod);
 $emptyBasket = mysqli_query($con, $returnBasket); //This truncate command empties the basket after the order is confirmed as processed
 
 $aIndex = $whereSent->fetch_row();
@@ -62,13 +64,14 @@ include "disconnect.php";
     <br><br>
     <div id="order-info" style ="background-color:#FFFFFF; clear:both; text-align:left " >
         <b>Your Order</b><br><br>
-    Order number: <?php echo $confONum ?> <br>
+        Order number: <?php echo $confONum ?> <br><br>
     <br>
     <?php
     while ($nrow = mysqli_fetch_array($myName)) {
         $oLName = $nrow["Lname"];
         $oFName = $nrow["Fname"];
     }
+
     echo ("<b>Shipped to:</b>");
     
     $qrow = $shippedHere->fetch_row();
@@ -87,6 +90,14 @@ include "disconnect.php";
     echo "</table>";
     echo("<br><br>");
     
+    echo ("<b>Shipment Method:</b><br>");
+    
+    while ($mrow = $howShipped->fetch_row()) {
+        $shipment = $mrow[0];
+    }
+    
+    echo ("$shipment <br><br>");
+    
     echo ("<b>Payment Method:</b> <br>");
     
     while ($prow = mysqli_fetch_array($howPaid)) {
@@ -100,7 +111,7 @@ include "disconnect.php";
     echo "</table>";
     echo("<br><br>");
     
-    echo("<b>Order Contents<b> <br>");
+    echo("<b>Order Contents</b> <br>");
     
     while ($orow = mysqli_fetch_array($newContents)) {
         $itemNum = $orow["IId"];
@@ -114,7 +125,7 @@ include "disconnect.php";
     }
     ?>
     </div>
-    <br>
+    <br><br>
     Your order is pending!
     
 </HTML>

@@ -55,6 +55,13 @@ session_start();
     $payState = $myPay[8];
     $payZip = $myPay[9];
     $payAddrIn = $myPay[10];
+    
+    if (isset($_POST["method"])) {
+        $sMethod = $_POST["method"];
+    }
+    else {
+        echo "Could not find a shipping method. <br>";
+    }
   
     
     //queries
@@ -74,6 +81,7 @@ session_start();
     $create_new_purchase = "INSERT INTO Purchase(CEmail, InvoiceNo, PurchaseDate, PurchaseRating, Review) VALUES ('$placerEmail', '$newID', NOW(), '4', 'It was OK');";
     $create_new_shipped_to = "INSERT INTO ShippedTo(OrderID, CEmail, AddrIndex) VALUES('$newID', '$placerEmail', '$shipAddrIn');";
     $create_new_paid_with = "INSERT INTO PaidWith(OrderID, CEmail, CardNo) VALUES('$newID', '$placerEmail', '$payNum');";
+    $create_new_ShippedBy = "INSERT INTO ShippedBy(OrderID, ShipMethod) VALUES ('$newID', '$sMethod');";
     
     
     
@@ -81,6 +89,7 @@ session_start();
     mysqli_query($con, $create_new_purchase);
     mysqli_query($con, $create_new_shipped_to);
     mysqli_query($con, $create_new_paid_with);
+    mysqli_query($con, $create_new_ShippedBy);
     $orderContents = mysqli_query($con, $orderConts);
     
     $itemids = array();
