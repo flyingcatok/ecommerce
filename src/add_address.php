@@ -19,7 +19,7 @@
     
     
     if(isset($_POST["addAddBtn"])) {
-        if(isset($_POST["newl1"])) {
+        if(isset($_POST["newl1"]) && ($_POST["newl1"] != "")) {
             $newLineOne = $_POST["newl1"];
         }
         else {
@@ -31,7 +31,7 @@
         else {
             $newLineTwo = " ";
         }
-        if (isset($_POST["newcity"])) {
+        if (isset($_POST["newcity"]) && ($_POST["newcity"] != "")) {
             $newCity = $_POST["newcity"];
         }
         else {
@@ -43,7 +43,7 @@
         else {
             $message = "You must select a state.";
         }
-        if (isset($_POST["zipc"]) && ($_POST["zipc"] != 0)) {
+        if (isset($_POST["zipc"]) && ($_POST["zipc"] != "")) {
             $newZip = $_POST["zipc"];
         }
         else {
@@ -59,8 +59,8 @@
         include "connect_local.php";
         $dupAddCheck = "SELECT COUNT(*) FROM AddressBook WHERE CEmail = '$newAddrEmail' AND AddrLine1 = '$newLineOne' AND AddrLine2 = '$newLineTwo' AND
             City = '$newCity' AND State = '$newState' AND Zip = '$newZip'";
-        $newAddQuery = "INSERT INTO AddressBook(CEmail, AddrLine1, AddrLine2, City, State, Zip) VALUES('$newAddrEmail', '$newLineOne', '$newLineTwo',
-            '$newCity', '$newState', '$newZip')";
+        $newAddQuery = "INSERT INTO AddressBook(CEmail, AddrLine1, AddrLine2, City, State, Zip, IsVisible) VALUES('$newAddrEmail', '$newLineOne', '$newLineTwo',
+            '$newCity', '$newState', '$newZip', 1)";
         
         $isDupAdd = mysqli_query($con, $dupAddCheck);
         $dupAdd = $isDupAdd->fetch_row();

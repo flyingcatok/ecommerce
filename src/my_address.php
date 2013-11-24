@@ -17,7 +17,7 @@
         echo "too bad";
     }
     $checkAddr = "SELECT COUNT(*) FROM AddressBook WHERE CEmail = '$addrEmail';";
-    $findShippingAddr = "SELECT * FROM AddressBook WHERE CEmail = '$addrEmail'";
+    $findShippingAddr = "SELECT * FROM AddressBook WHERE CEmail = '$addrEmail' AND IsVisible = 1";
    
     include "connect_local.php";
     

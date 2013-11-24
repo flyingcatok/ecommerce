@@ -28,7 +28,7 @@ if(isset($_POST["delete-button"])) {
     $stateDelete = $deleteThisAddr[4];
     $zipDelete = $deleteThisAddr[5];
     $indexDelete = $deleteThisAddr[6];
-    $deleteAddrStr = "DELETE FROM AddressBook WHERE CEmail = '$addrEditEmail' AND AddrIndex = '$indexDelete';";
+    $deleteAddrStr = "UPDATE AddressBook SET IsVisible = 0 WHERE CEmail = '$addrEditEmail' AND AddrIndex = '$indexDelete';";
     include "connect_local.php";
     mysqli_query($con, $deleteAddrStr);
     include "disconnect.php";
