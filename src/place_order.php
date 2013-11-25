@@ -78,7 +78,7 @@ session_start();
     }
     $newID = $lastID + 1;
     $create_new_order = "INSERT INTO Orders(POrderID, Status) VALUES ('$newID', 'Pending');";
-    $create_new_purchase = "INSERT INTO Purchase(CEmail, InvoiceNo, PurchaseDate, PurchaseRating, Review) VALUES ('$placerEmail', '$newID', NOW(), '4', 'It was OK');";
+    $create_new_purchase = "INSERT INTO Purchase(CEmail, InvoiceNo, PurchaseDate) VALUES ('$placerEmail', '$newID', NOW());";
     $create_new_shipped_to = "INSERT INTO ShippedTo(OrderID, CEmail, AddrIndex) VALUES('$newID', '$placerEmail', '$shipAddrIn');";
     $create_new_paid_with = "INSERT INTO PaidWith(OrderID, CEmail, CardNo) VALUES('$newID', '$placerEmail', '$payNum');";
     $create_new_ShippedBy = "INSERT INTO ShippedBy(OrderID, ShipMethod) VALUES ('$newID', '$sMethod');";

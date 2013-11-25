@@ -42,6 +42,14 @@
         else {
             $message = "You must enter a valid card holder name.";
         }
+        if (isset($_POST["pay-select-add"])) {
+            $billAddr = $_POST["pay-select-add"];
+            $fullAddr = explode(',', $billAddr);
+           if ($fullAddr[6] != 0) {
+           $selectBIn = $fullAddr[6];
+        }
+        }
+        else {
         if (isset($_POST["newbill1"]) && ($_POST["newbill1"] != "")) {
             $newBill1 = $_POST["newbill1"];
         }
@@ -70,6 +78,7 @@
             $message = "You must enter a valid billing address.";
         }
     }
+    }
     
     if (isset($message)) {
         echo $message;
@@ -83,8 +92,10 @@
         $newCardQuery = "INSERT INTO PaymentMethods(CEmail, CardNo, CHolderLastName, CHolderFirstName, CExpirDate, IsVisible) VALUES('$newPayEmail', '$newccNum', '$newcLast',
             '$newcFirst', '$newEDate', 1)";
         
+        if (!isset($selectBIn)) {
         $checkBook = "SELECT COUNT(*) FROM AddressBook WHERE CEmail = '$newPayEmail' AND AddrLine1 = '$newBill1' AND AddrLine2 = '$newBill2' 
               AND City = '$newBCity' AND State = '$newBState' AND Zip = '$newBZip';";
+        }
         
         
         
@@ -101,7 +112,12 @@
         }
         else {
             mysqli_query($con, $newCardQuery);
-            $foundIn = mysqli_query($con, $checkBook);
+        }
+        if (isset($selectBIn)) {
+            $assignBAddr = "INSERT INTO BillingAddress(CEmail, CardNo, AddrIndex, IsVisible) VALUES('$newPayEmail', '$newccNum', '$selectBIn', 1); ";
+            mysqli_query($con, $assignBAddr);
+        }
+        else { $foundIn = mysqli_query($con, $checkBook);
             if (!$foundIn) {
                 echo "Error in checking address book: " . mysqli_error($con);
             }
@@ -133,9 +149,10 @@
                 $newBAEntry = "INSERT INTO BillingAddress(CEmail, CardNo, AddrIndex, IsVisible) VALUES ('$newPayEmail', '$newccNum', '$thisIn', 1);";
                 mysqli_query($con, $newBAEntry);
             }
+        }
             include "disconnect.php";
             Header('Location: my_payment.php');
-        }
+        
     }
     
     ?>

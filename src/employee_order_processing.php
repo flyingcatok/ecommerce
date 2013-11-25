@@ -87,7 +87,7 @@ if($count > 0){
 					}
 				if ($oquantity > $invent){
 					$shortage = 1;
-					echo "<tr><td colspan=4>WARNING: Please Stock Item ID = $id!</td></tr>";
+					echo "<tr><td colspan=4><font color =\"red\">WARNING: Insufficient inventory. Please Stock Item ID = $id!</font></td></tr>";
 				}else{
 					$shortage = 0;
 					$subtotal = $subtotal + $price * $oquantity;

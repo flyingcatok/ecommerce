@@ -3,6 +3,47 @@
 //Date: 11/23/2013
 //Last Edit: Feiyu Shi
 //Edit Date: 11/23/2013
+
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors','1');
+    session_start();
+    
+    //find customer ID (email) from login info
+    if(isset($_SESSION['email'])) {
+        $newPayEmail = $_SESSION['email'];
+    }
+    else {
+        echo "too bad";
+    }
+    
+    $getAddsQuery = "SELECT AddrIndex, AddrLine1, AddrLine2, City, State, Zip FROM AddressBook WHERE CEmail = '$newPayEmail' AND IsVisible = 1;";
+    
+    include "connect_local.php";
+    $payAddResults = mysqli_query($con, $getAddsQuery);
+    
+    include "disconnect.php";
+    
+    $payLine1 = array();
+    $payLine2 = array();
+    $payCity = array();
+    $payState = array();
+    $payZip = array();
+    $payIn = array();
+    
+    $c = 0;
+    
+    while ($rrow = mysqli_fetch_array($payAddResults)) {
+      $payIn[$c] = $rrow["AddrIndex"];
+      $payLine1[$c] = $rrow["AddrLine1"];
+      $payLine2[$c] = $rrow["AddrLine2"];
+      $payCity[$c] = $rrow["City"];
+      $payState[$c] = $rrow["State"];
+      $payZip[$c] = $rrow["Zip"];
+      $c++;
+    }
+    
+    $numPayAdds = $c;
 ?> 
 
 <HTML>
@@ -28,8 +69,27 @@
             Card Holder First Name: &nbsp; <input type="text" name ="newchfirst"><br>
             Card Holder Last Name: &nbsp; &nbsp;<input type="text" name="newchlast"><br>
             <br>
-            <h4> Billing Address</h4>
+            <h4> Select a Billing Address</h4>
+            <?php 
+            for ($e = 0; $e < $numPayAdds; $e++) {
+            $thisPayAdd = array("f", $payLine1[$e], $payLine2[$e], $payCity[$e], $payState[$e], $payZip[$e], $payIn[$e]);
+         /*   echo ("What is going on here? Here's line one: $thisPayAdd[1] <br>");
+            echo("Here's line two: $thisPayAdd[2]<br>");
+            echo ("Here's the city: $thisPayAdd[3]<br>");
+            echo ("Here's the state: $thisPayAdd[4] <br> ");
+            echo ("Here's the zip: $thisPayAdd[5] <br>");
+            echo ("Here's the index: $thisPayAdd[6] <br>"); */
+            $thisSelection = implode(',', $thisPayAdd);
+            ?>
+            <b>Address <?php echo $e+1; ?> </b><br><br>
+            <?php echo $payLine1[$e]; ?> <br>
+            <?php if ($payLine2[$e] != NULL) { echo $payLine2[$e]; } ?> <br>
+            <?php echo $payCity[$e] ?>, <?php echo $payState[$e] ?> &nbsp; <?php echo $payZip[$e] ?> <br><br>
+            <input type ="radio" name="pay-select-add" value ="<?php echo $thisSelection; ?>" > Select this address <br><br><br>
+            <?php } ?>
             
+            
+            <b>Don't See Your Address? Enter a New One</b><br><br>
             Line 1: <input type="text" name="newbill1"><br>
             Line 2: <input type="text" name="newbill2"><br>
             City: &nbsp;&nbsp;&nbsp;<input type="text" name="newbcity"><br>
@@ -98,4 +158,3 @@
     </BODY>
 </HTML>
 
-</HTML>
