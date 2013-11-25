@@ -1,8 +1,8 @@
 <?php
 //Author: Feiyu Shi
 //Date: 11/19/2013
-//Last Edited: 
-//Date: 
+//Last Edited: Feiyu Shi
+//Date: 11/23/2013
 
 
  error_reporting(E_ALL);
@@ -33,7 +33,17 @@ if ($manager == 1){
 	$promorate = $_POST['promotionrate']*0.01;
 	$promoend = $_POST['promoend'];
 	$promostart = $_POST['promostart'];
-	$sqlinsert = "INSERT INTO Promote (EId,IId,PromoteRate,PStartDate, PEndDate)
+	//check if the item is already on promotion
+	$sqlcheck = "SELECT *
+					FROM Promote
+					WHERE IId = $iid";
+	$query4 = mysqli_query($con,$sqlcheck) or die(mysqli_error($con));
+	$count = mysqli_num_rows($query4);
+	if($count>0){
+		echo "This item is already on sale.";
+		}else{
+		
+			$sqlinsert = "INSERT INTO Promote (EId,IId,PromoteRate,PStartDate, PEndDate)
 					VALUES ('$proEID','$iid','$promorate','$promostart','$promoend');";
 	// $sqlupdate = "UPDATE Item
 // 					SET PromoPrice = IPrice*(1-$promorate)
@@ -41,13 +51,14 @@ if ($manager == 1){
 	// $sqlupdate = "UPDATE Item i, Promote p
 // 					SET i.PromoPrice = i.IPrice * (1-p.PromoteRate)
 // 					WHERE i.IId = $iid AND p.IId = i.IId AND p.PStartDate = TIMESTAMP(CURDATE(),'00:00:00')";
-	$query2 = mysqli_query($con,$sqlinsert) or die(mysqli_error($con));
+			$query2 = mysqli_query($con,$sqlinsert) or die(mysqli_error($con));
 // 	$query3 =mysqli_query($con,$sqlupdate) or die(mysqli_error($con));
-	echo "You successfully promote an item!";
-	}else
-	{
-	echo "You are not a manager. You can't promote an item.";
-	}
-}
+			echo "You successfully put an item on sale!";
+			}//$count
+	}else{
+		echo "You are not a manager. You can't promote an item.";
+		}//$manager
+}//isset
+// echo "<meta http-equiv='refresh' content='10;url=manager_home.php'> ";
 include "disconnect.php";
 ?>

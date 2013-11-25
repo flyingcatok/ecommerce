@@ -1,15 +1,15 @@
 <?php
 //Author: Libby Ferland
 //Date: 11/16/2013
-//Last Edited: 
-//Date: 
+//Last Edited: Feiyu Shi
+//Date: 11/24/2013
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 session_start();
     if(isset($_SESSION['email'])) {
         $reviewerEmail = $_SESSION['email'];
-        echo $reviewerEmail;
+//         echo $reviewerEmail;
         
         $findContents = "SELECT DISTINCT i.IId, i.IName, i.IPrice, bc. BQuantity, b.ShopDate, i.PromoPrice
 					FROM Customer c, Basket b, BasketContains bc, Item i
@@ -54,9 +54,9 @@ session_start();
 	<H2> <a href="main.php" style="text-decoration: none">F&L Gift Store</a></H2>
 	</div>
     <BODY>
-        <H1>Review Your Order Information</H1>
+        <H3>Review Your Order Information</H3>
         <div id ="contents" style ="background-color:#FFFFFF; clear:both; text-align:left">
-            <H3>Your Order</H3>
+            <H4>Your Order</H4>
             <table border="1">
                 <?php
 		echo ("<tr><td>Item</td>");
@@ -107,6 +107,6 @@ session_start();
             </select>
             <input type="submit" value="Update Order">
         </form>
-        
+
     </BODY>
 </HTML>

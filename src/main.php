@@ -81,7 +81,7 @@ else {
 </div>
 <br />
 <div id="view by category" style="background-color:#FFFFFF;clear:both;text-align:left;">
-<p>View items by category</p>
+<h3>View items by category</h3>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "post">
 <input name="category" type="radio" value="all" checked>All<br />
 <input name="category" type="radio" value="Games">Games<br />

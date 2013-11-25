@@ -70,7 +70,7 @@ if(isset($_SESSION['empID'])) {
 		echo "<td>Yes</td>";
 		echo "<td>\$ $promoprice</td>";
 		}elseif ($promo==0){
-		echo "<td></td>";
+		echo "<td>No</td>";
 		echo "<td></td>";
 		}
 // 		echo "<td>$quantity</td>";

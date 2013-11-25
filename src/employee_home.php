@@ -11,7 +11,7 @@
     
     if(isset($_SESSION['empID'])) {
         $homeEID = $_SESSION['empID'];
-    }
+    
     
     include "connect_local.php";
     
@@ -25,12 +25,15 @@
     $empPrivileges = $employeeInfo[4];
     
     include "disconnect.php";
+    }
 ?>
 
 <HTML>
     <HEADER>
     <TITLE> Employee Home </TITLE>
     </HEADER>
+    <h2>Employee Home</h2>
+    <?php if(isset($_SESSION['empID'])) {?>
     <div id="account_header" style="background-color:#FFFFFF;clear:both;text-align:left;">
         <h3>Welcome back, <?php echo $empFirst ?>! </h3>    
     </div>
@@ -51,5 +54,5 @@
     <div id="logoff" style="background-color:#FFFFFF; clear:both;text-align:left">
         <a href ="employee_logout.php">Logout</a>
     </div>
-    
+    <?php }?>
 </HTML>
