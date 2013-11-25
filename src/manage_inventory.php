@@ -2,7 +2,7 @@
 //Author: Feiyu Shi
 //Date: 11/16/2013
 //Last Edit: Feiyu Shi
-//Edit Date: 11/19/2013
+//Edit Date: 11/25/2013
 
 if(isset($_SESSION['empID'])) {
         $invEID = $_SESSION['empID'];
@@ -83,11 +83,17 @@ if(isset($_SESSION['empID'])) {
 		</form>
 		
 		<?php
+		if ($quantity < 10){
+			echo "<font color='red'>WARNING: Please Stock Item ID = $iid IMMEDIATELY!</font>"."<br>";
+		}
+		if ($quantity >=10 && $quantity <50){
+			echo "<font color='#0101DF'>WARNING: Please Stock Item ID = $iid.</font>"."<br>";
+		}
         } // close while
         echo "</table>";
-        if ($quantity == 0){
-			echo "WARNING: Please Stock Item ID = $iid";
-		}
+        // if ($quantity == 0){
+// 			echo "WARNING: Please Stock Item ID = $iid";
+// 		}
 	} else {
 		echo "<table>";
 		echo "<tr><td>Your inventory is empty.</td></tr>";	

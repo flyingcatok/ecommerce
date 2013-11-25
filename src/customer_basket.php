@@ -2,7 +2,7 @@
 //Author: Feiyu Shi
 //Date: 11/9/2013
 //Last Edited: Feiyu Shi
-//Date: 11/22/2013
+//Date: 11/25/2013
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -63,7 +63,7 @@ if(isset($_POST['quantity'])&& $_POST['quantity']!=""&&$_POST['quantity']>0&&is_
 	}
 	if ($updatedquan>$invent)
 	{
-		echo "<hr/>"."Out of Stock."."<hr/>";
+		echo "<hr/>"."<font color='red'>Out of Stock.</font>"."<br/>";
 	}
 }
 // check if the quantity is updated
