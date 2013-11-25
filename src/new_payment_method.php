@@ -64,10 +64,14 @@
         <form action="add_payment.php" method="POST">
             <h4> Card Information</h4>
             Card Number: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="newcard"> <br>
-            Expiration Date (mmyy): &nbsp; <input type ="text" name ="newedate"><br>
-            Card Holder First Name: &nbsp; <input type="text" name ="newchfirst"><br>
-            Card Holder Last Name: &nbsp; &nbsp;<input type="text" name="newchlast"><br>
+            &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" title="Please enter a valid 15 or 16 digit card number" 
+                                            name="newcard" minlength="15" maxlength="16" pattern="[3-6]{1}[0-9]+"> <br>
+            Expiration Date (mmyy): &nbsp; <input type ="text" name ="newedate" title="Please enter the card expiration date (4 numbers, mmyy)" 
+                                                  minlength = "4" maxlength="4" pattern="([0][1-9]|[1][0-2])([1][3-9]|[2][0-5])"><br>
+            Card Holder First Name: &nbsp; <input type="text" name ="newchfirst" minlength = "2"
+                                                  maxlength = "30" pattern="([A-Za-z]+|([A-Za-z]+['][A-Za-z]+)+)"><br>
+            Card Holder Last Name: &nbsp; &nbsp;<input type="text" name="newchlast" minlength = "2" 
+                                                       maxlength = "30" pattern="([A-Za-z]+|([A-Za-z]+['][A-Za-z]+)+)"><br>
             <br>
             <h4> Select a Billing Address</h4>
             <?php 
@@ -90,9 +94,9 @@
             
             
             <b>Don't See Your Address? Enter a New One</b><br><br>
-            Line 1: <input type="text" name="newbill1"><br>
-            Line 2: <input type="text" name="newbill2"><br>
-            City: &nbsp;&nbsp;&nbsp;<input type="text" name="newbcity"><br>
+            Line 1: <input type="text" name="newbill1" minlength ="4" maxlength="50"><br>
+            Line 2: <input type="text" name="newbill2" maxlength="50"><br>
+            City: &nbsp;&nbsp;&nbsp;<input type="text" name="newbcity" maxlength="50"><br>
             
             
             State:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -150,7 +154,8 @@
                 <option value="WY">Wyoming</option>
             </select>
             <br>
-            Zip:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="bzipc"> <br>
+            Zip:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="bzipc" minlength = "5" maxlength="5" 
+                                                           title ="Please enter a valid 5 digit zip code" pattern = "[0-9]+"> <br>
             <input type="submit" name="addPayBtn" value ="Add Payment Method">
         </form>
     </div> 

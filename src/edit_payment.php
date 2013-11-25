@@ -71,10 +71,14 @@ if(isset($_POST["delete-button"])) {
     <br>
     <div id="card-edit-form" style ="background-color:#FFFFFF; clear:both; text-align:left">
         <form action ="update_payment.php" method ="POST">
-            Card Number: &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; <input type="text" name="ccNum" value=" <?php echo $cardNoChange; ?>" ><br>
-            Card Holder First Name: &nbsp; &nbsp; <input type ="text" name="fName" value ="<?php echo $fNameChange; ?>" ><br>
-            Card Holder Last Name: &nbsp;&nbsp;&nbsp;<input type ="text" name="lName" value="<?php echo $lNameChange; ?>" ><br>
-            Expiration Date (mmyy): &nbsp; <input type ="text" name ="eDate" value ="<?php echo $eDateChange; ?>" > <br><br>
+            Card Number: &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; <input type="text" name="ccNum" title="Please enter a valid 15 or 16 digit card number"
+                                                                  minlength="15" maxlength="16" pattern="[3-6]{1}[0-9]+"value=" <?php echo $cardNoChange; ?>" ><br>
+            Card Holder First Name: &nbsp; &nbsp; <input type ="text" name="fName" minlength = "2"
+                                                  maxlength = "30" pattern="([A-Za-z]+|([A-Za-z]+['][A-Za-z]+)+)"value ="<?php echo $fNameChange; ?>" ><br>
+            Card Holder Last Name: &nbsp;&nbsp;&nbsp;<input type ="text" name="lName" minlength = "2" 
+                                                       maxlength = "30" pattern="([A-Za-z]+|([A-Za-z]+['][A-Za-z]+)+)" value="<?php echo $lNameChange; ?>" ><br>
+            Expiration Date (mmyy): &nbsp; <input type ="text" name ="eDate" title="Please enter the card expiration date (4 numbers, mmyy)" 
+                                                  minlength = "4" maxlength="4" pattern="([0][1-9]|[1][0-2])([1][3-9]|[2][0-5])"value ="<?php echo $eDateChange; ?>" > <br><br>
             Billing Street Address&nbsp;&nbsp; <input type ="text" name ="bLine1" value ="<?php echo $bLine1Change; ?>" ><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type =" text" name="bLine2" value =" <?php echo $bLine2Change ?>" > <br>
             Billing City: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name ="bCity" value ="<?php echo $bCityChange; ?>" ><br>
@@ -131,7 +135,8 @@ if(isset($_POST["delete-button"])) {
                 <option value="WI">Wisconsin</option>
                 <option value="WY">Wyoming</option>
             </select>
-            Billing Zip: &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name ="bZip" value ="<?php echo $bZipChange; ?>" > <br><br>
+            Billing Zip: &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name ="bZip" minlength = "5" maxlength="5" 
+                                                           title ="Please enter a valid 5 digit zip code" pattern = "[0-9]+" value ="<?php echo $bZipChange; ?>" > <br><br>
             <input type ="hidden" name="old-card" value="<?php echo $selectedCard ?>" >
             <input type="submit" name="confirm-edit" value="Submit Changes">
         </form>

@@ -21,9 +21,9 @@
         </div>
     <div id ="new-add-form" style ="background-color:#FFFFFF; clear:both; text-align:center">
         <form action="add_address.php" method="POST">
-            Line One: &nbsp;&nbsp; <input type="text" name="newl1"> <br>
-            Line Two: &nbsp; <input type ="text" name ="newl2"><br>
-            City: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name ="newcity"><br>
+            Line One: &nbsp;&nbsp; <input type="text" name="newl1" minlength="4" maxlength="50"> <br>
+            Line Two: &nbsp; <input type ="text" name ="newl2" maxlength="50"><br>
+            City: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name ="newcity" maxlength="50"><br>
             State: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             	<select name="newstate">
                 <option value ="Default">Select your state</option>

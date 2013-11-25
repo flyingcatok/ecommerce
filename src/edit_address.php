@@ -64,9 +64,9 @@ if(isset($_POST["delete-button"])) {
 	<br>
     <div id="address-edit-form" style ="background-color:#FFFFFF; clear:both; text-align:left">
         <form action ="update_address.php" method ="POST">
-            Line One: &nbsp; &nbsp; <input type="text" name="lineOne" value=" <?php echo $lineOneChange; ?>" ><br>
-            Line Two: &nbsp; &nbsp; <input type ="text" name="lineTwo" value ="<?php echo $lineTwoChange; ?>" ><br>
-            City: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type ="text" name="city" value="<?php echo $cityChange; ?>" ><br>
+            Line One: &nbsp; &nbsp; <input type="text" name="lineOne" minlength="4" maxlength="50" value=" <?php echo $lineOneChange; ?>" ><br>
+            Line Two: &nbsp; &nbsp; <input type ="text" name="lineTwo" maxlength="50" value ="<?php echo $lineTwoChange; ?>" ><br>
+            City: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type ="text" name="city" maxlength= "50" value="<?php echo $cityChange; ?>" ><br>
             State: &nbsp;&nbsp;&nbsp;&nbsp; <select name="state">
                 <option value ="<?php echo $stateChange; ?>" ><?php echo $stateChange ?> </option>
                 <option value="AL">Alabama</option>
@@ -121,7 +121,8 @@ if(isset($_POST["delete-button"])) {
                 <option value="WY">Wyoming</option>
             </select>
             <br>
-            Zip: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name ="zip" value ="<?php echo $zipChange; ?>" ><br><br>
+            Zip: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name ="zip" minlength = "5" maxlength="5" 
+                                                           title ="Please enter a valid 5 digit zip code" pattern = "[0-9]+" value ="<?php echo $zipChange; ?>" ><br><br>
             <input type ="hidden" name="old-address" value="<?php echo $selectedAddr?>" >
             <input type="submit" name="confirm-edit" value="Submit Changes">
         </form>
