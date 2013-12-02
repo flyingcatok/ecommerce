@@ -3,7 +3,7 @@
 //Author: Libby Ferland
 //Date: 11/11/2013
 //Last Edit: Feiyu Shi 
-//Edit Date: 11/22/2013
+//Edit Date: 12/1/2013
 
 
     error_reporting(E_ALL);
@@ -37,7 +37,7 @@
     
     $custLast = $accountResult[2];
     $custFirst = $accountResult[3];
-    $vipStatus = $accountResult[4];
+    //$vipStatus = $accountResult[4];
     
     $numAdds = $getAddInfo->fetch_row();
     if ($numAdds[0] == 0) {

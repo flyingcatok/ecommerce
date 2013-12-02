@@ -2,7 +2,7 @@
 //Author: Libby Ferland
 //Date: 11/12/2013
 //Last Edited: Feiyu Shi	
-//Edit Date: 11/23/2013
+//Edit Date: 12/1/2013
 
     if(isset($_POST["createAccBtn"])&&$fname_err==""&&$lname_err==""&&$email_err==""&&$pass_err==""&&$confirm_err=="") {
             $newCFirstName = $_POST["firstName"];
@@ -22,7 +22,7 @@
     }
     else {
     // create customer info
-    $createNewAcct = "INSERT INTO Customer(Email, Password, LName, FName, IsVIP) VALUES('$newCEmail', '$newAccPass', '$newCLastName', '$newCFirstName', 0)";
+    $createNewAcct = "INSERT INTO Customer(Email, Password, LName, FName) VALUES('$newCEmail', '$newAccPass', '$newCLastName', '$newCFirstName')";
     
     $acctquery = mysqli_query($con,$createNewAcct) or die(mysqli_error($con));
     // assign a basket id to this customer

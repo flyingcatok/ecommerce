@@ -8,7 +8,7 @@ Instructions:
 on the Mac platform. Other options are WAMP, LAMP, etc.
 2. Create a database and load tables and dummy data into the database. For example, use phpMyAdmin to create a database called "cs405". 
 Use "test_create_tables.php" to load the tables and values.
-3. To start browsing the website. Tpye "main.php" after "localhost" in your 
+3. To start browsing the website. Type "main.php" after "localhost" in your 
 browser's address line.  
 4. Test the customer experience using the existing customer account or create 
 new users. User name:john.smith@gmail.com. Password: 123456.
