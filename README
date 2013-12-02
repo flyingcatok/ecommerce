@@ -6,12 +6,15 @@ Author: Feiyu Shi and Libby Ferland.
 Instructions:
 1. Set up Apache, MySQL, and PHP servers. We used MAMP to develop the system 
 on the Mac platform. Other options are WAMP, LAMP, etc.
-2. Create a database and load tables and dummy data into the database. For example, use phpMyAdmin to create a database called "cs405". 
+2. Create a database and load tables and dummy data into the database. 
+For example, use phpMyAdmin to create a database called "cs405". 
 Use "test_create_tables.php" to load the tables and values.
-3. To start browsing the website. Type "main.php" after "localhost" in your 
+3. To start browsing the website, type "main.php" after "localhost" in your 
 browser's address line.  
 4. Test the customer experience using the existing customer account or create 
 new users. User name:john.smith@gmail.com. Password: 123456.
-5. Test the employee experience using existing employee accounts. Manager's account: user id: 24, password: feiyu. Or staff's account: user id: 33, password: libby.
+5. Test the employee experience using existing employee accounts. 
+Manager's account: user id: 24, password: feiyu. 
+Or staff's account: user id: 33, password: libby.
 
 Have fun!
